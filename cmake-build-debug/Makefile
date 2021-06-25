@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee
+CMAKE_SOURCE_DIR = /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug
+CMAKE_BINARY_DIR = /mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles /mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -122,33 +122,6 @@ code: cmake_check_build_system
 code/fast:
 	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/build
 .PHONY : code/fast
-
-file1.o: file1.c.o
-
-.PHONY : file1.o
-
-# target to build an object file
-file1.c.o:
-	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/file1.c.o
-.PHONY : file1.c.o
-
-file1.i: file1.c.i
-
-.PHONY : file1.i
-
-# target to preprocess a source file
-file1.c.i:
-	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/file1.c.i
-.PHONY : file1.c.i
-
-file1.s: file1.c.s
-
-.PHONY : file1.s
-
-# target to generate assembly for a file
-file1.c.s:
-	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/file1.c.s
-.PHONY : file1.c.s
 
 file_reader.o: file_reader.c.o
 
@@ -204,86 +177,86 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/main.c.s
 .PHONY : main.c.s
 
-structDataBase.o: structDataBase.c.o
+structures_fonctions/structDataBase.o: structures_fonctions/structDataBase.c.o
 
-.PHONY : structDataBase.o
-
-# target to build an object file
-structDataBase.c.o:
-	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structDataBase.c.o
-.PHONY : structDataBase.c.o
-
-structDataBase.i: structDataBase.c.i
-
-.PHONY : structDataBase.i
-
-# target to preprocess a source file
-structDataBase.c.i:
-	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structDataBase.c.i
-.PHONY : structDataBase.c.i
-
-structDataBase.s: structDataBase.c.s
-
-.PHONY : structDataBase.s
-
-# target to generate assembly for a file
-structDataBase.c.s:
-	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structDataBase.c.s
-.PHONY : structDataBase.c.s
-
-structNodeTrie.o: structNodeTrie.c.o
-
-.PHONY : structNodeTrie.o
+.PHONY : structures_fonctions/structDataBase.o
 
 # target to build an object file
-structNodeTrie.c.o:
-	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structNodeTrie.c.o
-.PHONY : structNodeTrie.c.o
+structures_fonctions/structDataBase.c.o:
+	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structures_fonctions/structDataBase.c.o
+.PHONY : structures_fonctions/structDataBase.c.o
 
-structNodeTrie.i: structNodeTrie.c.i
+structures_fonctions/structDataBase.i: structures_fonctions/structDataBase.c.i
 
-.PHONY : structNodeTrie.i
+.PHONY : structures_fonctions/structDataBase.i
 
 # target to preprocess a source file
-structNodeTrie.c.i:
-	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structNodeTrie.c.i
-.PHONY : structNodeTrie.c.i
+structures_fonctions/structDataBase.c.i:
+	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structures_fonctions/structDataBase.c.i
+.PHONY : structures_fonctions/structDataBase.c.i
 
-structNodeTrie.s: structNodeTrie.c.s
+structures_fonctions/structDataBase.s: structures_fonctions/structDataBase.c.s
 
-.PHONY : structNodeTrie.s
+.PHONY : structures_fonctions/structDataBase.s
 
 # target to generate assembly for a file
-structNodeTrie.c.s:
-	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structNodeTrie.c.s
-.PHONY : structNodeTrie.c.s
+structures_fonctions/structDataBase.c.s:
+	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structures_fonctions/structDataBase.c.s
+.PHONY : structures_fonctions/structDataBase.c.s
 
-structPerson.o: structPerson.c.o
+structures_fonctions/structNodeTrie.o: structures_fonctions/structNodeTrie.c.o
 
-.PHONY : structPerson.o
+.PHONY : structures_fonctions/structNodeTrie.o
 
 # target to build an object file
-structPerson.c.o:
-	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structPerson.c.o
-.PHONY : structPerson.c.o
+structures_fonctions/structNodeTrie.c.o:
+	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structures_fonctions/structNodeTrie.c.o
+.PHONY : structures_fonctions/structNodeTrie.c.o
 
-structPerson.i: structPerson.c.i
+structures_fonctions/structNodeTrie.i: structures_fonctions/structNodeTrie.c.i
 
-.PHONY : structPerson.i
+.PHONY : structures_fonctions/structNodeTrie.i
 
 # target to preprocess a source file
-structPerson.c.i:
-	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structPerson.c.i
-.PHONY : structPerson.c.i
+structures_fonctions/structNodeTrie.c.i:
+	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structures_fonctions/structNodeTrie.c.i
+.PHONY : structures_fonctions/structNodeTrie.c.i
 
-structPerson.s: structPerson.c.s
+structures_fonctions/structNodeTrie.s: structures_fonctions/structNodeTrie.c.s
 
-.PHONY : structPerson.s
+.PHONY : structures_fonctions/structNodeTrie.s
 
 # target to generate assembly for a file
-structPerson.c.s:
-	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structPerson.c.s
-.PHONY : structPerson.c.s
+structures_fonctions/structNodeTrie.c.s:
+	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structures_fonctions/structNodeTrie.c.s
+.PHONY : structures_fonctions/structNodeTrie.c.s
+
+structures_fonctions/structPerson.o: structures_fonctions/structPerson.c.o
+
+.PHONY : structures_fonctions/structPerson.o
+
+# target to build an object file
+structures_fonctions/structPerson.c.o:
+	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structures_fonctions/structPerson.c.o
+.PHONY : structures_fonctions/structPerson.c.o
+
+structures_fonctions/structPerson.i: structures_fonctions/structPerson.c.i
+
+.PHONY : structures_fonctions/structPerson.i
+
+# target to preprocess a source file
+structures_fonctions/structPerson.c.i:
+	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structures_fonctions/structPerson.c.i
+.PHONY : structures_fonctions/structPerson.c.i
+
+structures_fonctions/structPerson.s: structures_fonctions/structPerson.c.s
+
+.PHONY : structures_fonctions/structPerson.s
+
+# target to generate assembly for a file
+structures_fonctions/structPerson.c.s:
+	$(MAKE) -f CMakeFiles/code.dir/build.make CMakeFiles/code.dir/structures_fonctions/structPerson.c.s
+.PHONY : structures_fonctions/structPerson.c.s
 
 test.o: test.c.o
 
@@ -321,24 +294,21 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... code"
 	@echo "... edit_cache"
-	@echo "... file1.o"
-	@echo "... file1.i"
-	@echo "... file1.s"
 	@echo "... file_reader.o"
 	@echo "... file_reader.i"
 	@echo "... file_reader.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... structDataBase.o"
-	@echo "... structDataBase.i"
-	@echo "... structDataBase.s"
-	@echo "... structNodeTrie.o"
-	@echo "... structNodeTrie.i"
-	@echo "... structNodeTrie.s"
-	@echo "... structPerson.o"
-	@echo "... structPerson.i"
-	@echo "... structPerson.s"
+	@echo "... structures_fonctions/structDataBase.o"
+	@echo "... structures_fonctions/structDataBase.i"
+	@echo "... structures_fonctions/structDataBase.s"
+	@echo "... structures_fonctions/structNodeTrie.o"
+	@echo "... structures_fonctions/structNodeTrie.i"
+	@echo "... structures_fonctions/structNodeTrie.s"
+	@echo "... structures_fonctions/structPerson.o"
+	@echo "... structures_fonctions/structPerson.i"
+	@echo "... structures_fonctions/structPerson.s"
 	@echo "... test.o"
 	@echo "... test.i"
 	@echo "... test.s"

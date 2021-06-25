@@ -8,33 +8,33 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug"/>
+				<Option working_dir="/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug"/>
+				<Option working_dir="/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="code">
-				<Option output="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/code" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug"/>
+				<Option output="/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/code" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/."/>
+					<Add directory="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet2/."/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
@@ -42,20 +42,20 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 code"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 code"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="code/fast">
-				<Option output="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/code" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug"/>
+				<Option output="/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/code" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/."/>
+					<Add directory="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet2/."/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
@@ -63,60 +63,54 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 code/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 code/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug"/>
+				<Option working_dir="/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/file1.c">
+		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet2/file_reader.c">
 			<Option target="code"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/file1.h">
+		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet2/file_reader.h">
 			<Option target="code"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/file_reader.c">
+		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet2/main.c">
 			<Option target="code"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/file_reader.h">
+		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet2/structures_fonctions/structDataBase.c">
 			<Option target="code"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/main.c">
+		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet2/structures_fonctions/structNodeTrie.c">
 			<Option target="code"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/structDataBase.c">
+		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet2/structures_fonctions/structPerson.c">
 			<Option target="code"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/structDataBase.h">
+		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet2/structures_headers/structDataBase.h">
 			<Option target="code"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/structNodeTrie.c">
+		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet2/structures_headers/structNodeTrie.h">
 			<Option target="code"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/structNodeTrie.h">
+		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet2/structures_headers/structPerson.h">
 			<Option target="code"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/structPerson.c">
+		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet2/test.c">
 			<Option target="code"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/structPerson.h">
-			<Option target="code"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/test.c">
-			<Option target="code"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/CMakeLists.txt">
+		<Unit filename="/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

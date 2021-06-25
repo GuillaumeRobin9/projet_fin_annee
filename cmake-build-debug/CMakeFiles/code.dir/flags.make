@@ -6,5 +6,5 @@ C_FLAGS = -g   -std=gnu11
 
 C_DEFINES = 
 
-C_INCLUDES = -I/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/. 
+C_INCLUDES = -I/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet2/. 
 

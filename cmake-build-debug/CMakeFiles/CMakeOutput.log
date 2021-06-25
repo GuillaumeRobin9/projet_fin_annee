@@ -10,33 +10,33 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/3.13.4/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/3.13.4/CompilerIdC/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_0c26a/fast"
-/usr/bin/make -f CMakeFiles/cmTC_0c26a.dir/build.make CMakeFiles/cmTC_0c26a.dir/build
-make[1]: Entering directory '/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_0c26a.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_0c26a.dir/testCCompiler.c.o   -c /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_0c26a
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0c26a.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_0c26a.dir/testCCompiler.c.o  -o cmTC_0c26a 
-make[1]: Leaving directory '/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_b2b71/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b2b71.dir/build.make CMakeFiles/cmTC_b2b71.dir/build
+make[1]: Entering directory '/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b2b71.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_b2b71.dir/testCCompiler.c.o   -c /mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_b2b71
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b2b71.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_b2b71.dir/testCCompiler.c.o  -o cmTC_b2b71 
+make[1]: Leaving directory '/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_018cc/fast"
-/usr/bin/make -f CMakeFiles/cmTC_018cc.dir/build.make CMakeFiles/cmTC_018cc.dir/build
-make[1]: Entering directory '/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_018cc.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_018cc.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.13/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_018cc
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_018cc.dir/link.txt --verbose=1
-/usr/bin/cc     -v CMakeFiles/cmTC_018cc.dir/CMakeCCompilerABI.c.o  -o cmTC_018cc 
+Run Build Command:"/usr/bin/make" "cmTC_d090e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d090e.dir/build.make CMakeFiles/cmTC_d090e.dir/build
+make[1]: Entering directory '/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d090e.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_d090e.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.13/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_d090e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d090e.dir/link.txt --verbose=1
+/usr/bin/cc     -v CMakeFiles/cmTC_d090e.dir/CMakeCCompilerABI.c.o  -o cmTC_d090e 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper
@@ -48,24 +48,24 @@ Thread model: posix
 gcc version 8.3.0 (Debian 8.3.0-6) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_018cc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccaY2EKm.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_018cc /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_018cc.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_018cc' '-mtune=generic' '-march=x86-64'
-make[1]: Leaving directory '/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d090e' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccJQip1H.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_d090e /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_d090e.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d090e' '-mtune=generic' '-march=x86-64'
+make[1]: Leaving directory '/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp'
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_018cc/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_018cc.dir/build.make CMakeFiles/cmTC_018cc.dir/build]
-  ignore line: [make[1]: Entering directory '/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_018cc.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_018cc.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.13/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_018cc]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_018cc.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTC_018cc.dir/CMakeCCompilerABI.c.o  -o cmTC_018cc ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_d090e/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_d090e.dir/build.make CMakeFiles/cmTC_d090e.dir/build]
+  ignore line: [make[1]: Entering directory '/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_d090e.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_d090e.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.13/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_d090e]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d090e.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTC_d090e.dir/CMakeCCompilerABI.c.o  -o cmTC_d090e ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper]
@@ -77,13 +77,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 8.3.0 (Debian 8.3.0-6) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_018cc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccaY2EKm.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_018cc /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_018cc.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d090e' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccJQip1H.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_d090e /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_d090e.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccaY2EKm.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccJQip1H.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -98,7 +98,7 @@ Parsed C implicit link information from above output:
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-pie] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_018cc] ==> ignore
+    arg [cmTC_d090e] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o] ==> ignore
@@ -110,7 +110,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/8/../../..]
-    arg [CMakeFiles/cmTC_018cc.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_d090e.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--push-state] ==> ignore
     arg [--as-needed] ==> ignore
@@ -140,17 +140,17 @@ Parsed C implicit link information from above output:
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_7bb74/fast"
-/usr/bin/make -f CMakeFiles/cmTC_7bb74.dir/build.make CMakeFiles/cmTC_7bb74.dir/build
-make[1]: Entering directory '/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_7bb74.dir/feature_tests.c.o
-/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_7bb74.dir/feature_tests.c.o   -c /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/feature_tests.c
-Linking C executable cmTC_7bb74
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7bb74.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_7bb74.dir/feature_tests.c.o  -o cmTC_7bb74 
-make[1]: Leaving directory '/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_c2880/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c2880.dir/build.make CMakeFiles/cmTC_c2880.dir/build
+make[1]: Entering directory '/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c2880.dir/feature_tests.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_c2880.dir/feature_tests.c.o   -c /mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/feature_tests.c
+Linking C executable cmTC_c2880
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c2880.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_c2880.dir/feature_tests.c.o  -o cmTC_c2880 
+make[1]: Leaving directory '/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -160,17 +160,17 @@ make[1]: Leaving directory '/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_351b7/fast"
-/usr/bin/make -f CMakeFiles/cmTC_351b7.dir/build.make CMakeFiles/cmTC_351b7.dir/build
-make[1]: Entering directory '/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_351b7.dir/feature_tests.c.o
-/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_351b7.dir/feature_tests.c.o   -c /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/feature_tests.c
-Linking C executable cmTC_351b7
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_351b7.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_351b7.dir/feature_tests.c.o  -o cmTC_351b7 
-make[1]: Leaving directory '/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_fb838/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fb838.dir/build.make CMakeFiles/cmTC_fb838.dir/build
+make[1]: Entering directory '/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fb838.dir/feature_tests.c.o
+/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_fb838.dir/feature_tests.c.o   -c /mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/feature_tests.c
+Linking C executable cmTC_fb838
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fb838.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_fb838.dir/feature_tests.c.o  -o cmTC_fb838 
+make[1]: Leaving directory '/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -180,17 +180,17 @@ make[1]: Leaving directory '/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_55be7/fast"
-/usr/bin/make -f CMakeFiles/cmTC_55be7.dir/build.make CMakeFiles/cmTC_55be7.dir/build
-make[1]: Entering directory '/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_55be7.dir/feature_tests.c.o
-/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_55be7.dir/feature_tests.c.o   -c /mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/feature_tests.c
-Linking C executable cmTC_55be7
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_55be7.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_55be7.dir/feature_tests.c.o  -o cmTC_55be7 
-make[1]: Leaving directory '/mnt/c/Users/micka/Documents/ISEN/algo/projet/projet_fin_annee/cmake-build-debug/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_236ed/fast"
+/usr/bin/make -f CMakeFiles/cmTC_236ed.dir/build.make CMakeFiles/cmTC_236ed.dir/build
+make[1]: Entering directory '/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_236ed.dir/feature_tests.c.o
+/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_236ed.dir/feature_tests.c.o   -c /mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/feature_tests.c
+Linking C executable cmTC_236ed
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_236ed.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_236ed.dir/feature_tests.c.o  -o cmTC_236ed 
+make[1]: Leaving directory '/mnt/c/users/micka/Documents/ISEN/algo/projet/projet2/cmake-build-debug/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
