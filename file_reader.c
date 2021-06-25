@@ -42,6 +42,11 @@ void read(char *nameFile){
         printf("father's ID : %d\n", token);
         token = strtok(NULL, separators);
 
+
+
+
+
+
 //        get mother's ID
         token = strtok(row, separators);
         int IDm = atoi(token);
