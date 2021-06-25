@@ -14,7 +14,9 @@ void read(char *nameFile){
     char *token;
     char* separators = ",/";
 
-    //fill database ->createEmpty.
+    int count = 0;
+
+    //create empty data base
 
     FILE *file = fopen(nameFile,"r");
 
@@ -23,87 +25,100 @@ void read(char *nameFile){
         return;
     }
 
+//    -----------get the first line-----------
+    int numberPerson;
+    fscanf(file,"%d\n", &numberPerson);
 
-    while (feof(file) != true) { //sauf 1er l
+//    -----------skipping the NULL person (second line)-----------
+    fgets(row, MAX_CHAR, file);
 
-//        show row
+    while (!feof(file)) {
+
+//        -----------get row----------
+
         fgets(row, MAX_CHAR, file);
-        printf("Row: %s\n\n", row);
+        token = strtok(row, separators); // first token
 
-//        get ID
-        token = strtok(row, separators);
+//        ----------get ID----------
+
         int ID = atoi(token);
-        printf("ID : %d\n", token);
+        if (count == 1){
+            break;
+        }
+        if (ID == numberPerson){
+            count++;
+        }
         token = strtok(NULL, separators);
 
-//        get father's ID
-        token = strtok(row, separators);
+//        ----------get father's ID----------
+
         int IDf = atoi(token);
-        printf("father's ID : %d\n", token);
         token = strtok(NULL, separators);
 
+//        ----------get mother's ID----------
 
-
-
-
-
-//        get mother's ID
-        token = strtok(row, separators);
         int IDm = atoi(token);
-        printf("mother's ID : %d\n", token);
         token = strtok(NULL, separators);
 
-//        get last name
-        token = strtok(row, separators);
+//        g----------et last name----------
+
         int lenLname = strlen(token);
         char* lastName = malloc( (lenLname + 1) * sizeof(char));
         lastName[lenLname] = '\0';
         strcpy(lastName, token);
-        printf("last name : %s\n", token);
         token = strtok(NULL, separators);
 
-//        get first name
-        token = strtok(row, separators);
+//        ----------get first name----------
+
         int lenFname = strlen(token);
         char* firstName = malloc( (lenFname + 1) * sizeof(char));
         firstName[lenFname] = '\0';
         strcpy(firstName, token);
-        printf("first name : %s\n", token);
         token = strtok(NULL, separators);
 
-//        get day
-        token = strtok(row, separators);
+//        ----------get day----------
+
         int day = atoi(token);
-        printf("day : %s\n", token);
         token = strtok(NULL, separators);
 
-//        get month
-        token = strtok(row, separators);
+//        ----------get month----------
+
         int month = atoi(token);
-        printf("month : %d\n", token);
         token = strtok(NULL, separators);
 
-//        get year
-        token = strtok(row, separators);
+//        ----------get year----------
+
         int year = atoi(token);
-        printf("year : %d\n", token);
         token = strtok(NULL, separators);
 
-//        get region
-        token = strtok(row, separators);
+//        ----------get region----------
+//
         int lenRegion = strlen(token);
         char* region = malloc( (lenRegion + 1) * sizeof(char));
         region[lenRegion] = '\0';
         strcpy(region, token);
-        printf("region : %s\n", token);
-        token = strtok(NULL, separators);
 
 
-//        printf("%d",strlen(token));
-//        token = strtok(NULL, separators);
+//        value get printed
+    printf("number person in the file : %d\n\n", numberPerson);
+    printf("ID : %d\n", ID);
+    printf("father's ID : %d\n", IDf);
+    printf("mother's ID : %d\n", IDm);
+    printf("last name : %s\n", lastName);
+    printf("first name : %s\n", firstName);
+    printf("day : %d\n", day);
+    printf("month : %d\n", month);
+    printf("year : %d\n", year);
+    printf("region : %s\n", region);
 
+
+        // create empty person and fill it with getted values
+
+        // add person to the database
 
     }
+
+    fclose(file);
 
     return;
 }
