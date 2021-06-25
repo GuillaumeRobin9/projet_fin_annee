@@ -1,8 +1,12 @@
+#include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
+//#include "file1.h"
+#include "file_reader.h"
+
 
 int main() {
-    printf("Hello, World!\n");
-    return 0;
+    read("bd_petite.csv");
 }
 
 
