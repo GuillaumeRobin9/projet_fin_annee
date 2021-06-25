@@ -1,10 +1,10 @@
 
 #ifndef PROJET_FILE1_H
-
+#define MAX_PERSON 10000
 #define MAX_LETTERS 26
-
+//separer.h
 struct dataBase {
-    struct Person* personArray[];
+    struct Person* personArray[MAX_PERSON];
     int numberPerson;
 
     int birthdays[12][31];
@@ -38,6 +38,7 @@ struct NodeTrie{
     struct NodeTrie* tab[MAX_LETTERS];
 };
 
+struct dataBase* createEmptyDataBase();
 
 #define PROJET_FILE1_H
 
