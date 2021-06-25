@@ -21,7 +21,6 @@ int createHTMLOutput() {
     fprintf(htmlFILE, "    <div id=\"csvName\">File Name : [FILE NAME HERE]</div>\n");
     fprintf(htmlFILE, "    <div id=\"dataBaseLength\">Number of Person : [PERSON QUANTITY]</div>\n");
     fprintf(htmlFILE, "    <div class=\"bg\"></div>\n    <div class=\"bg bg2\"></div>\n    <div class=\"bg bg3\"></div>\n</body>\n</html>");
-
     fclose(htmlFILE);
     return 0;
 }
