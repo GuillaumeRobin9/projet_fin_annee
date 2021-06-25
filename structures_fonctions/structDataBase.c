@@ -1,5 +1,14 @@
-//
-// Created by micka on 25/06/2021.
-//
-
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdbool.h>
 #include "structures_headers/structDataBase.h"
+
+
+struct DataBase* CreateEmptyDataBase(){
+
+
+
+
+
+}
