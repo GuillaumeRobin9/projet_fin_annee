@@ -35,7 +35,8 @@ struct dataBase* createEmptyDataBase(int numberPerson) {
     //** régions **
     base->trie = createEmptyNodeTrie();
     base->maxBirths = 0;
-
+    
+    return base;
 }
 
 int getDayOfBirth(int day, int month, struct dataBase* data){
