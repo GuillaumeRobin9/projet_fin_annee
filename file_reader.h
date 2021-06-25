@@ -2,6 +2,6 @@
 #define PROJET_FILE_READER_H
 
 
-void read(char *nameFile);
+struct dataBase* read(char *nameFile);
 
 #endif 
