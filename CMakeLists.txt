@@ -6,8 +6,6 @@ set(CMAKE_C_STANDARD 11)
 include_directories(.)
 
 add_executable(code
-        file1.c
-        file1.h
         file_reader.c
         main.c
-        test.c)
+        test.c structDataBase.c structDataBase.h structPerson.c structPerson.h structNodeTrie.c structNodeTrie.h)

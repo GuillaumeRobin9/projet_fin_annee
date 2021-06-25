@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/code.dir/file1.c.o CMakeFiles/code.dir/file_reader.c.o CMakeFiles/code.dir/main.c.o CMakeFiles/code.dir/test.c.o CMakeFiles/code.dir/structDataBase.c.o CMakeFiles/code.dir/structPerson.c.o CMakeFiles/code.dir/structNodeTrie.c.o  -o code 
