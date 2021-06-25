@@ -16,7 +16,8 @@ struct Person {
 }
 
 //** Creation Function **
-struct Person* createEmptyPerson(int ID, int IDf, int IDm, char* lastN, char* firstN, int day, int month, int year, char* region);
+struct Person* createPerson(int ID, int IDf, int IDm, char* lastN, char* firstN, int day, int month, int year, char* region);
+struct Person* createEmptyPerson();
 
 
 //** Declarations of Access Functions **
@@ -30,5 +31,8 @@ int getDay(struct Person* p);
 int getMonth(struct Person* p);
 int getYear(struct Person* p);
 char* getRegion(struct Person* p);
+
+//** Suppression Function **
+void deletePerson(struct Person* p);
 
 #endif //CODE_STRUCTPERSON_H
