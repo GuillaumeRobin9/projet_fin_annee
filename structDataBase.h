@@ -17,7 +17,7 @@ struct dataBase {
     int IDyoungestPerson;
 
     //** régions **
-    struct NodeTrie* trie;
+    struct NodeTrie* trie; // a liberer
     int maxBirths;
     char* fertileRegion;
 };

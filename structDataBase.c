@@ -104,7 +104,6 @@ void insertPerson(struct Person* p, struct dataBase* data) {
 
     getPersonArray(data)[getValidIndex(data)] = p;
 
-
 //    **insertion birthday of the person in dataBase**
     insertBirth(getDay(p), getMonth(p), data);
 
@@ -117,7 +116,7 @@ void insertPerson(struct Person* p, struct dataBase* data) {
     updateYoungest(getyoungestID(data), getEarliestBirth(data), getID(p), newPersonBirth, data);
 
 //    **insetion name region in the data Base**
-    insertWord(getTrie(data), getRegion(p), data);
+//    insertWord(getTrie(data), getRegion(p), data);
 
 //    **update valid Index**
     data->validIndex = data->validIndex + 1;
