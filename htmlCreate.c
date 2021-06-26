@@ -13,10 +13,10 @@ int createHTMLOutput() {
 
     // ** HTML FILE BUILD **
     fprintf(htmlFILE, "<html lang=\"en\">\n");
-    fprintf(htmlFILE, "<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"style.css\">\n");
+    fprintf(htmlFILE, "<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"./resources/style.css\">\n");
     fprintf(htmlFILE, "<title>PROJECT GROUPE 3</title>\n</head>\n<body>\n");
     fprintf(htmlFILE, "    <h2>Welcome to this genealogic tree retriever ! </h2>\n");
-    fprintf(htmlFILE, "    <span id=\"startText\">Enter a Name to Start :</span> <input id=\"personName\" type=\"text\" placeholder=\"Dupont...\">\n<br><br>");
+    fprintf(htmlFILE, "    <span id=\"startText\">Enter a Name to Start :</span> <input id=\"personName\" type=\"text\" placeholder=\"Dupont...\"><button type=\"button\" id=\"searchBtn\">Search</button>\n    <br><br>\n");
     fprintf(htmlFILE, "    <div>Statistics about your CSV File :</div>\n");
     fprintf(htmlFILE, "    <div id=\"csvName\">File Name : [FILE NAME HERE]</div>\n");
     fprintf(htmlFILE, "    <div id=\"dataBaseLength\">Number of Person : [PERSON QUANTITY]</div>\n");
