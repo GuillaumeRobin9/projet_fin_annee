@@ -3,6 +3,7 @@
 #define CODE_STRUCTDATABASE_H
 
 #include "structNodeTrie.h"
+#include "structPerson.h"
 
 struct dataBase {
     struct Person** personArray;
@@ -29,6 +30,7 @@ struct dataBase* createDataBase(int numberPerson);
 
 struct Person** getPersonArray(struct dataBase* data);
 int getNumberPerson(struct dataBase* data);
+int** getBirthdayArray(struct dataBase* data);
 int* getOldestBirth(struct dataBase* data);
 int* getEarliestBirth(struct dataBase* data);
 int getOldestID(struct dataBase* data);
@@ -38,13 +40,18 @@ struct NodeTrie* getTrie(struct dataBase* data);
 char* getFertileRegion(struct dataBase* data);
 int getValidIndex(struct dataBase* data);
 
+
 //** Insertion Function **
 void insertPerson(struct Person* p, struct dataBase* data);
 int insertBirth(int day, int month, struct dataBase* data);
 
 //** data Comparaison Function **
-void compareOldest(struct Person* p1, struct Person* p2, struct dataBase* data);
-void compareEarliest(struct Person* p1, struct Person* p2, struct dataBase* data);
+void updateOldest(int IDActualOldest, int* actualOldestBirth, int IDNewPerson, int* newPersonBirth, struct dataBase* data);
+void updateYoungest(int IDActualYoungest, int* actualYoungestBirth, int IDNewPerson, int* newPersonBirth, struct dataBase* data);
+
+//** Print Database **
+void printDataBase(struct dataBase* data);
+
 
 //** Suppression Function **
 void deleteDataBase(struct dataBase* data); 
