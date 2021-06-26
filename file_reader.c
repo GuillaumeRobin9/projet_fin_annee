@@ -24,11 +24,11 @@ struct dataBase* read(char *nameFile){
     FILE *file = fopen(nameFile,"r");
 
     if(file == NULL){
-        printf("Error in opening file");
+        printf("[INFO] -- Error in opening file\n");
         return NULL;
     }
 
-    printf("[INFO] -- File Opened\n");
+    printf("[INFO] -- Reading CSV File..\n");
 
 //    -----------get the first line-----------
     int numberPerson;
@@ -131,12 +131,13 @@ struct dataBase* read(char *nameFile){
 
         // **add person to the database & update database infos with person infos**
         insertPerson(p, data);
+        //printPerson(p);
 
 
     }
 
     fclose(file);
+    printf("[INFO] -- File Successfully Readed !\n");
 
     return data; // return the filled dataBase
 }
-
