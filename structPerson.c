@@ -61,8 +61,6 @@ struct Person* createEmptyPerson(){
     p->month = 0;
     p->year = 0;
 
-
-
 //    insert lastName empty Person
     p->lastName = malloc(2 * sizeof(char));
     if (p->lastName == NULL){
@@ -83,8 +81,6 @@ struct Person* createEmptyPerson(){
         return NULL;
     }
     strcpy(p->region, "0");
-
-
 
     return p;
 }
@@ -107,7 +103,6 @@ void printPerson(struct Person* p){
     printf("month : %d\n", getMonth(p));
     printf("year : %d\n", getYear(p));
     printf("region : %s\n", getRegion(p));
-
 }
 
 int getID(struct Person* p){
