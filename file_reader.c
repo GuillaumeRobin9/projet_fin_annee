@@ -4,14 +4,15 @@
 #include <stdbool.h>
 
 #include "file_reader.h"
-#include "structures_headers/structDataBase.h"
-#include "structures_headers/structPerson.h"
+#include "structDataBase.h"
+#include "structPerson.h"
 
 
 #define MAX_CHAR 1000
 
 
 struct dataBase* read(char *nameFile){
+
 
     char row[MAX_CHAR];
     char *token;
@@ -27,6 +28,8 @@ struct dataBase* read(char *nameFile){
         return NULL;
     }
 
+    printf("[INFO] -- File Opened\n");
+
 //    -----------get the first line-----------
     int numberPerson;
     fscanf(file,"%d\n", &numberPerson);
@@ -34,10 +37,12 @@ struct dataBase* read(char *nameFile){
     //   -----------creation of the data base-----------
     struct dataBase* data = createDataBase(numberPerson);
 
-//    -----------skipping the NULL person (second line)-----------
+//    -----------skipping the NULL person (second line) && adding her in the begin of struct-----------
     fgets(row, MAX_CHAR, file);
     getPersonArray(data)[0] = createEmptyPerson();
     data->validIndex += 1;
+
+
 
     while (!feof(file)) {
 
@@ -106,29 +111,32 @@ struct dataBase* read(char *nameFile){
         strcpy(region, token);
 
 
-        /*value get printed
-        printf("number person in the file : %d\n\n", numberPerson);
-        printf("ID : %d\n", ID);
-        printf("father's ID : %d\n", IDf);
-        printf("mother's ID : %d\n", IDm);
-        printf("last name : %s\n", lastName);
-        printf("first name : %s\n", firstName);
-        printf("day : %d\n", day);
-        printf("month : %d\n", month);
-        printf("year : %d\n", year);
-        printf("region : %s\n", region);*/
+//        value get printed
+//        printf("number person in the file : %d\n\n", numberPerson);
+//        printf("ID : %d\n", ID);
+//        printf("father's ID : %d\n", IDf);
+//        printf("mother's ID : %d\n", IDm);
+//        printf("last name : %s\n", lastName);
+//        printf("first name : %s\n", firstName);
+//        printf("day : %d\n", day);
+//        printf("month : %d\n", month);
+//        printf("year : %d\n", year);
+//        printf("region : %s\n", region);
 
 
         // **create a person and fill it with extracted values**
         struct Person* p = createPerson(ID, IDf, IDm, lastName, firstName, day, month, year, region);
 
-        // **add person to the database**
+
+
+        // **add person to the database & update database infos with person infos**
         insertPerson(p, data);
 
-        fclose(file);
+
     }
 
+    fclose(file);
 
-    return data;
+    return data; // return the filled dataBase
 }
 
