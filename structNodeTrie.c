@@ -53,12 +53,12 @@ void incrementNumberBirths(struct NodeTrie* trie){
     trie->numberBirths += 1;
 }
 
-void insertWord(struct NodeTrie* trie, char* word, struct dataBase* data){ // /!\ the first char of the region is in capital letter
+void insertWord(struct NodeTrie* trie, char* word, struct dataBase* data){
     int n = strlen(word);
 
     for (int i = 0; i < n; i++){
 
-        if (i == 0){ // when the first region char is uppercase
+        if (word[i] <= 90 && word[i] >= 65){ // when the  char is uppercase
 
             if (getLetters(trie)[capitalChartoPos(word[i])] == NULL){ // when the char is not in the Trie
                 struct NodeTrie* newTrie = createEmptyNodeTrie();
@@ -69,18 +69,19 @@ void insertWord(struct NodeTrie* trie, char* word, struct dataBase* data){ // /!
                 trie = getLetters(trie)[capitalChartoPos(word[i])];
             }
         }
-        else { // when the chat is in lowercase
+        else {
 
-            if (getLetters(trie)[charToPos(word[i])] == NULL){ // when the char is not in the Trie
-                struct NodeTrie* newTrie = createEmptyNodeTrie();
-                getLetters(trie)[charToPos(word[i])] = newTrie;
-                trie = newTrie;
+            if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
+                if (getLetters(trie)[charToPos(word[i])] == NULL) { // when the char is not in the Trie
+                    struct NodeTrie *newTrie = createEmptyNodeTrie();
+                    getLetters(trie)[charToPos(word[i])] = newTrie;
+                    trie = newTrie;
+                } else { // when the char is already in the trie
+                    trie = getLetters(trie)[charToPos(word[i])];
+                }
             }
-            else { // when the char is already in the trie
-                trie = getLetters(trie)[charToPos(word[i])];
-            }
+            // here the char is a space, so we go to the next char of the word without adding something to the Trie
         }
-
     }
     setIsWord(trie, true); // mark the end of the word
     incrementNumberBirths(trie); // add a birth to the name of the region
@@ -103,18 +104,21 @@ bool belongs(struct NodeTrie* trie, char* word){
 
     for (int i = 0; i < n; i++){
 
-        if (i == 0){ // case char uppercase
+        if (word[i] <= 90 && word[i] >= 65){ // when the  char is uppercase
             if (getLetters(triePointer)[capitalChartoPos(word[i])] == NULL){
                 return false;
             }
             triePointer = getLetters(triePointer)[capitalChartoPos(word[i])];
         }
-        else { // case char is lowercase
-            if (getLetters(triePointer)[charToPos(word[i])] == NULL){
-                return false;
+        else {
+            if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
+                if (getLetters(triePointer)[charToPos(word[i])] == NULL) {
+                    return false;
+                }
+                triePointer = getLetters(triePointer)[charToPos(word[i])];
             }
-            triePointer = getLetters(triePointer)[charToPos(word[i])];
         }
+        // here the char is a space, so we go to the next char of the word without adding something to the Trie
     }
     if (getIsWord(triePointer)){
         return true;
@@ -165,20 +169,21 @@ int findBirthsOfRegion(struct NodeTrie* trie, char* word, bool* valid){
 
     for (int i = 0; i < n; i++){
 
-        if (i == 0){ // case char uppercase
+        if (word[i] <= 90 && word[i] >= 65){ // when the  char is uppercase
             if (getLetters(trie)[capitalChartoPos(word[i])] == NULL){
                 *valid = false;
                 return 0;
             }
             trie = getLetters(trie)[capitalChartoPos(word[i])];
         }
-        else { // case char is lowercase
-            if (getLetters(trie)[charToPos(word[i])] == NULL){
+        else {
+            if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
                 *valid = false;
                 return 0;
             }
             trie = getLetters(trie)[charToPos(word[i])];
         }
+        // here the char is a space, so we go to the next char of the word without adding something to the Trie
     }
     if (getIsWord(trie)){
         *valid = true;
