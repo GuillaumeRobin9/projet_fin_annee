@@ -129,7 +129,11 @@ struct dataBase* read(char *nameFile){
         // **create a person and fill it with extracted values**
         struct Person* p = createPerson(ID, IDf, IDm, lastName, firstName, day, month, year, region);
 
+//        printPerson(p);
 
+        free(lastName);
+        free(firstName);
+        free(region);
 
         // **add person to the database & update database infos with person infos**
         insertPerson(p, data);
