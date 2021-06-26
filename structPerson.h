@@ -13,7 +13,7 @@ struct Person {
     int month;
     int year;
     char* region;
-}
+};
 
 //** Creation Function **
 struct Person* createPerson(int ID, int IDf, int IDm, char* lastN, char* firstN, int day, int month, int year, char* region);
@@ -22,6 +22,7 @@ struct Person* createEmptyPerson();
 
 //** Declarations of Access Functions **
 
+void printPerson(struct Person* p);
 int getID(struct Person* p);
 int getFatherID(struct Person* p);
 int getMotherID(struct Person *p);
