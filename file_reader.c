@@ -25,6 +25,7 @@ struct dataBase* read(char *nameFile){
 
     if(file == NULL){
         printf("[INFO] -- Error in opening file\n");
+        printf("--------------------------------------------------\n");
         return NULL;
     }
 
@@ -137,7 +138,7 @@ struct dataBase* read(char *nameFile){
     }
 
     fclose(file);
-    printf("[INFO] -- File Successfully Readed !\n");
+    printf("[INFO] -- File %s Successfully Readed !\n", nameFile);
 
     return data; // return the filled dataBase
 }
