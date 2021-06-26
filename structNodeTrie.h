@@ -20,7 +20,7 @@ struct NodeTrie{
 struct NodeTrie* createEmptyNodeTrie();
 
 //** Suppression Function **
-void deleteNodeTrie(struct NodeTrie* trie);
+void deleteNodeTrie(struct NodeTrie* trie); // a tester
 
 //** Access Functions **
 struct NodeTrie** getLetters(struct NodeTrie* trie);
@@ -29,16 +29,13 @@ bool isEmptyTrie(struct NodeTrie* trie);
 int getNumberBirths(struct NodeTrie* trie);
 
 // ** Insertion/Search Functions **
-void addLetter(struct NodeTrie* trie, char c);
 void insertWord(struct NodeTrie* trie, char* word, struct dataBase* data);
-void deleteWord(struct NodeTrie* trie, char* word);
 bool belongs(struct NodeTrie* trie, char* word);
 int numberOfWords(struct NodeTrie* trie);
-void numberOfWords2(struct NodeTrie* trie, int* count);
-char* findWord(struct NodeTrie* trie, char* written);
-int findBirthsOfRegion(struct NodeTrie* trie, char* word, bool* valid);
+int findBirthsOfRegion(struct NodeTrie* trie, char* word, bool* valid); // a tester
 
 //** Convertions **
+char capitalPosToChar(int pos);
 char posToChar(int pos);
 int charToPos(char c);
 int capitalChartoPos(char c);
