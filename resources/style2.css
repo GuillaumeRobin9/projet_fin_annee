@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css?family=Arima+Madurai:300");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h2 {
+  font-family: "Arima Madurai", cursive;
+  color: black;
+  font-size: 2rem;
+  letter-spacing: -3px;
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6);
+  position: relative;
+  z-index: 3;
+  text-decoration: underline;
+  text-align: center;
+}
+
+
+#personBubble{
+  display: block;
+  width: 230px;
+  color: black;
+  text-align: center;
+  font-weight:bolder;
+  height: 200px;
+  padding-top: 2%;
+  line-height: 30px;
+  border-radius: 100%;
+  text-align: center;
+  background: radial-gradient(circle at 50% 55%,rgba(2, 175, 2, 0.418),
+  rgba(2, 136, 62, 0.9)40%,rgba(6, 82, 3, 0.8)60%,rgba(15, 146, 43, 0.4));
+
+  position: absolute;
+  top: -450;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+}
+
+#father{
+  display: block;
+  width: 230px;
+  color: black;
+  text-align: center;
+  height: 200px;
+  padding-top: 2%;
+  line-height: 30px;
+  border-radius: 100%;
+  text-align: center;
+  background: radial-gradient(circle at 50% 55%,rgba(2, 175, 2, 0.418),
+  rgba(2, 136, 62, 0.9)40%,rgba(6, 82, 3, 0.8)60%,rgba(15, 146, 43, 0.4));
+
+  position: absolute;
+  top: -100;
+  bottom: 0;
+  left: 0;
+  right: 600;
+  margin: auto;
+}
+
+#mother{
+  display: block;
+  width: 230px;
+  color: black;
+  text-align: center;
+  height: 200px;
+  padding-top: 2%;
+  line-height: 30px;
+  border-radius: 100%;
+  text-align: center;
+  background: radial-gradient(circle at 50% 55%,rgba(2, 175, 2, 0.418),
+  rgba(2, 136, 62, 0.9)40%,rgba(6, 82, 3, 0.8)60%,rgba(15, 146, 43, 0.4));
+
+  position: absolute;
+  top: -100;
+  bottom: 0;
+  left: 0;
+  right: -600;
+  margin: auto;
+}
+
+#fatherGrandFather{
+  display: block;
+  width: 230px;
+  color: black;
+  text-align: center;
+  height: 200px;
+  padding-top: 2%;
+  line-height: 30px;
+  border-radius: 100%;
+  text-align: center;
+  background: radial-gradient(circle at 50% 55%,rgba(2, 175, 2, 0.418),
+  rgba(2, 136, 62, 0.9)40%,rgba(6, 82, 3, 0.8)60%,rgba(15, 146, 43, 0.4));
+
+  position: absolute;
+  top: 250;
+  bottom: 0;
+  left: 0;
+  right: 900;
+  margin: auto;
+}
+
+#fatherGrandMother{
+  display: block;
+  width: 230px;
+  color: black;
+  text-align: center;
+  height: 200px;
+  padding-top: 2%;
+  line-height: 30px;
+  border-radius: 100%;
+  text-align: center;
+  background: radial-gradient(circle at 50% 55%,rgba(2, 175, 2, 0.418),
+  rgba(2, 136, 62, 0.9)40%,rgba(6, 82, 3, 0.8)60%,rgba(15, 146, 43, 0.4));
+
+  position: absolute;
+  top: 250;
+  bottom: 0;
+  left: 0;
+  right: 300;
+  margin: auto;
+}
+
+#motherGrandFather{
+  display: block;
+  width: 230px;
+  color: black;
+  text-align: center;
+  height: 200px;
+  padding-top: 2%;
+  line-height: 30px;
+  border-radius: 100%;
+  text-align: center;
+  background: radial-gradient(circle at 50% 55%,rgba(2, 175, 2, 0.418),
+  rgba(2, 136, 62, 0.9)40%,rgba(6, 82, 3, 0.8)60%,rgba(15, 146, 43, 0.4));
+
+  position: absolute;
+  top: 250;
+  bottom: 0;
+  left: 0;
+  right: -300;
+  margin: auto;
+}
+
+
+#motherGrandMother{
+  display: block;
+  width: 230px;
+  color: black;
+  text-align: center;
+  height: 200px;
+  padding-top: 2%;
+  line-height: 30px;
+  border-radius: 100%;
+  text-align: center;
+  background: radial-gradient(circle at 50% 55%,rgba(2, 175, 2, 0.418),
+  rgba(2, 136, 62, 0.9)40%,rgba(6, 82, 3, 0.8)60%,rgba(15, 146, 43, 0.4));
+
+  position: absolute;
+  top: 250;
+  bottom: 0;
+  left: 0;
+  right: -900;
+  margin: auto;
+}
+
+
+
+body{
+    background-image: url("./realTreeBackground.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: "Arima Madurai", cursive;
+    font-weight: bold;
+}
+
+
+html {
+    height:100%;
+  }
+
+  body {
+    margin:0;
+  }
+
+  .bg {
+    animation:slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+  }
+
+  .bg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:4s;
+  }
+
+  .bg3 {
+    animation-duration:5s;
+  }
+
+  .content {
+    background-color:rgba(255,255,255,.8);
+    border-radius:.25em;
+    box-shadow:0 0 .25em rgba(0,0,0,.25);
+    box-sizing:border-box;
+    left:50%;
+    padding:10vmin;
+    position:fixed;
+    text-align:center;
+    top:50%;
+    transform:translate(-50%, -50%);
+  }
+
+  h1 {
+    font-family:monospace;
+  }
+
+  @keyframes slide {
+    0% {
+      transform:translateX(-25%);
+    }
+    100% {
+      transform:translateX(25%);
+    }
+  }
