@@ -3,16 +3,18 @@
 #include <stdio.h>
 
 #include "file_reader.h"
-#include "structures_headers/structDataBase.h"
+#include "structDataBase.h"
+//#include "file_reader.c"
 
 
 int main() {
-    
-    
-    struct dataBase* data read("bd_petite.csv");
 
-    
-    
+    printf("[INFO] -- Starting Output Process\n");
+
+    struct dataBase* data = read("bd_petite.csv");
+    printf("[INFO] -- Databse Successfully Readed !\n");
+
+    printDataBase(data);
 
 /*  ________________
     |              |
@@ -22,7 +24,7 @@ int main() {
 */    
 
 //    END
-    deleteDataBase(data);
+//    deleteDataBase(data); // marche mal
     return 0;
 }
 
