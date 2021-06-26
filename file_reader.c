@@ -27,6 +27,7 @@ struct dataBase* read(char *nameFile){
         printf("[INFO] -- Error in opening file\n");
         printf("--------------------------------------------------\n");
         return NULL;
+
     }
 
     printf("[INFO] -- Reading CSV File..\n");
