@@ -212,6 +212,8 @@ void printDataBase(struct dataBase* data){
         return;
     }
 
+    printf("\n\n--------------=|| DATA BASE INFO's ||=--------------\n\n");
+
     printf("Valid Index value : %d\n", getValidIndex(data));
     printf("number of Person : %d\n", getNumberPerson(data));
 
@@ -229,6 +231,8 @@ void printDataBase(struct dataBase* data){
 
     printf("Max Births : %d\n", getMaxBirths(data));
     printf("Most Fertile Region : %s\n", getFertileRegion(data));
+
+    printf("--------------=|| END INFO's ||=--------------\n\n");
 }
 
 
