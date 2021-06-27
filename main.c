@@ -81,7 +81,7 @@ int main() {
                         printf("[INFO] -- 1 ");
                     case 2: //  CREATION HTML FILES
 
-                        for (int i = 1; i < getNumberPerson(data); i++){ // 
+                        for (int i = 1; i < getNumberPerson(data); i++){
 
                             child = getPersonArray(data)[i];
 
@@ -99,7 +99,7 @@ int main() {
                             createPersonHTMLFile(child, father, mother, PaternalGFather, PaternalGMother, MaternalGFather, MaternalGMother);
                         }
                         red();
-                        printf("[INFO] -- Successfully Generated %d HTML Files !\n", getNumberPerson(data) - 1);
+                        printf("[INFO] -- Successfully Generated %d HTML Files !\n", getNumberPerson(data));
                         reset();
                         break;
                     case 3:
