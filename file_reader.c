@@ -11,7 +11,7 @@
 #define MAX_CHAR 1000
 
 
-struct dataBase* read(char *nameFile){
+struct dataBase* readFile(char *nameFile){
 
 
     char row[MAX_CHAR];
