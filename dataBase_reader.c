@@ -7,10 +7,5 @@
 
 #include "dataBase_reader.h"
 
-int createPersonHTMLFile(){
-
-
-
-}
 
 
