@@ -22,7 +22,7 @@ void fillFileQuery1(int ID, struct dataBase* data){
 
     // **  FILE BUILD **
                              //n°query(getFirstBornInTheTree):firstname:lastname:day:month:year:region
-    fprintf(queryFILE, "1:%s:%s:%d:%d:%d:%s\n", getFirstName(getPersonArray(data)[ID]), getLastName(getPersonArray(data)[ID]), getDay(getPersonArray(data)[ID]), getMonth(getPersonArray(data)[ID]), getYear(getPersonArray(data)[ID]), getRegion(getPersonArray(data)[ID]));
+    fprintf(queryFILE, "1:%s:%s:%d:%d:%d:%s", getFirstName(getPersonArray(data)[ID]), getLastName(getPersonArray(data)[ID]), getDay(getPersonArray(data)[ID]), getMonth(getPersonArray(data)[ID]), getYear(getPersonArray(data)[ID]), getRegion(getPersonArray(data)[ID]));
     fclose(queryFILE);
 }
 
@@ -34,7 +34,7 @@ void fillFileQuery2(int ID, struct dataBase* data){
 
     // **  FILE BUILD **
                                 //n°query(getLastBornInTheTree):firstname:lastname:day:month:year:region
-    fprintf(queryFILE, "2:%s:%s:%d:%d:%d:%s\n", getFirstName(getPersonArray(data)[ID]), getLastName(getPersonArray(data)[ID]), getDay(getPersonArray(data)[ID]), getMonth(getPersonArray(data)[ID]), getYear(getPersonArray(data)[ID]), getRegion(getPersonArray(data)[ID]));
+    fprintf(queryFILE, "2:%s:%s:%d:%d:%d:%s", getFirstName(getPersonArray(data)[ID]), getLastName(getPersonArray(data)[ID]), getDay(getPersonArray(data)[ID]), getMonth(getPersonArray(data)[ID]), getYear(getPersonArray(data)[ID]), getRegion(getPersonArray(data)[ID]));
     fclose(queryFILE);
 }
 
@@ -46,7 +46,7 @@ void fillFileQuery3(char* regionName, int numberPersonBorn){
 
     // **  FILE BUILD **
                       //n°query(NumberPersonBornInARegion):nameRegion:numberBorn
-    fprintf(queryFILE, "3:%s:%d\n", regionName, numberPersonBorn);
+    fprintf(queryFILE, "3:%s:%d", regionName, numberPersonBorn);
     fclose(queryFILE);
 
 }
@@ -59,7 +59,7 @@ void fillFileQuery4(char* regionName){
 
     // **  FILE BUILD **
                     //n°query(regionWithHighestNumberBirths):nameRegion
-    fprintf(queryFILE, "4:%s\n", regionName);
+    fprintf(queryFILE, "4:%s", regionName);
     fclose(queryFILE);
 }
 
@@ -71,7 +71,7 @@ void fillFileQuery5(int day, int month, int numberPerson){
 
     // **  FILE BUILD **
                     //n°query(numberPeopleBornInDayMonthGiven):day:month:numberBorn
-    fprintf(queryFILE, "5:%d:%d:%d\n", day, month, numberPerson);
+    fprintf(queryFILE, "5:%d:%d:%d", day, month, numberPerson);
     fclose(queryFILE);
 }
 
