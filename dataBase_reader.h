@@ -5,7 +5,7 @@
 #include "structDataBase.h"
 
 void createPersonHTMLFile(struct Person* child, struct Person* father, struct Person* mother, struct Person* PaternalGFather, struct Person* PaternalGMother, struct Person* MaternalGFather, struct Person* MaternalGMother);
-
+void createHTMLOutput(struct dataBase* data, char *fileName);
 // query Result File creation
 void createQueryResFile();
 
