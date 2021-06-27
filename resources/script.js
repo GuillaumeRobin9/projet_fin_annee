@@ -16,8 +16,11 @@ function unknownPerson(){
         if (links[index].innerHTML === "- Tree") {
             links[index]["href"] = "index.html";
             links[index].innerHTML = "No Link.."
-        }
-        
+        }    
     }
+
+
+
 }
+
 unknownPerson()
