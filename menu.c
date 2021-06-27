@@ -13,7 +13,7 @@
 #define MAX_LEN 40
 
 void red () {
-    printf("\\033[1;31m");
+    printf("\033[1;31m");
 }
 
 void green () {
@@ -33,9 +33,7 @@ void queryMenu(struct dataBase* data){
     int day;
 
     while (!exitConditionQuery) {
-
-        createQueryResFile(); // creation of the  result file query
-
+        
         printf("[INFO] -- 5 ");
         printf("\n\nQuery the family tree!\n\n");
         printf("What do you want to do?\n");
