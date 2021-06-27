@@ -66,21 +66,21 @@ struct Person* createEmptyPerson(){
     if (p->lastName == NULL){
         return NULL;
     }
-    strcpy(p->lastName, "0");
+    strcpy(p->lastName, "-");
 
 //    insert first empty Person
     p->firstName = malloc(2 * sizeof(char));
     if (p->firstName == NULL){
         return NULL;
     }
-    strcpy(p->firstName, "0");
+    strcpy(p->firstName, "-");
 
 //    insert region empty Person
     p->region = malloc(2 * sizeof(char));
     if (p->region == NULL){
         return NULL;
     }
-    strcpy(p->region, "0");
+    strcpy(p->region, "-");
 
     return p;
 }

@@ -34,6 +34,6 @@ int getYear(struct Person* p);
 char* getRegion(struct Person* p);
 
 //** Suppression Function **
-void deletePerson(struct Person* p); // a tester
+void deletePerson(struct Person* p);
 
 #endif //CODE_STRUCTPERSON_H
