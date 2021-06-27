@@ -197,11 +197,11 @@ void HTMLFamilyTreeOption(struct dataBase* data, int* exportFamilyCount){
 
 }
 
-void HTMLInfoTreeOption(struct dataBase* data, int* exportInfoCount){
+void HTMLInfoTreeOption(struct dataBase* data, int* exportInfoCount,char* fileName){
 
     printf("[INFO] -- 3 -- Exporting HTML info files...\n");
     if (*exportInfoCount == 0){
-        // ajouter la fonction mettant les infos de l'option 1 dans un fichier HTML
+        createHTMLOutput(data, fileName, getNumberPerson(data));
         green();
         printf("[INFO] -- Successfully Generated HTML Files !\n");
         reset();
@@ -214,3 +214,5 @@ void HTMLInfoTreeOption(struct dataBase* data, int* exportInfoCount){
     }
 
 }
+
+

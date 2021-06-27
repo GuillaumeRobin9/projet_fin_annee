@@ -35,7 +35,7 @@ void createPersonHTMLFile(struct Person* child, struct Person* father, struct Pe
     fclose(htmlFILE);
 }
 
-void createHTMLOutput(struct dataBase* data, char *fileName) {
+void createHTMLOutput(struct dataBase* data, char *fileName, int numberOfPerson) {
 
     // ** CREATION OF THE FILE **
     char directory[20] = "export/";
@@ -50,10 +50,16 @@ void createHTMLOutput(struct dataBase* data, char *fileName) {
     fprintf(htmlFILE, "<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"../resources/style.css\">\n");
     fprintf(htmlFILE, "<title>PROJECT GROUPE 3</title>\n</head>\n<body>\n");
     fprintf(htmlFILE, "    <h2>Welcome to this genealogic tree retriever ! </h2>\n");
-    fprintf(htmlFILE, "    <span id=\"startText\">Enter a Name to Start :</span> <input id=\"personName\" type=\"text\" placeholder=\"Dupont...\"><button type=\"button\" id=\"searchBtn\">Search</button>\n    <br><br>\n");
-    fprintf(htmlFILE, "    <div>Statistics about your CSV File :</div>\n");
-    fprintf(htmlFILE, "    <div id=\"csvName\">File Name : %s</div>\n", fileName);
-    fprintf(htmlFILE, "    <div id=\"dataBaseLength\">Number of Person : [PERSON QUANTITY]</div>\n");
+    fprintf(htmlFILE,"<ul>\n");
+    fprintf(htmlFILE, "    <span id=\"startText\">Enter a Name to Start :</span> \n    <input id=\"personName\" type=\"text\" placeholder=\"Dupont...\"><button type=\"button\" id=\"searchBtn\">Search</button>\n    <br><br>\n");
+    fprintf(htmlFILE, "    <li><div>Statistics about your CSV File :</div></li>\n");
+    fprintf(htmlFILE, "    <li><div id=\"csvName\">File Name : %s</div></li>\n", fileName);
+    fprintf(htmlFILE, "    <li><div>Number of Person : %d </div></li>\n",numberOfPerson);
+    fprintf(htmlFILE, "    <li><div>The most fertile region : %s </div></li>\n", getFertileRegion(data));
+    fprintf(htmlFILE, "    <li><div>number of different natal regions : %d</div></li>\n", numberOfWords(getTrie(data)));
+    fprintf(htmlFILE,"    <li><div>number of different birthdays dates : %d</div></li>\n", numberBirthDates(data));
+    //fprintf(htmlFILE,getDateWhithMostBirths(data, &day, &month));
+    fprintf(htmlFILE,"</ul>\n");
     fprintf(htmlFILE, "    <div class=\"bg\"></div>\n    <div class=\"bg bg2\"></div>\n    <div class=\"bg bg3\"></div>\n</body>\n</html>");
     fclose(htmlFILE);
 }

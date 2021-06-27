@@ -8,6 +8,7 @@
 #include "dataBase_reader.h"
 #include "menu.h"
 
+
 #define MAX_LEN 40
 
 
@@ -85,11 +86,11 @@ int main() {
                             HTMLFamilyTreeOption(data, &exportFamilyCount);
                             break;
                         case 3:
-                            HTMLInfoTreeOption(data, &exportInfoCount);
+                            HTMLInfoTreeOption(data, &exportInfoCount,csvName);
                             break;
                         case 4:
                             HTMLFamilyTreeOption(data, &exportFamilyCount);
-                            HTMLInfoTreeOption(data, &exportInfoCount);
+                            HTMLInfoTreeOption(data, &exportInfoCount,csvName);
                             break;
                         case 5:
                             // -------------------------=|| QUERY MENU ||=-------------------------

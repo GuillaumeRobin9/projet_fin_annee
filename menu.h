@@ -19,7 +19,7 @@ void queryMenu(struct dataBase* data);
 
 // ** option choice Functions
 void HTMLFamilyTreeOption(struct dataBase* data, int* exportFamilyCount);
-void HTMLInfoTreeOption(struct dataBase* data, int* exportInfoCount);
+void HTMLInfoTreeOption(struct dataBase* data, int* exportInfoCount,char* fileName);
 
 // ** pure execution functions **
 void exportHTMLFamilyTree(struct dataBase* data);
