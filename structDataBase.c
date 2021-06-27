@@ -116,7 +116,7 @@ void insertPerson(struct Person* p, struct dataBase* data) {
     updateYoungest(getyoungestID(data), getEarliestBirth(data), getID(p), newPersonBirth, data);
 
 //    **insetion name region in the data Base**
-//    insertWord(getTrie(data), getRegion(p), data);
+    insertWord(getTrie(data), getRegion(p), data);
 
 //    **update valid Index**
     data->validIndex = data->validIndex + 1;
@@ -241,14 +241,30 @@ void printDataBase(struct dataBase* data){
 //** Suppression Function **
 void deleteDataBase(struct dataBase* data){
 
-    for (int i = 0; i < getNumberPerson(data); i++){
+//    if (getPersonArray(data) != NULL){
+//        for (int i = 0; i < getNumberPerson(data); i++){
+//            deletePerson(getPersonArray(data)[i]);
+//        }
+//        free(data->personArray);
+//    }
+//    if (getTrie(data) != NULL){
+//        deleteNodeTrie(data->trie);
+//    }
+//    if (getFertileRegion(data) != NULL){
+//        free(data->fertileRegion);
+//    }
+
+
+    for (int i = 0; i <= getNumberPerson(data); i++){
         deletePerson(getPersonArray(data)[i]);
     }
+    free(data->personArray);
 
     deleteNodeTrie(data->trie);
-    free(data->fertileRegion);
-    free(data);
 
+    free(data->fertileRegion);
+
+    free(data);
 }
 
 
