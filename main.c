@@ -93,6 +93,7 @@ int main() {
                             break;
                         case 5:
                             // -------------------------=|| QUERY MENU ||=-------------------------
+                            createQueryResFile(); // creation of the  result file query
                             queryMenu(data);
                             break;
                             // -------------------------=|| END QUERY MENU ||=-------------------------
