@@ -1,10 +1,20 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <unistd.h>
 
 #include "file_reader.h"
 #include "structDataBase.h"
 #include "dataBase_reader.h"
+
+
+void red () {
+    printf("\033[1;31m");
+}
+void reset () {
+    printf("\033[0m");
+}
+
 
 int main() {
 
@@ -26,7 +36,13 @@ int main() {
 
     while (!exitCondition){
         system("clear");
-        printf("Welcome to our Family Tree Project !\n\n");
+        printf("\n"
+               "   ______                      __            _         ______                  ____               _           __ \n"
+               "  / ____/__  ____  ___  ____ _/ /___  ____ _(_)____   /_  __/_______  ___     / __ \\_________    (_)__  _____/ /_\n"
+               " / / __/ _ \\/ __ \\/ _ \\/ __ `/ / __ \\/ __ `/ / ___/    / / / ___/ _ \\/ _ \\   / /_/ / ___/ __ \\  / / _ \\/ ___/ __/\n"
+               "/ /_/ /  __/ / / /  __/ /_/ / / /_/ / /_/ / / /__     / / / /  /  __/  __/  / ____/ /  / /_/ / / /  __/ /__/ /_  \n"
+               "\\____/\\___/_/ /_/\\___/\\__,_/_/\\____/\\__, /_/\\___/    /_/ /_/   \\___/\\___/  /_/   /_/   \\____/_/ /\\___/\\___/\\__/  \n"
+               "                                   /____/                                                  /___/                 \n");
         printf("What do you want to do ?\n");
 
         printf("--------------------------------------------------\n");
@@ -44,7 +60,7 @@ int main() {
                     printf("[MENU] -- Enter the name of your CSV File : ");
                     scanf("%s", csvName);
                     printf("[CHOICE] -- Selected file : %s\n", csvName);
-                    data = read(csvName);
+                    data = readFile(csvName);
                 }
 
                 printf("--------------------------------------------------\n");
@@ -65,7 +81,7 @@ int main() {
                         printf("[INFO] -- 1 ");
                     case 2: //  CREATION HTML FILES
 
-                        for (int i = 0; i < getNumberPerson(data); i++){
+                        for (int i = 1; i < getNumberPerson(data); i++){ // 
 
                             child = getPersonArray(data)[i];
 
@@ -80,10 +96,12 @@ int main() {
                             //    mother's parents
                             MaternalGFather = getPersonArray(data)[getFatherID(mother)];
                             MaternalGMother = getPersonArray(data)[getMotherID(mother)];
-
-
-
+                            createPersonHTMLFile(child, father, mother, PaternalGFather, PaternalGMother, MaternalGFather, MaternalGMother);
                         }
+                        red();
+                        printf("[INFO] -- Successfully Generated %d HTML Files !\n", getNumberPerson(data) - 1);
+                        reset();
+                        break;
                     case 3:
                         printf("[INFO] -- 3 ");
                     case 4:
@@ -171,6 +189,8 @@ int main() {
                         break;
                 }
             default:
+                sleep(5);
+                printf("Returning..\n");
                 system("clear");
                 break;
             case 2:
