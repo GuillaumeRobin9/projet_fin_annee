@@ -5,8 +5,9 @@
 #include <stdbool.h>
 
 #include "structDataBase.h"
-//#include "structPerson.h"
-//#include "structNodeTrie.h"
+#include "structPerson.h"
+#include "structNodeTrie.h"
+#include "menu.h"
 
 //** Create Function **
 struct dataBase* createDataBase(int numberPerson) {
@@ -92,6 +93,49 @@ int getValidIndex(struct dataBase* data){
     return data->validIndex;
 }
 
+int numberBirthDates(struct dataBase* data){
+    int count = 0;
+
+    for (int i = 0; i < 12; i++){
+        for (int j = 0; j < 31; j++){
+            if (data->birthdays[i][j] != 0){
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+
+void getDateWhithMostBirths(struct dataBase* data, int* day, int* month){
+    int max = 0;
+
+    for (int i = 0; i < 12; i++){
+        for (int j = 0; j < 31; j++){
+            if (data->birthdays[i][j] > max){
+                *day = j;
+                *month = i;
+                max = data->birthdays[i][j];
+            }
+        }
+    }
+}
+
+
+void showGeneralInfoDataBase(struct dataBase* data){
+    int day;
+    int month;
+
+    green();
+    printf("\n--=|| General informations about the genealogical trees ||=--\n\n");
+    reset();
+    printf("number person in the tree : %d\n", getNumberPerson(data));
+    printf("number of different natal regions : %d\n", numberOfWords(getTrie(data)));
+    printf("number of different birthdays dates : %d\n", numberBirthDates(data));
+    getDateWhithMostBirths(data, &day, &month);
+    printf("date with the most of births : %d/%d\n", day, month);
+    printf("\n\n");
+}
 
 
 //** Insertion Function **
