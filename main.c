@@ -99,7 +99,7 @@ int main() {
                             createPersonHTMLFile(child, father, mother, PaternalGFather, PaternalGMother, MaternalGFather, MaternalGMother);
                         }
                         red();
-                        printf("[INFO] -- Successfully Generated %d HTML Files !\n", getNumberPerson(data));
+                        printf("[INFO] -- Successfully Generated %d HTML Files !\n", getNumberPerson(data) - 1);
                         reset();
                         break;
                     case 3:
@@ -107,6 +107,9 @@ int main() {
                     case 4:
                         printf("[INFO] -- 4 ");
                     case 5:                            // QUERY MENU
+
+                        createQueryTXTFile(); // creation of the TXT result file query
+
                         printf("[INFO] -- 5 ");
                         printf("\n\nQuery the family tree!\n\n");
                         printf("What do you want to do?\n");
@@ -129,6 +132,7 @@ int main() {
                                 printf("[INFO] -- 1 ");
                                 printf("[INFO] -- Here is the first person born\n\n");
                                 printPerson(getPersonArray(data)[getOldestID(data)]);
+
                                 break;
                             case 2:
                                 printf("[INFO] -- 2 ");
@@ -173,8 +177,9 @@ int main() {
                             case 6:
                                 printf("[INFO] -- 6 ");
                                 break;
-                            case 7:
+                            case 7: // EXPORT QUERY RESULTS IN TO A HTML FILE
                                 printf("[INFO] -- 7 ");
+                                printf("[INFO] -- exporting query results to HTML file ");
                                 break;
                             case 8:
                                 printf("[INFO] -- 8 ");
@@ -186,10 +191,12 @@ int main() {
 
                     case 6:
                         printf("[INFO] -- 6 ");
+                        printf("[INFO] -- Going back to the principale Menu & deleting the data base\n");
+                        deleteDataBase(data);
                         break;
                 }
             default:
-                sleep(5);
+                sleep(3);
                 printf("Returning..\n");
                 system("clear");
                 break;
@@ -203,24 +210,14 @@ int main() {
 
     return 0;
 
-// test NodeTrie
-//    bool valid = false;
-//    char* word = "Worcestershire";
-//    int numberB = findBirthsOfRegion(getTrie(data), word, &valid);
-
-//    printf("valid : %d\n", valid);
-//    printf("number births in the region %s : %d\n", word, numberB);
 
 
-/*  ________________
-    |              |
-    |     MENU     |
-    |              |
-    ----------------
-*/
 
-//    END
-//    deleteDataBase(data);
+    deleteDataBase(data);
+
+
+
+
 }
 
 
