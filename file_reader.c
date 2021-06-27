@@ -1,12 +1,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <stdbool.h>
+#include <time.h>
+#include <unistd.h>
 
 #include "file_reader.h"
 #include "structDataBase.h"
 #include "structPerson.h"
-
+#include "menu.h"
 
 #define MAX_CHAR 1000
 
@@ -24,11 +25,15 @@ struct dataBase* readFile(char *nameFile){
     FILE *file = fopen(nameFile,"r");
 
     if(file == NULL){
-        printf("[INFO] -- Error in opening file\n");
+        red();
+        printf("[ERROR] -- Error in opening file\n");
+        reset();
         printf("--------------------------------------------------\n");
         return NULL;
 
     }
+
+    clock_t begin = clock(); // starting recording the  time
 
     printf("[INFO] -- Reading CSV File..\n");
 
@@ -74,7 +79,7 @@ struct dataBase* readFile(char *nameFile){
         int IDm = atoi(token);
         token = strtok(NULL, separators);
 
-//        g----------et last name----------
+//        ----------get last name----------
 
         int lenLname = strlen(token);
         char* lastName = malloc( (lenLname + 1) * sizeof(char));
@@ -143,7 +148,15 @@ struct dataBase* readFile(char *nameFile){
     }
 
     fclose(file);
-    printf("[INFO] -- File %s Successfully Readed !\n", nameFile);
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+
+    green();
+    printf("[INFO] -- File \"%s\" Successfully Readed in %fs!\n", nameFile, time_spent);
+    reset();
+
+
 
     return data; // return the filled dataBase
 }

@@ -40,6 +40,9 @@ struct NodeTrie* getTrie(struct dataBase* data);
 char* getFertileRegion(struct dataBase* data);
 int getValidIndex(struct dataBase* data);
 
+int numberBirthDates(struct dataBase* data);
+void getDateWhithMostBirths(struct dataBase* data, int* day, int* month);
+void showGeneralInfoDataBase(struct dataBase* data);
 
 //** Insertion Function **
 void insertPerson(struct Person* p, struct dataBase* data);
