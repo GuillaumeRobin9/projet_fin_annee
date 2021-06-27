@@ -6,6 +6,8 @@
 
 #define POS_A 97
 #define POS_A_CAPITAL 65
+#define POS_SPACE 32
+#define LAST_POS_ARR 26
 
 struct NodeTrie* createEmptyNodeTrie(){
     struct NodeTrie* newTrie = malloc(sizeof(struct NodeTrie));
@@ -54,43 +56,40 @@ void insertWord(struct NodeTrie* trie, char* word, struct dataBase* data){
 
     for (int i = 0; i < n; i++){
 
+        if (word[i] == POS_SPACE){ // when the char is a space
+
+            if (getLetters(trie)[LAST_POS_ARR] == NULL){ // the space does not exist yet
+                trie->letters[LAST_POS_ARR] = createEmptyNodeTrie();
+            }
+            trie = getLetters(trie)[LAST_POS_ARR];
+        }
+
         if (word[i] <= 90 && word[i] >= 65){ // when the  char is uppercase
 
             if (getLetters(trie)[capitalChartoPos(word[i])] == NULL){ // when the char is not in the Trie
-                struct NodeTrie* newTrie = createEmptyNodeTrie();
-                getLetters(trie)[capitalChartoPos(word[i])] = newTrie;
-                trie = newTrie;
-
-//                printf("%c\n", capitalPosToChar(word[i]));
+                trie->letters[capitalChartoPos(word[i])] = createEmptyNodeTrie();
             }
-            else { // when the char is already in the trie
-                trie = getLetters(trie)[capitalChartoPos(word[i])];
-
-                printf("%c\n", capitalPosToChar(word[i]));
-            }
+            trie = getLetters(trie)[capitalChartoPos(word[i])];
         }
-        else {
 
-            if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
-                if (getLetters(trie)[charToPos(word[i])] == NULL) { // when the char is not in the Trie
-                    struct NodeTrie *newTrie = createEmptyNodeTrie();
-                    getLetters(trie)[charToPos(word[i])] = newTrie;
-                    trie = newTrie;
 
-//                    printf("%c\n", posToChar(word[i]));
-                } else { // when the char is already in the trie
-                    trie = getLetters(trie)[charToPos(word[i])];
-
-//                    printf("%c\n", posToChar(word[i]));
-                }
+        if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
+            if (getLetters(trie)[charToPos(word[i])] == NULL) { // when the char is not in the Trie
+                trie->letters[charToPos(word[i])] = createEmptyNodeTrie();
             }
-            // here the char is a space, so we go to the next char of the word without adding something to the Trie
+            trie = getLetters(trie)[charToPos(word[i])];
         }
+
     }
     setIsWord(trie, true); // mark the end of the word
     incrementNumberBirths(trie); // add a birth to the name of the region
 
     if (getNumberBirths(trie) > getMaxBirths(data)){ // update fertileRegion
+
+        if (getFertileRegion(data) != NULL){
+            free(data->fertileRegion);
+        }
+
         data->fertileRegion = malloc( (n + 1) * sizeof(char));
         if (data->fertileRegion == NULL){
             return;
@@ -104,27 +103,32 @@ void insertWord(struct NodeTrie* trie, char* word, struct dataBase* data){
 
 bool belongs(struct NodeTrie* trie, char* word){
     int n = strlen(word);
-    struct NodeTrie* triePointer = trie;
 
     for (int i = 0; i < n; i++){
 
-        if (word[i] <= 90 && word[i] >= 65){ // when the  char is uppercase
-            if (getLetters(triePointer)[capitalChartoPos(word[i])] == NULL){
+        if (word[i] == POS_SPACE){ // when the char is a space
+            if (getLetters(trie)[LAST_POS_ARR] == NULL){ // the space does not exist
                 return false;
             }
-            triePointer = getLetters(triePointer)[capitalChartoPos(word[i])];
+            trie = getLetters(trie)[LAST_POS_ARR];
         }
-        else {
-            if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
-                if (getLetters(triePointer)[charToPos(word[i])] == NULL) {
-                    return false;
-                }
-                triePointer = getLetters(triePointer)[charToPos(word[i])];
+
+        if (word[i] <= 90 && word[i] >= 65){ // when the  char is uppercase
+            if (getLetters(trie)[capitalChartoPos(word[i])] == NULL){
+                return false;
             }
+            trie = getLetters(trie)[capitalChartoPos(word[i])];
         }
-        // here the char is a space, so we go to the next char of the word without adding something to the Trie
+
+        if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
+            if (getLetters(trie)[charToPos(word[i])] == NULL) {
+                return false;
+            }
+            trie = getLetters(trie)[charToPos(word[i])];
+        }
+
     }
-    if (getIsWord(triePointer)){
+    if (getIsWord(trie)){
         return true;
     }
     return false;
@@ -161,35 +165,71 @@ int findBirthsOfRegion(struct NodeTrie* trie, char* word, bool* valid){
     int n = strlen(word);
 
     for (int i = 0; i < n; i++){
-        printf("%c\n", word[i]);
+
+        if (word[i] == POS_SPACE){ // when the char is a space
+
+            if (getLetters(trie)[LAST_POS_ARR] == NULL){ // the space does not exist
+                *valid = false;
+                return 0;
+            }
+            trie = getLetters(trie)[LAST_POS_ARR];
+        }
 
         if (word[i] <= 90 && word[i] >= 65){ // when the  char is uppercase
-//            printf("%c\n", word[i]);
             if (getLetters(trie)[capitalChartoPos(word[i])] == NULL){
                 *valid = false;
                 return 0;
             }
             trie = getLetters(trie)[capitalChartoPos(word[i])];
         }
-        else {
-            if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
-//                printf("%c\n", word[i]);
+
+        if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
+            if (getLetters(trie)[charToPos(word[i])] == NULL){
                 *valid = false;
                 return 0;
             }
             trie = getLetters(trie)[charToPos(word[i])];
         }
-//        printf("%c\n", word[i]);
 
-        // here the char is a space, so we go to the next char of the word without adding something to the Trie
     }
     if (getIsWord(trie)){
         *valid = true;
+        printf("[INFO] -- Region finded\n");
         return getNumberBirths(trie);
     }
 
     *valid = false;
     return 0;
+}
+
+void displayRegions(struct NodeTrie* trie, int index, char* word){
+
+    if (getIsWord(trie)){
+        word[index] = '\0';
+        printf("%s - ", word);
+    }
+
+    for (int i = 0; i < MAX_LETTERS; i++){
+
+        if (getLetters(trie)[i] != NULL){ // there is a char in this position
+
+            if (word[i] == POS_SPACE){ // when the char is a space
+               word[index] = ' ';
+               displayRegions(getLetters(trie)[i], index + 1, word);
+            }
+
+            if (word[i] <= 90 && word[i] >= 65){ // when the  char is uppercase
+                word[index] = capitalPosToChar(i);
+                displayRegions(getLetters(trie)[i], index + 1, word);
+            }
+
+            if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
+                word[index] = posToChar(i);
+                displayRegions(getLetters(trie)[i], index + 1, word);
+            }
+        }
+    }
+
 }
 
 //** Convertions **

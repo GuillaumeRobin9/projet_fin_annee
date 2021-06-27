@@ -7,7 +7,7 @@
 #include "structDataBase.h"
 
 
-#define MAX_LETTERS 26
+#define MAX_LETTERS 27
 
 struct NodeTrie{
     bool isWord;
@@ -32,7 +32,8 @@ int getNumberBirths(struct NodeTrie* trie);
 void insertWord(struct NodeTrie* trie, char* word, struct dataBase* data);
 bool belongs(struct NodeTrie* trie, char* word);
 int numberOfWords(struct NodeTrie* trie);
-int findBirthsOfRegion(struct NodeTrie* trie, char* word, bool* valid); // a tester
+int findBirthsOfRegion(struct NodeTrie* trie, char* word, bool* valid);
+void displayRegions(struct NodeTrie* trie, int index, char* word);
 
 //** Convertions **
 char capitalPosToChar(int pos);
