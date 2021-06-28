@@ -8,4 +8,4 @@ include_directories(.)
 add_executable(code
         file_reader.c
         main.c
-        test.c structDataBase.c structDataBase.h structPerson.c structPerson.h structNodeTrie.c structNodeTrie.h)
+        test.c htmlPersonPage.c htmlIndexPage.c structDataBase.c structDataBase.h structPerson.c structPerson.h structNodeTrie.c structNodeTrie.h dataBase_reader.c dataBase_reader.h queryResFile.c menu.c menu.h)
