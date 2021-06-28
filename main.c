@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <time.h>
 
 #include "file_reader.h"
 #include "structDataBase.h"
@@ -57,8 +58,8 @@ int main() {
                     printf("[MENU] -- Enter the name of your CSV File : ");
                     fgets(csvName, MAX_LEN, stdin);
                     csvName[strlen(csvName) - 1] = '\0';
-                    printf("[CHOICE] -- Selected file : %s\n", csvName);
-                    data = readFile(csvName);
+                    printf("[CHOICE] -- Selected file : \"%s\"\n", csvName);
+                    data = readFile(csvName); // process recorded
                 }
 
                 while (!exitCondition2){
@@ -80,7 +81,16 @@ int main() {
                     switch (choice2) { // -------------------------=|| CREATION HTML FILES MENU ||=-------------------------
                         case 1:
                             printf("[INFO] -- 1\n");
+                            double time_spent2 = 0.0; // start chrono
+                            clock_t begin2 = clock();
+
                             showGeneralInfoDataBase(data);
+
+                            clock_t end2 = clock(); //  stop chrono
+                            time_spent2 += (double)(end2 - begin2) * 1000.0 / CLOCKS_PER_SEC;
+                            green();
+                            printf("[INFO] -- Execution Time : %f ms\n", time_spent2);
+                            reset();
                             break;
                         case 2:
                             HTMLFamilyTreeOption(data, &exportFamilyCount);
@@ -101,8 +111,18 @@ int main() {
                             printf("[INFO] -- 6 ");
                             printf("[INFO] -- Going back to the principal Menu & deleting the data base...\n");
                             exitCondition2 = true;
+
+                            double time_spent3 = 0.0; // start chrono
+                            clock_t begin3 = clock();
+
                             deleteDataBase(data);
                             data = NULL;
+
+                            clock_t end3 = clock(); //  stop chrono
+                            time_spent3 += (double)(end3 - begin3) * 1000.0 / CLOCKS_PER_SEC;
+                            green();
+                            printf("[INFO] -- data base deleted in %f ms\n", time_spent3);
+                            reset();
                             sleep(3);
                             break;
                         default:
@@ -135,7 +155,7 @@ int main() {
                 printf("[ERROR] -- Selecet a valid choice please!!\n");
                 reset();
                 printf("Returning...\n");
-                sleep(3);
+                sleep(2);
                 system("clear");
                 break;
         // -------------------------=|| END MAIN MENU ||=-------------------------

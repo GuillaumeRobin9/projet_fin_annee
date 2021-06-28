@@ -33,7 +33,9 @@ struct dataBase* readFile(char *nameFile){
 
     }
 
-    clock_t begin = clock(); // starting recording the  time
+        // start chrono
+        double time_spent = 0.0;
+        clock_t begin = clock();
 
     printf("[INFO] -- Reading CSV File..\n");
 
@@ -118,19 +120,6 @@ struct dataBase* readFile(char *nameFile){
         strcpy(region, token);
 
 
-//        value get printed
-//        printf("number person in the file : %d\n\n", numberPerson);
-//        printf("ID : %d\n", ID);
-//        printf("father's ID : %d\n", IDf);
-//        printf("mother's ID : %d\n", IDm);
-//        printf("last name : %s\n", lastName);
-//        printf("first name : %s\n", firstName);
-//        printf("day : %d\n", day);
-//        printf("month : %d\n", month);
-//        printf("year : %d\n", year);
-//        printf("region : %s\n", region);
-
-
         // **create a person and fill it with extracted values**
         struct Person* p = createPerson(ID, IDf, IDm, lastName, firstName, day, month, year, region);
 
@@ -142,18 +131,17 @@ struct dataBase* readFile(char *nameFile){
 
         // **add person to the database & update database infos with person infos**
         insertPerson(p, data);
-        //printPerson(p);
-
-
     }
 
     fclose(file);
 
+//  stop chrono
     clock_t end = clock();
-    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    time_spent += (double)(end - begin) * 1000.0 / CLOCKS_PER_SEC;
+
 
     green();
-    printf("[INFO] -- File \"%s\" Successfully Readed in %fs!\n", nameFile, time_spent);
+    printf("[INFO] -- File \"%s\" Successfully Readed in %f ms !\n", nameFile, time_spent);
     reset();
 
 

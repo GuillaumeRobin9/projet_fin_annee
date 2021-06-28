@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <time.h>
 
 #include "structDataBase.h"
 #include "dataBase_reader.h"
@@ -88,20 +89,43 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
     green();
     printf("[INFO] -- 1 -- Here is the first person born\n\n");
     reset();
+
+    double time_spent = 0.0; // start chrono
+    clock_t begin = clock();
+
     int IDoldest = getOldestID(data);
     printPerson(getPersonArray(data)[IDoldest]);
-    *numberQueries = *numberQueries + 1; //update number queries
     fillHTMLQuery1(IDoldest, data); // adding the query to the HTML
+
+    clock_t end = clock(); //  stop chrono
+    time_spent += (double)(end - begin) * 1000.0 / CLOCKS_PER_SEC;
+
+    green();
+    printf("[INFO] -- Execution Time & writing in the HTML took : %f ms\n", time_spent);
+    reset();
+    *numberQueries = *numberQueries + 1; //update number queries
     printf("--------------------------------------------------\n");
 
 //    ** query 2 **
     green();
-    printf("[INFO] -- 2 -- Here is the last person born\n\n");
+    printf("[INFO] -- 1 -- Here is the first person born\n\n");
     reset();
+
+    double time_spent2 = 0.0; // start chrono
+    clock_t begin2 = clock();
+
     int IDyoungest = getyoungestID(data);
     printPerson(getPersonArray(data)[IDyoungest]);
-    *numberQueries = *numberQueries + 1; //update number queries
     fillHTMLQuery2(IDyoungest, data); // adding the query to the file
+
+    clock_t end2 = clock(); //  stop chrono
+    time_spent2 += (double)(end2 - begin2) * 1000.0 / CLOCKS_PER_SEC;
+
+    green();
+    printf("[INFO] -- Execution Time & writing in the HTML took : %f ms\n", time_spent2);
+    reset();
+
+    *numberQueries = *numberQueries + 1; //update number queries
     printf("--------------------------------------------------\n");
 
 //    ** query 3 **
@@ -109,7 +133,12 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
     fgets(regionName, MAX_LEN, stdin);
     regionName[strlen(regionName) - 1] = '\0';
     bool valid;
+
+    double time_spent3 = 0.0; // start chrono
+    clock_t begin3 = clock();
+
     int numberPeople = findBirthsOfRegion(getTrie(data), regionName, &valid);
+
     if (valid == false) {
         red();
         printf("[ERROR] -- the region entered does not exist\n");
@@ -121,14 +150,32 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
         *numberQueries = *numberQueries + 1; //update number queries
         fillHTMLeQuery3(regionName, numberPeople); // adding the query to the file
     }
+
+    clock_t end3 = clock(); //  stop chrono
+    time_spent3 += (double)(end3 - begin3) * 1000.0 / CLOCKS_PER_SEC;
+
+    green();
+    printf("[INFO] -- Execution Time & writing in the HTML took : %f ms\n", time_spent3);
+    reset();
     printf("--------------------------------------------------\n");
 
 //    ** query 4 **
+    double time_spent4;
+    time_spent4 = 0.0; // start chrono
+    clock_t begin4 = clock();
+
     green();
     printf("[INFO] -- 4 --the region with the highest number of biths is named %s with %d births\n", getFertileRegion(data), getMaxBirths(data));
     reset();
-    *numberQueries = *numberQueries + 1; //update number queries
     fillHTMLQuery4(getFertileRegion(data)); // adding the query to the file
+
+    clock_t end4 = clock(); //  stop chrono
+    time_spent4 += (double)(end4 - begin4) * 1000.0 / CLOCKS_PER_SEC;
+
+    green();
+    printf("[INFO] -- Execution Time & writing in the HTML took : %f ms\n", time_spent4);
+    reset();
+    *numberQueries = *numberQueries + 1; //update number queries
     printf("--------------------------------------------------\n");
 
 //    ** query 5 **
@@ -153,17 +200,31 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
             printf("--------------------------------------------------\n");
         }
         else {
+            double time_spent5;
+            time_spent5 = 0.0; // start chrono
+            clock_t begin5 = clock();
+
             green();
             printf("\n[INFO] -- %d peoples are born on %d/%d\n", data->birthdays[month][day], day, month);
             reset();
-            *numberQueries = *numberQueries + 1; //update number queries
+
             fillHTMLQuery5(day, month, data->birthdays[month][day]); // adding the query to the HTML file
+
+            clock_t end5 = clock(); //  stop chrono
+            time_spent5 += (double)(end5 - begin5) * 1000.0 / CLOCKS_PER_SEC;
+
+            green();
+            printf("[INFO] -- Execution Time : %f ms\n", time_spent5);
+            reset();
+
             printf("--------------------------------------------------\n");
             printf("[INFO] -- Generating a HTML page with the Results of the previous Queries...\n");
             sleep(2);
             green();
-            printf("[INFO] -- Successfully Generated Info Queries HTML Files !\n");
+            printf("[INFO] -- Successfully Generated Info Queries HTML Files in !\n");
+            printf("[INFO] -- Total execution time of all the queries + filling HTML file : %f ms !\n", time_spent + time_spent2 + time_spent3 + time_spent4 + time_spent5);
             reset();
+            *numberQueries = *numberQueries + 1; //update number queries
         }
     }
 }
