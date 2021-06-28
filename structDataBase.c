@@ -107,7 +107,7 @@ int numberBirthDates(struct dataBase* data){
 }
 
 
-void getDateWhithMostBirths(struct dataBase* data, int* day, int* month){
+void getDateWithMostBirths(struct dataBase* data, int* day, int* month){
     int max = 0;
 
     for (int i = 0; i < 12; i++){
@@ -132,7 +132,7 @@ void showGeneralInfoDataBase(struct dataBase* data){
     printf("number person in the tree : %d\n", getNumberPerson(data));
     printf("number of different natal regions : %d\n", numberOfWords(getTrie(data)));
     printf("number of different birthdays dates : %d\n", numberBirthDates(data));
-    getDateWhithMostBirths(data, &day, &month);
+    getDateWithMostBirths(data, &day, &month);
     printf("date with the most of births : %d/%d\n", day, month);
     printf("\n\n");
 }
