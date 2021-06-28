@@ -4,6 +4,9 @@
 
 #include "structDataBase.h"
 #include "dataBase_reader.h"
+#include "menu.h"
+
+#define MAX_LEN 40
 
 void createPersonHTMLFile(struct Person* child, struct Person* father, struct Person* mother, struct Person* PaternalGFather, struct Person* PaternalGMother, struct Person* MaternalGFather, struct Person* MaternalGMother) {
 
@@ -44,8 +47,6 @@ void createHTMLOutput(struct dataBase* data, char *fileName, int numberOfPerson)
     FILE * htmlFILE;
     htmlFILE = fopen(strcat(strcat(directory, "tree"), ".html"), "w"); // "w" defines "writing mode"
 
-    int day;
-    int month;
 
     // ** HTML FILE BUILD **
     fprintf(htmlFILE, "<html lang=\"en\">\n");
@@ -53,17 +54,105 @@ void createHTMLOutput(struct dataBase* data, char *fileName, int numberOfPerson)
     fprintf(htmlFILE, "<title>PROJECT GROUPE 3</title>\n</head>\n<body>\n");
     fprintf(htmlFILE, "    <h2>Welcome to this genealogic tree retriever ! </h2>\n");
     fprintf(htmlFILE,"<ul>\n");
-    fprintf(htmlFILE, "    <span id=\"startText\">Enter a Name to Start :</span> \n    <input id=\"personName\" type=\"text\" placeholder=\"Dupont...\"><button type=\"button\" id=\"searchBtn\">Search</button>\n    <br><br>\n");
+    fprintf(htmlFILE, "    <span id=\"startText\">Enter a Name to Start :</span> \n    <input id=\"personName\" type=\"text\" placeholder=\"Dupont...\"><button type=\"button\" id=\"searchBtn\" onclick=\"foundPerson()\">Search</button>\n    <br><br>\n");
     fprintf(htmlFILE, "    <li><div>Statistics about your CSV File :</div></li>\n");
     fprintf(htmlFILE, "    <li><div id=\"csvName\">File Name : %s</div></li>\n", fileName);
-    fprintf(htmlFILE, "    <li><div>Number of Person : %d </div></li>\n",numberOfPerson);
+    fprintf(htmlFILE, "    <li><div id=\"totalPerson\">Number of Person : %d </div></li>\n",numberOfPerson);
     fprintf(htmlFILE, "    <li><div>The most fertile region : %s </div></li>\n", getFertileRegion(data));
     fprintf(htmlFILE, "    <li><div>number of different natal regions : %d</div></li>\n", numberOfWords(getTrie(data)));
     fprintf(htmlFILE,"    <li><div>number of different birthdays dates : %d</div></li>\n", numberBirthDates(data));
-    getDateWhithMostBirths(data, &day, &month);
-    fprintf(htmlFILE,"    <li><div>Date with the most birth : %d/%d</div></li>\n", day, month);
+    //fprintf(htmlFILE,getDateWhithMostBirths(data, &day, &month));
     fprintf(htmlFILE,"</ul>\n");
-    fprintf(htmlFILE, "    <div class=\"bg\"></div>\n    <div class=\"bg bg2\"></div>\n    <div class=\"bg bg3\"></div>\n</body>\n</html>");
+    fprintf(htmlFILE, "    <div class=\"bg\"></div>\n    <div class=\"bg bg2\"></div>\n    <div class=\"bg bg3\"></div>\n    <script src=\"../resources/treeScript.js\"></script>\n</body>\n</html>");
     fclose(htmlFILE);
 }
+
+// ** Query **
+void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
+
+    createQueryResHTML(); // creation of the HTML
+
+    char regionName[MAX_LEN]; // values initialisation
+    int month;
+    int day;
+
+//    ** query 1 **
+    green();
+    printf("[INFO] -- 1 -- Here is the first person born\n\n");
+    reset();
+    int IDoldest = getOldestID(data);
+    printPerson(getPersonArray(data)[IDoldest]);
+    fillHTMLQuery1(IDoldest, data); // adding the query to the HTML
+    printf("--------------------------------------------------\n");
+
+//    ** query 2 **
+    green();
+    printf("[INFO] -- 2 -- Here is the last person born\n\n");
+    reset();
+    int IDyoungest = getyoungestID(data);
+    printPerson(getPersonArray(data)[IDyoungest]);
+    fillHTMLQuery2(IDyoungest, data); // adding the query to the file
+    printf("--------------------------------------------------\n");
+
+//    ** query 3 **
+    printf("[CHOICE] -- 3 -- Please enter the region name : \n");
+    fgets(regionName, MAX_LEN, stdin);
+    regionName[strlen(regionName) - 1] = '\0';
+    bool valid;
+    int numberPeople = findBirthsOfRegion(getTrie(data), regionName, &valid);
+    if (valid == false) {
+        red();
+        printf("[ERROR] -- the region entered does not exist\n");
+        reset();
+    } else {
+        green();
+        printf("[INFO] --  %d persons are born in the region named %s\n", numberPeople,regionName);
+        reset();
+        fillHTMLeQuery3(regionName, numberPeople); // adding the query to the file
+    }
+    printf("--------------------------------------------------\n");
+
+//    ** query 4 **
+    green();
+    printf("[INFO] -- 4 --the region with the highest number of biths is named %s with %d births\n", getFertileRegion(data), getMaxBirths(data));
+    reset();
+    fillHTMLQuery4(getFertileRegion(data)); // adding the query to the file
+    printf("--------------------------------------------------\n");
+
+//    ** query 5 **
+    printf("[INFO] -- 5 \n");
+    printf("[CHOICE] -- Please enter the day : ");
+    scanf("%d", &day);
+    fgetc(stdin);
+    if (day <= 0 || day >= 32) {
+        red();
+        printf("\n[ERROR] -- invalid day\n");
+        reset();
+        printf("--------------------------------------------------\n");
+    }
+    else {
+        printf("[CHOICE] -- Please enter the month : ");
+        scanf("%d", &month);
+        fgetc(stdin);
+        if (month <= 0 || month >= 13) {
+            red();
+            printf("\n[ERROR] -- invalid month\n");
+            reset();
+            printf("--------------------------------------------------\n");
+        }
+        else {
+            green();
+            printf("\n[INFO] -- %d peoples are born on %d/%d\n", data->birthdays[month][day], day, month);
+            reset();
+            fillHTMLQuery5(day, month, data->birthdays[month][day]); // adding the query to the HTML file
+            printf("--------------------------------------------------\n");
+            printf("[INFO] -- Generating a HTML page with the Results of the previous Queries...\n");
+            sleep(2);
+            green();
+            printf("[INFO] -- Successfully Generated Info Queries HTML Files !\n");
+            reset();
+        }
+    }
+}
+
 
