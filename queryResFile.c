@@ -7,73 +7,73 @@
 
 #include "dataBase_reader.h"
 #include "structDataBase.h"
+#include "menu.h"
 
-void createQueryResFile(){ // creation of the  file
-    FILE * queryFILE;
-    queryFILE = fopen("queryResults.txt", "w");
-
-    fclose(queryFILE);
+void createQueryResHTML() { // creation of the  file
+    FILE *queryHtml;
+    queryHtml = fopen("export/query.html", "w"); // creationg the HTML queryRes file
+    fprintf(queryHtml, "<html lang=\"en\">\n");
+    fprintf(queryHtml,"<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"../resources/styleQueryPage.css\">\n");
+    fprintf(queryHtml, "<title>PROJECT GROUPE 3</title>\n</head>\n<body>\n");
+    fprintf(queryHtml, "    <h2>Welcome to the Query Result Page ! </h2>\n");
+    fclose(queryHtml); // closing file
 }
 
-void fillFileQuery1(int ID, struct dataBase* data){
+void fillHTMLQuery1(int ID, struct dataBase* data){
     // ** OPENING  FILE **
-    FILE * queryFILE;
-    queryFILE = fopen("queryResults.txt", "a");
+    FILE * queryHtml;
+    queryHtml = fopen("export/query.html", "a");
 
     // **  FILE BUILD **
-                             //n°query(getFirstBornInTheTree):firstname:lastname:day:month:year:region
-    fprintf(queryFILE, "1:%s:%s:%d:%d:%d:%s", getFirstName(getPersonArray(data)[ID]), getLastName(getPersonArray(data)[ID]), getDay(getPersonArray(data)[ID]), getMonth(getPersonArray(data)[ID]), getYear(getPersonArray(data)[ID]), getRegion(getPersonArray(data)[ID]));
-    fclose(queryFILE);
+    fprintf(queryHtml,"<div class=\"titleInfo\">Here is the first person born :</div>  <div class=\"info\">First Name : %s, Last Name : %s, Birthday : %d/%d/%d, Natal Region : %s</div>\n", getFirstName(getPersonArray(data)[ID]), getLastName(getPersonArray(data)[ID]), getDay(getPersonArray(data)[ID]), getMonth(getPersonArray(data)[ID]), getYear(getPersonArray(data)[ID]), getRegion(getPersonArray(data)[ID]));
+    fclose(queryHtml);
 }
 
 
-void fillFileQuery2(int ID, struct dataBase* data){
+void fillHTMLQuery2(int ID, struct dataBase* data){
     // ** OPENING  FILE **
-    FILE * queryFILE;
-    queryFILE = fopen("queryResults.txt", "a");
+    FILE * queryHtml;
+    queryHtml = fopen("export/query.html", "a");
 
     // **  FILE BUILD **
-                                //n°query(getLastBornInTheTree):firstname:lastname:day:month:year:region
-    fprintf(queryFILE, "2:%s:%s:%d:%d:%d:%s", getFirstName(getPersonArray(data)[ID]), getLastName(getPersonArray(data)[ID]), getDay(getPersonArray(data)[ID]), getMonth(getPersonArray(data)[ID]), getYear(getPersonArray(data)[ID]), getRegion(getPersonArray(data)[ID]));
-    fclose(queryFILE);
+    fprintf(queryHtml,"<div class=\"titleInfo\">Here is the last person born :</div>  <div class=\"info\">First Name : %s, Last Name : %s, Birthday : %d/%d/%d, Natal Region : %s</div>\n", getFirstName(getPersonArray(data)[ID]), getLastName(getPersonArray(data)[ID]), getDay(getPersonArray(data)[ID]), getMonth(getPersonArray(data)[ID]), getYear(getPersonArray(data)[ID]), getRegion(getPersonArray(data)[ID]));
+    fclose(queryHtml);
 }
 
 
-void fillFileQuery3(char* regionName, int numberPersonBorn){
+void fillHTMLeQuery3(char* regionName, int numberPersonBorn){
     // ** OPENING  FILE **
-    FILE * queryFILE;
-    queryFILE = fopen("queryResults.txt", "a");
+    FILE * queryHtml;
+    queryHtml = fopen("export/query.html", "a");
 
     // **  FILE BUILD **
-                      //n°query(NumberPersonBornInARegion):nameRegion:numberBorn
-    fprintf(queryFILE, "3:%s:%d", regionName, numberPersonBorn);
-    fclose(queryFILE);
-
+    fprintf(queryHtml,"<div class=\"titleInfo\">Result Number people born in the Region %s :</div>  <div class=\"info\">%d</div>\n", regionName, numberPersonBorn);
+    fclose(queryHtml);
 }
 
 
-void fillFileQuery4(char* regionName){
+void fillHTMLQuery4(char* regionName){
     // ** OPENING  FILE **
-    FILE * queryFILE;
-    queryFILE = fopen("queryResults.txt", "a");
+    FILE * queryHtml;
+    queryHtml = fopen("export/query.html", "a");
 
     // **  FILE BUILD **
-                    //n°query(regionWithHighestNumberBirths):nameRegion
-    fprintf(queryFILE, "4:%s", regionName);
-    fclose(queryFILE);
+    fprintf(queryHtml,"<div class=\"titleInfo\">The Region with highest number of births is  :</div>  <div class=\"info\">%s</div>\n", regionName);
+    fclose(queryHtml);
 }
 
 
-void fillFileQuery5(int day, int month, int numberPerson){
+void fillHTMLQuery5(int day, int month, int numberPerson){
     // ** OPENING  FILE **
-    FILE * queryFILE;
-    queryFILE = fopen("queryResults.txt", "a");
+    FILE * queryHtml;
+    queryHtml = fopen("export/query.html", "a");
 
     // **  FILE BUILD **
-                    //n°query(numberPeopleBornInDayMonthGiven):day:month:numberBorn
-    fprintf(queryFILE, "5:%d:%d:%d", day, month, numberPerson);
-    fclose(queryFILE);
+    fprintf(queryHtml,"<div class=\"titleInfo\">Result of the number of people born on %d/%d :</div>  <div class=\"info\">%d</div>\n", day, month, numberPerson);
+    fclose(queryHtml);
 }
+
+
 
 
 
