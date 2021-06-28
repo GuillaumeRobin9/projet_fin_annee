@@ -6,7 +6,9 @@ function unknownPerson(){
     const links = document.querySelectorAll("a");
 
     for (let index = 0; index < personID.length; index++) {
-        if (personID[index].innerHTML === "Name : -") {
+        console.log("ENTERED HERE");
+        console.log();
+        if (personID[index].children[0].innerHTML === "-") {
             personID[index].innerHTML = "Unknown Identity :("
             personLastName[index].innerHTML = "Unknown Last Name :("
             birth[index].innerHTML = "Unknown Birth Date :("
@@ -42,7 +44,6 @@ function getRegionInformations(region, location, latitude, longitude){
 
 function parseData(data, location, latitude, longitude){
     //** Updating Values */
-    console.log(data["cod"]);
     if (data["cod"] === "404") {
         console.log("ENTERED HERE");
         location.innerHTML = `Not Found..`;
@@ -60,10 +61,8 @@ function clicked(id){
 
     //** Parsing Bubble Inputs */
     let fatherInfos = document.getElementById(id);
-    console.log(fatherInfos);
     let infobulle = fatherInfos.getElementsByClassName("infobulle");
     const region = fatherInfos.getElementsByClassName("region")[0].innerHTML
-    console.log();
     const location = infobulle[0].children[0];
     const latitude = infobulle[0].children[1];
     const longitude = infobulle[0].children[2];

@@ -44,6 +44,8 @@ void createHTMLOutput(struct dataBase* data, char *fileName, int numberOfPerson)
     FILE * htmlFILE;
     htmlFILE = fopen(strcat(strcat(directory, "tree"), ".html"), "w"); // "w" defines "writing mode"
 
+    int day;
+    int month;
 
     // ** HTML FILE BUILD **
     fprintf(htmlFILE, "<html lang=\"en\">\n");
@@ -58,7 +60,8 @@ void createHTMLOutput(struct dataBase* data, char *fileName, int numberOfPerson)
     fprintf(htmlFILE, "    <li><div>The most fertile region : %s </div></li>\n", getFertileRegion(data));
     fprintf(htmlFILE, "    <li><div>number of different natal regions : %d</div></li>\n", numberOfWords(getTrie(data)));
     fprintf(htmlFILE,"    <li><div>number of different birthdays dates : %d</div></li>\n", numberBirthDates(data));
-    //fprintf(htmlFILE,getDateWhithMostBirths(data, &day, &month));
+    getDateWhithMostBirths(data, &day, &month);
+    fprintf(htmlFILE,"    <li><div>Date with the most birth : %d/%d</div></li>\n", day, month);
     fprintf(htmlFILE,"</ul>\n");
     fprintf(htmlFILE, "    <div class=\"bg\"></div>\n    <div class=\"bg bg2\"></div>\n    <div class=\"bg bg3\"></div>\n</body>\n</html>");
     fclose(htmlFILE);
