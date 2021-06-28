@@ -47,6 +47,8 @@ void createHTMLOutput(struct dataBase* data, char *fileName, int numberOfPerson)
     FILE * htmlFILE;
     htmlFILE = fopen(strcat(strcat(directory, "tree"), ".html"), "w"); // "w" defines "writing mode"
 
+    int day;
+    int month;
 
     // ** HTML FILE BUILD **
     fprintf(htmlFILE, "<html lang=\"en\">\n");
@@ -61,7 +63,8 @@ void createHTMLOutput(struct dataBase* data, char *fileName, int numberOfPerson)
     fprintf(htmlFILE, "    <li><div>The most fertile region : %s </div></li>\n", getFertileRegion(data));
     fprintf(htmlFILE, "    <li><div>number of different natal regions : %d</div></li>\n", numberOfWords(getTrie(data)));
     fprintf(htmlFILE,"    <li><div>number of different birthdays dates : %d</div></li>\n", numberBirthDates(data));
-    //fprintf(htmlFILE,getDateWhithMostBirths(data, &day, &month));
+    getDateWithMostBirths(data, &day, &month);
+    fprintf(htmlFILE,"    <li><div>date with the most of births : %d/%d</div></li>\n", day, month);
     fprintf(htmlFILE,"</ul>\n");
     fprintf(htmlFILE, "    <div class=\"bg\"></div>\n    <div class=\"bg bg2\"></div>\n    <div class=\"bg bg3\"></div>\n    <script src=\"../resources/treeScript.js\"></script>\n</body>\n</html>");
     fclose(htmlFILE);
@@ -82,6 +85,7 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
     reset();
     int IDoldest = getOldestID(data);
     printPerson(getPersonArray(data)[IDoldest]);
+    *numberQueries = *numberQueries + 1; //update number queries
     fillHTMLQuery1(IDoldest, data); // adding the query to the HTML
     printf("--------------------------------------------------\n");
 
@@ -91,6 +95,7 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
     reset();
     int IDyoungest = getyoungestID(data);
     printPerson(getPersonArray(data)[IDyoungest]);
+    *numberQueries = *numberQueries + 1; //update number queries
     fillHTMLQuery2(IDyoungest, data); // adding the query to the file
     printf("--------------------------------------------------\n");
 
@@ -108,6 +113,7 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
         green();
         printf("[INFO] --  %d persons are born in the region named %s\n", numberPeople,regionName);
         reset();
+        *numberQueries = *numberQueries + 1; //update number queries
         fillHTMLeQuery3(regionName, numberPeople); // adding the query to the file
     }
     printf("--------------------------------------------------\n");
@@ -116,6 +122,7 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
     green();
     printf("[INFO] -- 4 --the region with the highest number of biths is named %s with %d births\n", getFertileRegion(data), getMaxBirths(data));
     reset();
+    *numberQueries = *numberQueries + 1; //update number queries
     fillHTMLQuery4(getFertileRegion(data)); // adding the query to the file
     printf("--------------------------------------------------\n");
 
@@ -144,6 +151,7 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
             green();
             printf("\n[INFO] -- %d peoples are born on %d/%d\n", data->birthdays[month][day], day, month);
             reset();
+            *numberQueries = *numberQueries + 1; //update number queries
             fillHTMLQuery5(day, month, data->birthdays[month][day]); // adding the query to the HTML file
             printf("--------------------------------------------------\n");
             printf("[INFO] -- Generating a HTML page with the Results of the previous Queries...\n");
