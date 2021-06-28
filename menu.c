@@ -32,8 +32,11 @@ void queryMenu(struct dataBase* data){
     int month;
     int day;
 
+    int numberQueries = 0;
+
     while (!exitConditionQuery) {
-        
+
+
         printf("[INFO] -- 5 ");
         printf("\n\nQuery the family tree!\n\n");
         printf("What do you want to do?\n");
@@ -60,7 +63,7 @@ void queryMenu(struct dataBase* data){
                 reset();
                 int IDoldest = getOldestID(data);
                 printPerson(getPersonArray(data)[IDoldest]);
-                fillFileQuery1(IDoldest, data); // adding the query to the file
+                numberQueries++; //update number queries
                 printf("--------------------------------------------------\n");
                 break;
             case 2:
@@ -69,14 +72,13 @@ void queryMenu(struct dataBase* data){
                 reset();
                 int IDyoungest = getyoungestID(data);
                 printPerson(getPersonArray(data)[IDyoungest]);
-                fillFileQuery2(IDyoungest, data); // adding the query to the file
+                numberQueries++; //update number queries
                 printf("--------------------------------------------------\n");
                 break;
             case 3:
                 printf("[CHOICE] -- 3 -- Please enter the region name : \n");
                 fgets(regionName, MAX_LEN, stdin);
                 regionName[strlen(regionName) - 1] = '\0';
-
                 bool valid;
                 int numberPeople = findBirthsOfRegion(getTrie(data), regionName, &valid);
                 if (valid == false) {
@@ -89,15 +91,15 @@ void queryMenu(struct dataBase* data){
                     green();
                     printf("[INFO] --  %d persons are born in the region named %s\n", numberPeople,regionName);
                     reset();
-                    fillFileQuery3(regionName, numberPeople); // adding the query to the file
+                    numberQueries++; //update number queries
                 }
                 printf("--------------------------------------------------\n");
                 break;
             case 4:
                 green();
-                printf("[INFO] -- 4 --the region with the highest numner of biths is named %s with %d births\n", getFertileRegion(data), getMaxBirths(data));
+                printf("[INFO] -- 4 --the region with the highest number of biths is named %s with %d births\n", getFertileRegion(data), getMaxBirths(data));
                 reset();
-                fillFileQuery4(getFertileRegion(data)); // adding the query to the file
+                numberQueries++; //update number queries
                 printf("--------------------------------------------------\n");
                 break;
             case 5:
@@ -125,7 +127,7 @@ void queryMenu(struct dataBase* data){
                 green();
                 printf("\n[INFO] -- %d peoples are born on %d/%d\n", data->birthdays[month][day], day, month);
                 reset();
-                fillFileQuery5(day, month, data->birthdays[month][day]); // adding the query to the HTML file
+                numberQueries++; //update number queries
                 printf("--------------------------------------------------\n");
                 break;
             case 6:
@@ -133,7 +135,8 @@ void queryMenu(struct dataBase* data){
                 printf("--------------------------------------------------\n");
                 break;
             case 7: // EXPORT QUERY RESULTS IN TO A HTML FILE
-                printf("[MENU] -- 7 -- exporting query results to HTML file ");
+                printf("[MENU] -- 7 -- Execution of all the Queries");
+                createFillQueryHTMLFile(data, &numberQueries);
                 printf("--------------------------------------------------\n");
                 break;
             case 8:

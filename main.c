@@ -94,11 +94,9 @@ int main() {
                             break;
                         case 5:
                             // -------------------------=|| QUERY MENU ||=-------------------------
-                            createQueryResFile(); // creation of the  result file query
                             queryMenu(data);
                             break;
                             // -------------------------=|| END QUERY MENU ||=-------------------------
-
                         case 6:
                             printf("[INFO] -- 6 ");
                             printf("[INFO] -- Going back to the principal Menu & deleting the data base...\n");
