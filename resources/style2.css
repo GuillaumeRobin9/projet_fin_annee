@@ -225,15 +225,12 @@ body{
     background-position: center;
     font-family: "Arima Madurai", cursive;
     font-weight: bold;
+    margin: 0;
 }
 
 
 html {
     height:100%;
-  }
-
-  body {
-    margin:0;
   }
 
   .bg {

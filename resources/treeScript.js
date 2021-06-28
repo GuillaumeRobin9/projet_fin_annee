@@ -5,8 +5,7 @@ function retrieveAllPerson(){
     for (let index = 1; index < totalPerson; index++) {
         //** Request to get All Names accross all generated files  */
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", `application://xhtml+xml/file/C:/Users/Soydemir/Documents/Algorithmique/Github/export/${index.toString()}.html`)
-        //xhr.open("GET", `${index.toString()}.html`);
+        xhr.open("GET", `${index.toString()}.html`);
         xhr.onload = function () {
             switch (xhr.status){
             case 200:
@@ -28,26 +27,26 @@ function retrieveAllPerson(){
     }
 }
 
+//** Function who place all names with index into a list */
 function retrievePersonFromFile(data, index){
-    const nameTable = data.querySelector("a");
+    const nameTable = data.querySelectorAll("a")[3];
     //** Pushing each name into an array */
     allNames[index] = nameTable.innerHTML;
-    console.log(allNames);
 }
 
 
+//** Function to found a specific person in the Tree */
 function foundPerson(){
     //** Button Search  */
-    btn = document.getElementById("searchBtn");
+    let btn = document.getElementById("searchBtn");
 
     //** Total Number of Person in the Database and convert to Int */
-    totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(19,));
+    let totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(19,));
 
     //** Value of the Input that contains First Name */
-    personToSearch = document.querySelector("input").value;
+    let personToSearch = document.querySelector("input").value;
     
     for (let index = 1; index < totalPerson; index++) {
-        console.log(allNames[index]);
         if (allNames[index] === personToSearch) {
             window.open(`${index.toString()}.html`, "_blank");
             btn.style.background = "rgba(0, 230, 64, 1)";
@@ -56,6 +55,16 @@ function foundPerson(){
             btn.style.background = "red";
         }
     }
+}
+
+//** Function to return a random person from all files */
+function randomPerson(){
+    //** Total Number of Person in the Database and convert to Int */
+    let totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(19,));
+
+    //** Using Math() to get a random int  */
+    const random = Math.floor(Math.random() * (totalPerson - 1) + 1);
+    window.open(`${random}.html`, "_blank");
 }
 
 retrieveAllPerson()

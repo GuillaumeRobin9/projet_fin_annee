@@ -27,8 +27,26 @@ h2 {
     font-weight: bold;
     text-decoration: none;
 }
+
+#randomBtn{
+  border-radius: 100px;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: all .4s;
+  background-color: #fff;
+  color: #777;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
 #searchBtn:hover{
     transform: rotate(-3deg) scale(1.5, 1.5);
+}
+
+#randomBtn:hover{
+  transform: rotate(360deg) scale(1.3, 1.3);
+  transition-duration: 0.7s;
 }
 
 body{
@@ -37,6 +55,7 @@ body{
     background-position: center;
     font-family: "Arima Madurai", cursive;
     font-weight: bold;
+    margin: 0;
 }
 
 #personName{
@@ -48,10 +67,6 @@ body{
 
 html {
     height:100%;
-  }
-
-  body {
-    margin:0;
   }
 
   .bg {

@@ -28,9 +28,9 @@ void createPersonHTMLFile(struct Person* child, struct Person* father, struct Pe
     fprintf(htmlFILE, "<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"../resources/style2.css\">\n");
     fprintf(htmlFILE, "<title>PROJECT GROUPE 3</title>\n</head>\n<body>\n");
     fprintf(htmlFILE,"    <div class=\"topnav\" id=\"myTopnav\">\n");
-    fprintf(htmlFILE,"        <a href=\"#Index\"class=\"active\">Index</a>\n");
-    fprintf(htmlFILE,"        <a href=\"#query\">Query</a>\n");
-    fprintf(htmlFILE,"        <a href=\"#about\">About</a>\n");
+    fprintf(htmlFILE,"        <a href=\"tree.html\"class=\"active\">Index</a>\n");
+    fprintf(htmlFILE,"        <a href=\"query.html\">Query</a>\n");
+    fprintf(htmlFILE,"        <a href=\"about.html\">About</a>\n");
     fprintf(htmlFILE,"    </div>\n");
     /*fprintf(htmlFILE, "    <h2>Welcome to this genealogic tree retriever ! </h2>\n");*/
     fprintf(htmlFILE, "    <div id=\"personBubble\" onmouseover=\"clicked('personBubble')\">\n            <div class=\"name\">Name : <a href=\"%d.html\">%s</a></div>\n            <div class=\"lastName\">Last Name : %s</div>\n            <div class=\"birthDay\">Birthday : %d/%d/%d</div>\n            <div class=\"region\">Region : %s</div>\n            <div class=\"infobulle\">\n                <div id=\"displayLocation\"></div>\n                <div id=\"latitude\"></div>\n                <div id=\"longitude\"></div>\n           </div>\n    </div>\n",getID(child), getFirstName(child), getLastName(child), getDay(child), getMonth(child), getYear(child), getRegion(child));
@@ -61,17 +61,18 @@ void createHTMLOutput(struct dataBase* data, char *fileName, int numberOfPerson)
     fprintf(htmlFILE, "<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"../resources/style.css\">\n");
     fprintf(htmlFILE, "<title>PROJECT GROUPE 3</title>\n</head>\n<body>\n");
     fprintf(htmlFILE, "    <h2>Welcome to this genealogic tree retriever ! </h2>\n");
-    fprintf(htmlFILE,"<ul>\n");
-    fprintf(htmlFILE, "    <span id=\"startText\">Enter a Name to Start :</span> \n    <input id=\"personName\" type=\"text\" placeholder=\"Dupont...\"><button type=\"button\" id=\"searchBtn\" onclick=\"foundPerson()\">Search</button>\n    <br><br>\n");
-    fprintf(htmlFILE, "    <li><div>Statistics about your CSV File :</div></li>\n");
-    fprintf(htmlFILE, "    <li><div id=\"csvName\">File Name : %s</div></li>\n", fileName);
-    fprintf(htmlFILE, "    <li><div id=\"totalPerson\">Number of Person : %d </div></li>\n",numberOfPerson);
-    fprintf(htmlFILE, "    <li><div>The most fertile region : %s </div></li>\n", getFertileRegion(data));
-    fprintf(htmlFILE, "    <li><div>number of different natal regions : %d</div></li>\n", numberOfWords(getTrie(data)));
-    fprintf(htmlFILE,"    <li><div>number of different birthdays dates : %d</div></li>\n", numberBirthDates(data));
+    fprintf(htmlFILE,"    <ul>\n");
+    fprintf(htmlFILE, "        <span id=\"startText\">Enter a Name to Start :</span> \n    <input id=\"personName\" type=\"text\" placeholder=\"Dupont...\"><button type=\"button\" id=\"searchBtn\" onclick=\"foundPerson()\">Search</button>\n    <br><br>\n");
+    fprintf(htmlFILE, "        <li><div>Statistics about your CSV File :</div></li>\n");
+    fprintf(htmlFILE, "        <li><div id=\"csvName\">File Name : %s</div></li>\n", fileName);
+    fprintf(htmlFILE, "        <li><div id=\"totalPerson\">Number of Person : %d </div></li>\n",numberOfPerson);
+    fprintf(htmlFILE, "        <li><div>The most fertile region : %s </div></li>\n", getFertileRegion(data));
+    fprintf(htmlFILE, "        <li><div>number of different natal regions : %d</div></li>\n", numberOfWords(getTrie(data)));
+    fprintf(htmlFILE,"        <li><div>number of different birthdays dates : %d</div></li>\n", numberBirthDates(data));
     getDateWithMostBirths(data, &day, &month);
-    fprintf(htmlFILE,"    <li><div>date with the most of births : %d/%d</div></li>\n", day, month);
-    fprintf(htmlFILE,"</ul>\n");
+    fprintf(htmlFILE,"        <li><div>date with the most of births : %d/%d</div></li>\n", day, month);
+    fprintf(htmlFILE,"        <li><div><button id=\"randomBtn\" onclick=\"randomPerson()\">Redirect to a random Person</button></div></li>\n");
+    fprintf(htmlFILE,"    </ul>\n");
     fprintf(htmlFILE, "    <div class=\"bg\"></div>\n    <div class=\"bg bg2\"></div>\n    <div class=\"bg bg3\"></div>\n    <script src=\"../resources/treeScript.js\"></script>\n</body>\n</html>");
     fclose(htmlFILE);
 }
