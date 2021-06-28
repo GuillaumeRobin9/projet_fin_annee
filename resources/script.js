@@ -6,8 +6,6 @@ function unknownPerson(){
     const links = document.querySelectorAll("a");
 
     for (let index = 0; index < personID.length; index++) {
-        console.log("ENTERED HERE");
-        console.log();
         if (personID[index].children[0].innerHTML === "-") {
             personID[index].innerHTML = "Unknown Identity :("
             personLastName[index].innerHTML = "Unknown Last Name :("
