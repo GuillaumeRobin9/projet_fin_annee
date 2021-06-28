@@ -10,9 +10,12 @@
 #include "menu.h"
 
 #define MAX_CHAR 1000
+#define BILLION  1000000000.0
+
 
 
 struct dataBase* readFile(char *nameFile){
+    struct timespec start, end; // clock
 
 
     char row[MAX_CHAR];
@@ -34,8 +37,8 @@ struct dataBase* readFile(char *nameFile){
     }
 
         // start chrono
-        double time_spent = 0.0;
-        clock_t begin = clock();
+    clock_gettime(CLOCK_REALTIME, &start);
+
 
     printf("[INFO] -- Reading CSV File..\n");
 
@@ -136,12 +139,11 @@ struct dataBase* readFile(char *nameFile){
     fclose(file);
 
 //  stop chrono
-    clock_t end = clock();
-    time_spent += (double)(end - begin) * 1000.0 / CLOCKS_PER_SEC;
-
+    clock_gettime(CLOCK_REALTIME, &end);
+    double time_spent = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;
 
     green();
-    printf("[INFO] -- File \"%s\" Successfully Readed in %f ms !\n", nameFile, time_spent);
+    printf("[INFO] -- File \"%s\" Successfully Readed in %f s !\n", nameFile, time_spent);
     reset();
 
 

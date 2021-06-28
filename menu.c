@@ -12,6 +12,7 @@
 #include "menu.h"
 
 #define MAX_LEN 40
+#define BILLION  1000000000.0
 
 void red () {
     printf("\033[1;31m");
@@ -26,6 +27,7 @@ void reset () {
 }
 
 void queryMenu(struct dataBase* data){
+    struct timespec start, end; // clock
 
     int queryChoice;
     bool exitConditionQuery = false;
@@ -65,17 +67,16 @@ void queryMenu(struct dataBase* data){
                 printf("[INFO] -- 1 -- Here is the first person born\n\n");
                 reset();
 
-                double time_spent = 0.0; // start chrono
-                clock_t begin = clock();
+                clock_gettime(CLOCK_REALTIME, &start);  // -- START chrono --
 
                 int IDoldest = getOldestID(data);
                 printPerson(getPersonArray(data)[IDoldest]);
 
-                clock_t end = clock(); //  stop chrono
-                time_spent += (double)(end - begin) * 1000.0 / CLOCKS_PER_SEC;
+                clock_gettime(CLOCK_REALTIME, &end); //  --- STOP chrono --
+                double time_spent = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;
 
                 green();
-                printf("[INFO] -- Execution Time : %f ms\n", time_spent);
+                printf("[INFO] -- Execution Time : %f s\n", time_spent);
                 reset();
 
                 numberQueries++; //update number queries
@@ -86,17 +87,16 @@ void queryMenu(struct dataBase* data){
                 printf("[INFO] -- 2 -- Here is the last person born\n\n");
                 reset();
 
-                double time_spent2 = 0.0; // start chrono
-                clock_t begin2 = clock();
+                clock_gettime(CLOCK_REALTIME, &start);  // -- START chrono --
 
                 int IDyoungest = getyoungestID(data);
                 printPerson(getPersonArray(data)[IDyoungest]);
 
-                clock_t end2 = clock(); //  stop chrono
-                time_spent2 += (double)(end2 - begin2) * 1000.0 / CLOCKS_PER_SEC;
+                clock_gettime(CLOCK_REALTIME, &end); //  --- STOP chrono --
+                double time_spent2 = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;
 
                 green();
-                printf("[INFO] -- Execution Time : %f ms\n", time_spent2);
+                printf("[INFO] -- Execution Time : %f s\n", time_spent2);
                 reset();
 
                 numberQueries++; //update number queries
@@ -108,13 +108,12 @@ void queryMenu(struct dataBase* data){
                 regionName[strlen(regionName) - 1] = '\0';
                 bool valid;
 
-                double time_spent3 = 0.0; // start chrono
-                clock_t begin3 = clock();
+                clock_gettime(CLOCK_REALTIME, &start);  // -- START chrono --
 
                 int numberPeople = findBirthsOfRegion(getTrie(data), regionName, &valid);
 
-                clock_t end3 = clock(); //  stop chrono
-                time_spent3 += (double)(end3 - begin3) * 1000.0 / CLOCKS_PER_SEC;
+                clock_gettime(CLOCK_REALTIME, &end); //  --- STOP chrono --
+                double time_spent3 = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;
 
                 if (valid == false) {
                     red();
@@ -128,22 +127,20 @@ void queryMenu(struct dataBase* data){
                     numberQueries++; //update number queries
                 }
                 green();
-                printf("[INFO] -- Execution Time : %f ms\n", time_spent3);
+                printf("[INFO] -- Execution Time : %f s\n", time_spent3);
                 reset();
                 printf("--------------------------------------------------\n");
                 break;
             case 4:
                 printf("[INFO] -- 4\n");
-                double time_spent4;
-                time_spent4 = 0.0; // start chrono
-                clock_t begin4 = clock();
+                clock_gettime(CLOCK_REALTIME, &start);  // -- START chrono --
 
                 green();
                 printf("[INFO] the region with the highest number of biths is named %s with %d births\n", getFertileRegion(data), getMaxBirths(data));
 
-                clock_t end4 = clock(); //  stop chrono
-                time_spent4 += (double)(end4 - begin4) * 1000.0 / CLOCKS_PER_SEC;
-                printf("[INFO] -- Execution Time : %f ms\n", time_spent4);
+                clock_gettime(CLOCK_REALTIME, &end); //  --- STOP chrono --
+                double time_spent4 = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;
+                printf("[INFO] -- Execution Time : %f s\n", time_spent4);
                 reset();
                 numberQueries++; //update number queries
                 printf("--------------------------------------------------\n");
@@ -170,19 +167,17 @@ void queryMenu(struct dataBase* data){
                     printf("--------------------------------------------------\n");
                     break;
                 }
-                double time_spent5;
-                time_spent5 = 0.0; // start chrono
-                clock_t begin5 = clock();
+                clock_gettime(CLOCK_REALTIME, &start);  // -- START chrono --
 
                 green();
                 printf("\n[INFO] -- %d peoples are born on %d/%d\n", data->birthdays[month][day], day, month);
                 reset();
 
-                clock_t end5 = clock(); //  stop chrono
-                time_spent5 += (double)(end5 - begin5) * 1000.0 / CLOCKS_PER_SEC;
+                clock_gettime(CLOCK_REALTIME, &end); //  --- STOP chrono --
+                double time_spent5 = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;
 
                 green();
-                printf("[INFO] -- Execution Time : %f ms\n", time_spent5);
+                printf("[INFO] -- Execution Time : %f s\n", time_spent5);
                 reset();
 
                 numberQueries++; //update number queries
@@ -241,18 +236,20 @@ void exportHTMLFamilyTree(struct dataBase* data){
 }
 
 void HTMLFamilyTreeOption(struct dataBase* data, int* exportFamilyCount){
+    struct timespec start, end; // clock
 
-    printf("[INFO] -- 2 -- Exporting HTML family tree files...\n"); // AJOUTER CHRONO
+    printf("[INFO] -- 2 -- Exporting HTML family tree files...\n");
     if (*exportFamilyCount == 0){
-        double time_spent = 0.0; // start chrono
-        clock_t begin = clock();
+        clock_gettime(CLOCK_REALTIME, &start);  // -- START chrono --
 
         exportHTMLFamilyTree(data);
 
-        clock_t end = clock(); //  stop chrono
-        time_spent += (double)(end - begin) * 1000.0 / CLOCKS_PER_SEC;
+        clock_gettime(CLOCK_REALTIME, &end); //  --- STOP chrono --
+        double time_spent = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;
+
+
         green();
-        printf("[INFO] -- Successfully Generated %d HTML Files in %f ms!\n", getNumberPerson(data), time_spent);
+        printf("[INFO] -- Successfully Generated %d HTML Files in %f s!\n", getNumberPerson(data), time_spent);
         reset();
         *exportFamilyCount = *exportFamilyCount + 1;
     }
@@ -265,18 +262,18 @@ void HTMLFamilyTreeOption(struct dataBase* data, int* exportFamilyCount){
 }
 
 void HTMLInfoTreeOption(struct dataBase* data, int* exportInfoCount,char* fileName){
+    struct timespec start, end; // clock
 
     printf("[INFO] -- 3 -- Exporting HTML info files...\n");
     if (*exportInfoCount == 0){
-        double time_spent = 0.0; // start chrono
-        clock_t begin = clock();
+        clock_gettime(CLOCK_REALTIME, &start);  // -- START chrono --
 
         createHTMLOutput(data, fileName, getNumberPerson(data));
 
-        clock_t end = clock(); //  stop chrono
-        time_spent += (double)(end - begin) * 1000.0 / CLOCKS_PER_SEC;
+        clock_gettime(CLOCK_REALTIME, &end); //  --- STOP chrono --
+        double time_spent = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;
         green();
-        printf("[INFO] -- Successfully Generated HTML Info File in %f ms!\n", time_spent);
+        printf("[INFO] -- Successfully Generated HTML Info File in %f s!\n", time_spent);
         reset();
         *exportInfoCount = *exportInfoCount + 1;
     }

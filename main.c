@@ -4,17 +4,17 @@
 #include <unistd.h>
 #include <time.h>
 
+#define BILLION  1000000000.0
+
 #include "file_reader.h"
 #include "structDataBase.h"
 #include "dataBase_reader.h"
 #include "menu.h"
 
-
 #define MAX_LEN 40
 
-
-
 int main() {
+    struct timespec start, end; // clock
 
     char choice[3];
     int choice2;
@@ -81,15 +81,17 @@ int main() {
                     switch (choice2) { // -------------------------=|| CREATION HTML FILES MENU ||=-------------------------
                         case 1:
                             printf("[INFO] -- 1\n");
-                            double time_spent2 = 0.0; // start chrono
-                            clock_t begin2 = clock();
+
+                            clock_gettime(CLOCK_REALTIME, &start);
 
                             showGeneralInfoDataBase(data);
 
-                            clock_t end2 = clock(); //  stop chrono
-                            time_spent2 += (double)(end2 - begin2) * 1000.0 / CLOCKS_PER_SEC;
+                            clock_gettime(CLOCK_REALTIME, &end);
+
+                            double time_spent2 = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;
+
                             green();
-                            printf("[INFO] -- Execution Time : %f ms\n", time_spent2);
+                            printf("[INFO] -- Execution Time : %f s\n", time_spent2);
                             reset();
                             break;
                         case 2:
@@ -112,18 +114,19 @@ int main() {
                             printf("[INFO] -- Going back to the principal Menu & deleting the data base...\n");
                             exitCondition2 = true;
 
-                            double time_spent3 = 0.0; // start chrono
-                            clock_t begin3 = clock();
+                            clock_gettime(CLOCK_REALTIME, &start);
 
                             deleteDataBase(data);
                             data = NULL;
 
-                            clock_t end3 = clock(); //  stop chrono
-                            time_spent3 += (double)(end3 - begin3) * 1000.0 / CLOCKS_PER_SEC;
+                            clock_gettime(CLOCK_REALTIME, &end);
+
+                            double time_spent = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;
                             green();
-                            printf("[INFO] -- data base deleted in %f ms\n", time_spent3);
+                            printf("[INFO] -- data base deleted in %f s\n", time_spent);
                             reset();
                             sleep(3);
+
                             break;
                         default:
                             red();
@@ -165,6 +168,7 @@ int main() {
 
 //    if (data != NULL){ // in case if the user does not return to the principal menu
 //        deleteDataBase(data);
+//        data = NULL;
 //    }
 
     return 0;
