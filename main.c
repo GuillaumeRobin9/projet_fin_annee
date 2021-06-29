@@ -114,12 +114,12 @@ int main() {
                             break;
                         //  -------- [CHOICE 3. Export HTML info files]
                         case 3:
-                            HTMLInfoTreeOption(data, &exportInfoCount,csvName);
+                            HTMLIndexCreatorOption(data, &exportInfoCount,csvName);
                             break;
                         //  -------- [CHOICE 4. Export all files]
                         case 4:
                             HTMLFamilyTreeOption(data, &exportFamilyCount);
-                            HTMLInfoTreeOption(data, &exportInfoCount,csvName);
+                            HTMLIndexCreatorOption(data, &exportInfoCount,csvName);
                             break;
                         //  -------- [CHOICE 5. Query family tree]
                         case 5:

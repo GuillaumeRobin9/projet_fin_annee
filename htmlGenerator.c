@@ -103,10 +103,10 @@ void createIndexHTMLFile(struct dataBase* data, char *fileName, int numberOfPers
 // -=[Function Description]=-
 // Function that execute all the queries of the query menu, and create an HTML page according to the queries asked by the user.
 //
-void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
+void createQueryHTMLFile(struct dataBase* data, int* numberQueries){
     struct timespec start, end; // clock
 
-    createQueryResHTML(); // creation of the HTML
+    openQueryHTMLFile(); // creation of the HTML
 
     char regionName[MAX_LEN]; // values initialisation
     int month;
@@ -265,7 +265,7 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
 // -=[Function Description]=-
 // Function create the query result HTML file.
 //
-void createQueryResHTML() {
+void openQueryHTMLFile() {
     FILE *queryHtml;
     queryHtml = fopen("export/query.html", "w"); // creationg the HTML queryRes file
     fprintf(queryHtml, "<html lang=\"en\">\n");

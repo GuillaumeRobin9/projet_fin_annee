@@ -25,14 +25,16 @@
 void createPersonHTMLFile(struct Person* child, struct Person* father, struct Person* mother, struct Person* PaternalGFather, struct Person* PaternalGMother, struct Person* MaternalGFather, struct Person* MaternalGMother);
 void createIndexHTMLFile(struct dataBase* data, char *fileName,int TotalPerson);
 
-//  ** query Result File creation **
-void createQueryResHTML();
 
 
 // ** Export query results **
-void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries);
+void createQueryHTMLFile(struct dataBase* data, int* numberQueries);
 
 // ** query Result File filling **
+
+//  query Result File creation
+void openQueryHTMLFile();
+
 void fillHTMLQuery1(int ID, struct dataBase* data);
 void fillHTMLQuery2(int ID, struct dataBase* data);
 void fillHTMLeQuery3(char* regionName, int numberPersonBorn);

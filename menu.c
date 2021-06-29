@@ -226,7 +226,7 @@ void queryMenu(struct dataBase* data){
             // -------- [CHOICE 7. export query results to HTML file]
             case 7:
                 printf("[MENU] -- 7 -- Execution of all the Queries\n");
-                createFillQueryHTMLFile(data, &numberQueries);
+                createQueryHTMLFile(data, &numberQueries);
                 printf("--------------------------------------------------\n");
                 break;
             // -------- [CHOICE 8. back to previous menu]
@@ -284,14 +284,14 @@ void HTMLFamilyTreeOption(struct dataBase* data, int* exportFamilyCount){
 // -=[Function Description]=-
 // Function to execute the option 2 Export HTML family tree of the second MENU.
 //
-void HTMLInfoTreeOption(struct dataBase* data, int* exportInfoCount,char* fileName){
+void HTMLIndexCreatorOption(struct dataBase* data, int* exportInfoCount,char* fileName){
     struct timespec start, end; // clock
 
     printf("[INFO] -- 3 -- Exporting HTML info files...\n");
     if (*exportInfoCount == 0){
         clock_gettime(CLOCK_REALTIME, &start);  // -- START chrono --
 
-        createHTMLOutput(data, fileName, getNumberPerson(data));
+        createIndexHTMLFile(data, fileName, getNumberPerson(data));
 
         clock_gettime(CLOCK_REALTIME, &end); //  --- STOP chrono --
         double time_spent = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;

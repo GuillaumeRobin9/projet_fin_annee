@@ -37,7 +37,7 @@ void queryMenu(struct dataBase* data);
 
 // ** option choice Functions **
 void HTMLFamilyTreeOption(struct dataBase* data, int* exportFamilyCount);
-void HTMLInfoTreeOption(struct dataBase* data, int* exportInfoCount,char* fileName);
+void HTMLIndexCreatorOption(struct dataBase* data, int* exportInfoCount,char* fileName);
 
 // ** other execution functions **
 void exportHTMLFamilyTree(struct dataBase* data);
