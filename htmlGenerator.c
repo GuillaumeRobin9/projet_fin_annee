@@ -41,13 +41,11 @@ void createPersonHTMLFile(struct Person* child, struct Person* father, struct Pe
     // ** HTML FILE BUILD **
     fprintf(htmlFILE, "<html lang=\"en\">\n");
     fprintf(htmlFILE, "<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"../resources/stylePersonPage.css\">\n");
-    fprintf(htmlFILE, "<title>PROJECT GROUPE 3</title>\n</head>\n<body>\n");
+    fprintf(htmlFILE, "    <title>PROJECT GROUPE 3</title>\n</head>\n<body>\n");
     fprintf(htmlFILE,"    <div class=\"topnav\" id=\"myTopnav\">\n");
     fprintf(htmlFILE,"        <a href=\"tree.html\"class=\"active\">Index</a>\n");
     fprintf(htmlFILE,"        <a href=\"query.html\">Query</a>\n");
-    fprintf(htmlFILE,"        <a href=\"about.html\">About</a>\n");
     fprintf(htmlFILE,"    </div>\n");
-    /*fprintf(htmlFILE, "    <h2>Welcome to this genealogic tree retriever ! </h2>\n");*/
     fprintf(htmlFILE, "    <div id=\"personBubble\" onmouseover=\"clicked('personBubble')\">\n            <div class=\"name\">Name : <a href=\"%d.html\">%s</a></div>\n            <div class=\"lastName\">Last Name : %s</div>\n            <div class=\"birthDay\">Birthday : %d/%d/%d</div>\n            <div class=\"region\">Region : %s</div>\n            <div class=\"infobulle\">\n                <div id=\"displayLocation\"></div>\n                <div id=\"latitude\"></div>\n                <div id=\"longitude\"></div>\n           </div>\n    </div>\n",getID(child), getFirstName(child), getLastName(child), getDay(child), getMonth(child), getYear(child), getRegion(child));
     fprintf(htmlFILE, "    <div id=\"father\" onmouseover=\"clicked('father')\">\n            <div class=\"name\">Name : <a href=\"%d.html\">%s</a></div>\n            <div class=\"lastName\">Last Name : %s</div>\n            <div class=\"birthDay\">Birthday : %d/%d/%d</div>\n            <div class=\"region\">Region : %s</div>\n            <div class=\"infobulle\">\n                <div id=\"displayLocation\"></div>\n                <div id=\"latitude\"></div>\n                <div id=\"longitude\"></div>\n           </div>\n    </div>\n", getID(father), getFirstName(father), getLastName(father), getDay(father), getMonth(father), getYear(father), getRegion(father));
     fprintf(htmlFILE, "    <div id=\"mother\" onmouseover=\"clicked('mother')\">\n            <div class=\"name\">Name : <a href=\"%d.html\">%s</a></div>\n            <div class=\"lastName\">Last Name : %s</div>\n            <div class=\"birthDay\">Birthday : %d/%d/%d</div>\n            <div class=\"region\">Region : %s</div>\n            <div class=\"infobulle\">\n                <div id=\"displayLocation\"></div>\n                <div id=\"latitude\"></div>\n                <div id=\"longitude\"></div>\n           </div>\n    </div>\n", getID(mother),getFirstName(mother), getLastName(mother), getDay(mother), getMonth(mother), getYear(mother), getRegion(mother));
@@ -56,6 +54,7 @@ void createPersonHTMLFile(struct Person* child, struct Person* father, struct Pe
     fprintf(htmlFILE, "    <div id=\"motherGrandFather\" onmouseover=\"clicked('motherGrandFather')\">\n            <div class=\"name\">Name : <a href=\"%d.html\">%s</a></div>\n            <div class=\"lastName\">Last Name : %s</div>\n            <div class=\"birthDay\">Birthday : %d/%d/%d</div>\n            <div class=\"region\">Region : %s</div>\n            <div class=\"infobulle\">\n                <div id=\"displayLocation\"></div>\n                <div id=\"latitude\"></div>\n                <div id=\"longitude\"></div>\n           </div>\n    </div>\n", getID(MaternalGFather), getFirstName(MaternalGFather), getLastName(MaternalGFather), getDay(MaternalGFather), getMonth(MaternalGFather), getYear(MaternalGFather), getRegion(MaternalGFather));
     fprintf(htmlFILE, "    <div id=\"motherGrandMother\" onmouseover=\"clicked('motherGrandMother')\">\n            <div class=\"name\">Name : <a href=\"%d.html\">%s</a></div>\n            <div class=\"lastName\">Last Name : %s</div>\n            <div class=\"birthDay\">Birthday : %d/%d/%d</div>\n            <div class=\"region\">Region : %s</div>\n            <div class=\"infobulle\">\n                <div id=\"displayLocation\"></div>\n                <div id=\"latitude\"></div>\n                <div id=\"longitude\"></div>\n           </div>\n    </div>\n", getID(MaternalGMother), getFirstName(MaternalGMother), getLastName(MaternalGMother), getDay(MaternalGMother), getMonth(MaternalGMother), getYear(MaternalGMother), getRegion(MaternalGMother));
     fprintf(htmlFILE, "    <script src=\"../resources/scriptIndex.js\"></script>\n");
+    fprintf(htmlFILE, "</body>\n</html>");
     fclose(htmlFILE);
 }
 
@@ -93,7 +92,7 @@ void createIndexHTMLFile(struct dataBase* data, char *fileName, int numberOfPers
     fprintf(htmlFILE,"        <li><div><i class=\"bi bi-calendar-event\"></i>   date with the most of births : %d/%d</div></li>\n", day, month); // START -writting in the HTML file the general informations about the tree
     fprintf(htmlFILE,"        <li><div><button id=\"randomBtn\" onclick=\"randomPerson()\">Redirect to a random Person</button></div></li>\n"); // adding to the HTML the button that redirect to a random tree
     fprintf(htmlFILE,"    </ul>\n");
-    fprintf(htmlFILE, "    <div class=\"bg\"></div>\n    <div class=\"bg bg2\"></div>\n    <div class=\"bg bg3\"></div>\n    <script src=\"../resources/treeScript.js\"></script>\n</body>\n</html>");
+    fprintf(htmlFILE, "    <div class=\"bg\"></div>\n    <div class=\"bg bg2\"></div>\n    <div class=\"bg bg3\"></div>\n    <script src=\"../resources/scriptPerson.js\"></script>\n</body>\n</html>");
     fclose(htmlFILE);
 }
 
@@ -270,14 +269,13 @@ void openQueryHTMLFile() {
     queryHtml = fopen("export/query.html", "w"); // creationg the HTML queryRes file
     fprintf(queryHtml, "<html lang=\"en\">\n");
     fprintf(queryHtml,"<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css\">\n   <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css\">\n   <link rel=\"stylesheet\" href=\"../resources/styleQueryPage.css\">\n");
-    fprintf(queryHtml, "<title>PROJECT GROUPE 3</title>\n</head>\n<body>\n");
+    fprintf(queryHtml, "    <title>PROJECT GROUPE 3</title>\n</head>\n<body>\n");
     fprintf(queryHtml,"    <div class=\"topnav\" id=\"myTopnav\">\n");
     fprintf(queryHtml,"        <a href=\"tree.html\"class=\"active\">Index</a>\n");
     fprintf(queryHtml,"        <a href=\"query.html\">Query</a>\n");
-    fprintf(queryHtml,"        <a href=\"about.html\">About</a>\n");
     fprintf(queryHtml,"    </div>\n");
     fprintf(queryHtml, "    <h2>Welcome to the Query Result Page ! </h2>\n");
-    fprintf(queryHtml,"<div id=\"shape\">\n");
+    fprintf(queryHtml,"    <div id=\"shape\">\n");
     fprintf(queryHtml, "    <div class=\"bg\"></div>\n    <div class=\"bg bg2\"></div>\n    <div class=\"bg bg3\"></div>\n");
     fclose(queryHtml); // closing file
 }

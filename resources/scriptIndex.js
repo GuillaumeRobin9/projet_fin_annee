@@ -1,3 +1,13 @@
+//
+// Project: projet_fin_annee
+// Authors: Antoine SOYDEMIR
+// Creation date: 25/06/2021
+// Modification date: 29/06/2021
+// Role: Javascript Functions to dynamically render specific option on the page.
+//
+
+
+//** Function who detects automatically all unknown person  */
 function unknownPerson(){
     const personID = document.getElementsByClassName("name");
     const personLastName = document.getElementsByClassName("lastName");
@@ -17,11 +27,25 @@ function unknownPerson(){
             links[index].innerHTML = "No Link.."
         }    
     }
-
-
-
 }
 
+//** Function that listen each bubble and start all proccess to get region infos */
+function clicked(id){
+
+    //** Parsing Bubble Inputs */
+    let info = document.getElementById(id);
+    let infobulle = info.getElementsByClassName("infobulle");
+    const region = info.getElementsByClassName("region")[0].innerHTML
+    const location = infobulle[0].children[0];
+    const latitude = infobulle[0].children[1];
+    const longitude = infobulle[0].children[2];
+
+    //** INFO BUBBLE UPDATES */
+    getRegionInformations(region.substring(8,), location, latitude, longitude);
+}
+
+
+//** Send HTTPS Request to OpenWeather API to get informations about the region */
 function getRegionInformations(region, location, latitude, longitude){
 
     let xhr = new XMLHttpRequest();
@@ -40,6 +64,7 @@ function getRegionInformations(region, location, latitude, longitude){
 
 }
 
+//** Parsing OpenWeather API Response and replace it in the HTML */
 function parseData(data, location, latitude, longitude){
     //** Updating Values */
     if (data["cod"] === "404") {
@@ -53,20 +78,6 @@ function parseData(data, location, latitude, longitude){
         longitude.innerHTML = `Longitude is : ${data["coord"]["lon"]}`;
     }
 
-}
-
-function clicked(id){
-
-    //** Parsing Bubble Inputs */
-    let fatherInfos = document.getElementById(id);
-    let infobulle = fatherInfos.getElementsByClassName("infobulle");
-    const region = fatherInfos.getElementsByClassName("region")[0].innerHTML
-    const location = infobulle[0].children[0];
-    const latitude = infobulle[0].children[1];
-    const longitude = infobulle[0].children[2];
-    
-    //** INFO BUBBLE UPDATES */
-    getRegionInformations(region.substring(8,), location, latitude, longitude);
 }
 
 unknownPerson()

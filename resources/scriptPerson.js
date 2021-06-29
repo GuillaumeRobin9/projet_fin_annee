@@ -1,4 +1,15 @@
+//
+// Project: projet_fin_annee
+// Authors: Antoine SOYDEMIR
+// Creation date: 25/06/2021
+// Modification date: 29/06/2021
+// Role: Javascript Functions who performs additional options
+//
+
+
+//** Global variable which hold all names across all html files */
 var allNames = {};
+
 function retrieveAllPerson(){
     //** Total Number of Person in the Database and convert to Int */
     let totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(50,));
@@ -23,7 +34,6 @@ function retrieveAllPerson(){
             }
         }
         xhr.send();
-        
     }
 }
 
@@ -63,7 +73,9 @@ function randomPerson(){
     let totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(50,));
     //** Using Math() to get a random int  */
     const random = Math.floor(Math.random() * (totalPerson - 1) + 1);
+
+    //** Opening the Person page in a new window */
     window.open(`${random}.html`, "_blank");
 }
 
-retrieveAllPerson()
+retrieveAllPerson();
