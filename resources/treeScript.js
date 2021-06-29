@@ -1,7 +1,7 @@
 var allNames = {};
 function retrieveAllPerson(){
     //** Total Number of Person in the Database and convert to Int */
-    totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(19,));
+    let totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(50,));
     for (let index = 1; index < totalPerson; index++) {
         //** Request to get All Names accross all generated files  */
         let xhr = new XMLHttpRequest();
@@ -41,7 +41,7 @@ function foundPerson(){
     let btn = document.getElementById("searchBtn");
 
     //** Total Number of Person in the Database and convert to Int */
-    let totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(19,));
+    let totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(50,));
 
     //** Value of the Input that contains First Name */
     let personToSearch = document.querySelector("input").value;
@@ -60,7 +60,7 @@ function foundPerson(){
 //** Function to return a random person from all files */
 function randomPerson(){
     //** Total Number of Person in the Database and convert to Int */
-    let totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(48,));
+    let totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(50,));
     //** Using Math() to get a random int  */
     const random = Math.floor(Math.random() * (totalPerson - 1) + 1);
     window.open(`${random}.html`, "_blank");
