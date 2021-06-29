@@ -7,9 +7,6 @@
 #include "dataBase_reader.h"
 #include "menu.h"
 
-#define MAX_LEN 40
-#define BILLION  1000000000.0
-
 
 void createPersonHTMLFile(struct Person* child, struct Person* father, struct Person* mother, struct Person* PaternalGFather, struct Person* PaternalGMother, struct Person* MaternalGFather, struct Person* MaternalGMother) {
 

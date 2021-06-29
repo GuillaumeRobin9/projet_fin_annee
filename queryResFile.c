@@ -6,8 +6,6 @@
 #include <stdio.h>
 
 #include "dataBase_reader.h"
-#include "structDataBase.h"
-#include "menu.h"
 
 void createQueryResHTML() { // creation of the  file
     FILE *queryHtml;

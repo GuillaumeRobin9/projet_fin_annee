@@ -6,12 +6,9 @@
 
 #include "file_reader.h"
 #include "structDataBase.h"
-#include "structPerson.h"
+//#include "dataBase_reader.h"
+//#include "structPerson.h"
 #include "menu.h"
-
-#define MAX_CHAR 1000
-#define BILLION  1000000000.0
-
 
 
 struct dataBase* readFile(char *nameFile){

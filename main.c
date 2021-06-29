@@ -8,7 +8,6 @@
 
 #include "file_reader.h"
 #include "structDataBase.h"
-#include "dataBase_reader.h"
 #include "menu.h"
 
 #define MAX_LEN 40
@@ -16,7 +15,7 @@
 int main() {
     struct timespec start, end; // clock
 
-    char choice[3];
+    int choice;
     int choice2;
     char csvName[MAX_LEN];
     struct dataBase* data = NULL;
@@ -47,11 +46,11 @@ int main() {
         printf("--------------------------------------------------\n");
 
         printf("[CHOICE] -- Please enter your selection : ");
-        scanf("%s", &choice);
+        scanf("%d", &choice);
         fgetc(stdin);
-        printf("[MENU] -- Selected choice : %d\n", atoi(choice));
+        printf("[MENU] -- Selected choice : %d\n", choice);
         printf("--------------------------------------------------\n");
-        switch (atoi(choice)) { // -------------------------=|| MAIN MENU ||=-------------------------
+        switch (choice) { // -------------------------=|| MAIN MENU ||=-------------------------
 
             case 1:
                 while (data == NULL){

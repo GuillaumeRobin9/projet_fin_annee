@@ -6,8 +6,11 @@
 
 #include "structDataBase.h"
 
-
 #define MAX_LETTERS 27
+#define POS_A 97
+#define POS_A_CAPITAL 65
+#define POS_SPACE 32
+#define LAST_POS_ARR 26
 
 struct NodeTrie{
     bool isWord;
@@ -29,7 +32,6 @@ bool isEmptyTrie(struct NodeTrie* trie);
 int getNumberBirths(struct NodeTrie* trie);
 
 // ** Insertion/Search Functions **
-void insertWord(struct NodeTrie* trie, char* word, struct dataBase* data);
 bool belongs(struct NodeTrie* trie, char* word);
 int numberOfWords(struct NodeTrie* trie);
 int findBirthsOfRegion(struct NodeTrie* trie, char* word, bool* valid);

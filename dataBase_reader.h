@@ -2,6 +2,9 @@
 #ifndef CODE_DATABASE_READER_H
 #define CODE_DATABASE_READER_H
 
+#define MAX_LEN 40
+#define BILLION  1000000000.0
+
 #include "structDataBase.h"
 
 void createPersonHTMLFile(struct Person* child, struct Person* father, struct Person* mother, struct Person* PaternalGFather, struct Person* PaternalGMother, struct Person* MaternalGFather, struct Person* MaternalGMother);

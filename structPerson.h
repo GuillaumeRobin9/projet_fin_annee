@@ -2,6 +2,7 @@
 #ifndef CODE_STRUCTPERSON_H
 #define CODE_STRUCTPERSON_H
 
+
 struct Person {
     int ID;
     int IDfather;

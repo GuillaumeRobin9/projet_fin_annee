@@ -2,12 +2,8 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdbool.h>
-#include "structNodeTrie.h"
 
-#define POS_A 97
-#define POS_A_CAPITAL 65
-#define POS_SPACE 32
-#define LAST_POS_ARR 26
+#include "structNodeTrie.h"
 
 struct NodeTrie* createEmptyNodeTrie(){
     struct NodeTrie* newTrie = malloc(sizeof(struct NodeTrie));
@@ -51,54 +47,6 @@ void incrementNumberBirths(struct NodeTrie* trie){
     trie->numberBirths = trie->numberBirths + 1;
 }
 
-void insertWord(struct NodeTrie* trie, char* word, struct dataBase* data){
-    int n = strlen(word);
-
-    for (int i = 0; i < n; i++){
-
-        if (word[i] == POS_SPACE){ // when the char is a space
-
-            if (getLetters(trie)[LAST_POS_ARR] == NULL){ // the space does not exist yet
-                trie->letters[LAST_POS_ARR] = createEmptyNodeTrie();
-            }
-            trie = getLetters(trie)[LAST_POS_ARR];
-        }
-
-        if (word[i] <= 90 && word[i] >= 65){ // when the  char is uppercase
-
-            if (getLetters(trie)[capitalChartoPos(word[i])] == NULL){ // when the char is not in the Trie
-                trie->letters[capitalChartoPos(word[i])] = createEmptyNodeTrie();
-            }
-            trie = getLetters(trie)[capitalChartoPos(word[i])];
-        }
-
-
-        if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
-            if (getLetters(trie)[charToPos(word[i])] == NULL) { // when the char is not in the Trie
-                trie->letters[charToPos(word[i])] = createEmptyNodeTrie();
-            }
-            trie = getLetters(trie)[charToPos(word[i])];
-        }
-
-    }
-    setIsWord(trie, true); // mark the end of the word
-    incrementNumberBirths(trie); // add a birth to the name of the region
-
-    if (getNumberBirths(trie) > getMaxBirths(data)){ // update fertileRegion
-
-        if (getFertileRegion(data) != NULL){
-            free(data->fertileRegion);
-        }
-
-        data->fertileRegion = malloc( (n + 1) * sizeof(char));
-        if (data->fertileRegion == NULL){
-            return;
-        }
-        strcpy(data->fertileRegion, word); // update region name
-
-        data->maxBirths = getNumberBirths(trie); // update value of maxBirths
-    }
-}
 
 
 bool belongs(struct NodeTrie* trie, char* word){

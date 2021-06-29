@@ -5,9 +5,8 @@
 #include <stdbool.h>
 
 #include "structDataBase.h"
-#include "structPerson.h"
-#include "structNodeTrie.h"
 #include "menu.h"
+
 
 //** Create Function **
 struct dataBase* createDataBase(int numberPerson) {
@@ -55,10 +54,6 @@ struct Person** getPersonArray(struct dataBase* data){
 
 int getNumberPerson(struct dataBase* data){
     return data->numberPerson;
-}
-
-int** getBirthdayArray(struct dataBase* data){
-    return data->birthdays;
 }
 
 int* getOldestBirth(struct dataBase* data){
@@ -139,6 +134,55 @@ void showGeneralInfoDataBase(struct dataBase* data){
 
 
 //** Insertion Function **
+void insertWord(struct NodeTrie* trie, char* word, struct dataBase* data){
+    int n = strlen(word);
+
+    for (int i = 0; i < n; i++){
+
+        if (word[i] == POS_SPACE){ // when the char is a space
+
+            if (getLetters(trie)[LAST_POS_ARR] == NULL){ // the space does not exist yet
+                trie->letters[LAST_POS_ARR] = createEmptyNodeTrie();
+            }
+            trie = getLetters(trie)[LAST_POS_ARR];
+        }
+
+        if (word[i] <= 90 && word[i] >= 65){ // when the  char is uppercase
+
+            if (getLetters(trie)[capitalChartoPos(word[i])] == NULL){ // when the char is not in the Trie
+                trie->letters[capitalChartoPos(word[i])] = createEmptyNodeTrie();
+            }
+            trie = getLetters(trie)[capitalChartoPos(word[i])];
+        }
+
+
+        if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
+            if (getLetters(trie)[charToPos(word[i])] == NULL) { // when the char is not in the Trie
+                trie->letters[charToPos(word[i])] = createEmptyNodeTrie();
+            }
+            trie = getLetters(trie)[charToPos(word[i])];
+        }
+
+    }
+    setIsWord(trie, true); // mark the end of the word
+    incrementNumberBirths(trie); // add a birth to the name of the region
+
+    if (getNumberBirths(trie) > getMaxBirths(data)){ // update fertileRegion
+
+        if (getFertileRegion(data) != NULL){
+            free(data->fertileRegion);
+        }
+
+        data->fertileRegion = malloc( (n + 1) * sizeof(char));
+        if (data->fertileRegion == NULL){
+            return;
+        }
+        strcpy(data->fertileRegion, word); // update region name
+
+        data->maxBirths = getNumberBirths(trie); // update value of maxBirths
+    }
+}
+
 int insertBirth(int day, int month, struct dataBase* data){
     return data->birthdays[month - 1][day - 1] += 1;
 }

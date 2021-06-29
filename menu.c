@@ -11,8 +11,6 @@
 #include "dataBase_reader.h"
 #include "menu.h"
 
-#define MAX_LEN 40
-#define BILLION  1000000000.0
 
 void red () {
     printf("\033[1;31m");

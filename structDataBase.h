@@ -30,7 +30,6 @@ struct dataBase* createDataBase(int numberPerson);
 
 struct Person** getPersonArray(struct dataBase* data);
 int getNumberPerson(struct dataBase* data);
-int** getBirthdayArray(struct dataBase* data);
 int* getOldestBirth(struct dataBase* data);
 int* getEarliestBirth(struct dataBase* data);
 int getOldestID(struct dataBase* data);
@@ -47,6 +46,7 @@ void showGeneralInfoDataBase(struct dataBase* data);
 //** Insertion Function **
 void insertPerson(struct Person* p, struct dataBase* data);
 int insertBirth(int day, int month, struct dataBase* data);
+void insertWord(struct NodeTrie* trie, char* word, struct dataBase* data);
 
 //** data Comparaison Function **
 void updateOldest(int IDActualOldest, int* actualOldestBirth, int IDNewPerson, int* newPersonBirth, struct dataBase* data);

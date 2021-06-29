@@ -13,6 +13,9 @@
 #include "structDataBase.h"
 #include "dataBase_reader.h"
 
+#define MAX_LEN 40
+#define BILLION  1000000000.0
+
 
 // ** menu fonction **
 void queryMenu(struct dataBase* data);
