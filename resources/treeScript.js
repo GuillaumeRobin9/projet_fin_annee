@@ -60,8 +60,7 @@ function foundPerson(){
 //** Function to return a random person from all files */
 function randomPerson(){
     //** Total Number of Person in the Database and convert to Int */
-    let totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(19,));
-
+    let totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(48,));
     //** Using Math() to get a random int  */
     const random = Math.floor(Math.random() * (totalPerson - 1) + 1);
     window.open(`${random}.html`, "_blank");
