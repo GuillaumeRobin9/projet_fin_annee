@@ -1,16 +1,31 @@
+//
+// Project: projet_fin_annee
+// Authors: Guillaume ROBIN, Mickaël NERODA
+// Creation date: 25/06/2021
+// Modification date: 29/06/2021
+// Role: create and fill the database from the CSV file => create an empty data base, read the CSV file, create persons from the infos from the CSV,
+// and adding the persons created to the data base
+//
+
+// Includes
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include <time.h>
-#include <unistd.h>
 
 #include "file_reader.h"
 #include "structDataBase.h"
-//#include "dataBase_reader.h"
-//#include "structPerson.h"
 #include "menu.h"
 
+//-------------------------------------------------------------------------
+//--- Functions Implementation --------------------------------------------
+//-------------------------------------------------------------------------
 
+//
+// -=[Function Description]=-
+// Function create an empty data base, read the CSV file, create persons from the infos from the CSV,
+// and adding the persons created to the data base.
+//
 struct dataBase* readFile(char *nameFile){
     struct timespec start, end; // clock
 
@@ -43,17 +58,18 @@ struct dataBase* readFile(char *nameFile){
     int numberPerson;
     fscanf(file,"%d\n", &numberPerson);
 
-    //   -----------creation of the data base-----------
+//   -----------creation of the data base-----------
     struct dataBase* data = createDataBase(numberPerson);
 
-//    -----------skipping the NULL person (second line) && adding her in the begin of struct-----------
+//    -----------skipping the NULL person (second line) -----------
+//    && adding the null person in the beginning of the person array of the DB
     fgets(row, MAX_CHAR, file);
     getPersonArray(data)[0] = createEmptyPerson();
     data->validIndex += 1;
 
 
 
-    while (!feof(file)) {
+    while (!feof(file)) { // ** reading the CSV file line per line **
 
 //        -----------get row----------
 
@@ -123,8 +139,6 @@ struct dataBase* readFile(char *nameFile){
         // **create a person and fill it with extracted values**
         struct Person* p = createPerson(ID, IDf, IDm, lastName, firstName, day, month, year, region);
 
-//        printPerson(p);
-
         free(lastName);
         free(firstName);
         free(region);
@@ -142,7 +156,6 @@ struct dataBase* readFile(char *nameFile){
     green();
     printf("[INFO] -- File \"%s\" Successfully Readed in %f s !\n", nameFile, time_spent);
     reset();
-
 
 
     return data; // return the filled dataBase
