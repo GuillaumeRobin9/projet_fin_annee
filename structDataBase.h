@@ -61,7 +61,7 @@ void showGeneralInfoDataBase(struct dataBase* data);
 
 //** Insertion Function **
 void insertPerson(struct Person* p, struct dataBase* data);
-int insertBirth(int day, int month, struct dataBase* data);
+void insertBirth(int day, int month, struct dataBase* data);
 void insertWord(struct NodeTrie* trie, char* word, struct dataBase* data);
 
 //** data Comparaison Function **

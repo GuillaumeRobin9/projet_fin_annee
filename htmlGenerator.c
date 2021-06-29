@@ -159,7 +159,7 @@ void createQueryHTMLFile(struct dataBase* data, int* numberQueries){
     printf("--------------------------------------------------\n");
 
 // -------- [QUERY n°3. Get number of people born in a region]
-    printf("[choice] -- 3 -- Please enter the region name : \n");
+    printf("[CHOICE] -- 3 -- Please enter the region name : ");
     fgets(regionName, MAX_LEN, stdin);
     regionName[strlen(regionName) - 1] = '\0';
     bool valid;
@@ -172,11 +172,11 @@ void createQueryHTMLFile(struct dataBase* data, int* numberQueries){
 
     if (valid == false) {
         red();
-        printf("[ERROR] -- the region entered does not exist\n");
+        printf("\n[ERROR] -- the region entered does not exist\n");
         reset();
     } else {
         green();
-        printf("[INFO] --  %d persons are born in the region named %s\n", numberPeople,regionName);
+        printf("\n[INFO] --  %d persons are born in the region named %s\n", numberPeople,regionName);
         reset();
         *numberQueries = *numberQueries + 1; //update number queries
         fillHTMLeQuery3(regionName, numberPeople); // writing the result of the query in the HTML file

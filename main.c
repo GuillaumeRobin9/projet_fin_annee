@@ -185,13 +185,6 @@ int main() {
 // ============================================================|| END PRINCIPAL MENU ||============================================================
         }
     }
-
-
-//    if (data != NULL){ // in case if the user does not return to the principal menu
-//        deleteDataBase(data);
-//        data = NULL;
-//    }
-
     return 0;
 }
 

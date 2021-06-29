@@ -177,7 +177,7 @@ void getDateWithMostBirths(struct dataBase* data, int* day, int* month){
             if (data->birthdays[i][j] > max){
                 *day = j; // give the value of day with most births
                 *month = i;
-                max = data->birthdays[i][j]; // update maw
+                max = data->birthdays[i][j]; // update max
             }
         }
     }
@@ -263,8 +263,8 @@ void insertWord(struct NodeTrie* trie, char* word, struct dataBase* data){
 // -=[Function Description]=-
 // Function to compute the mean of a set of numbers.
 //
-int insertBirth(int day, int month, struct dataBase* data){
-    return data->birthdays[month - 1][day - 1] += 1;
+void insertBirth(int day, int month, struct dataBase* data){
+    data->birthdays[month - 1][day - 1] = data->birthdays[month - 1][day - 1] + 1;
 }
 
 
@@ -278,6 +278,7 @@ void insertPerson(struct Person* p, struct dataBase* data) {
 
 //    **insertion birthday of the person in dataBase**
     insertBirth(getDay(p), getMonth(p), data);
+
 
 //      **update oldest/youngest births**
     int newPersonBirth[3]; // array with the new person dates

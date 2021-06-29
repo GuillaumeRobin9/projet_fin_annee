@@ -205,7 +205,7 @@ void queryMenu(struct dataBase* data){
                 clock_gettime(CLOCK_REALTIME, &start);  // -- START chrono --
 
                 green();
-                printf("\n[INFO] -- %d peoples are born on %d/%d\n", data->birthdays[month - 1][day - 1], day, month);
+                printf("\n[INFO] -- %d peoples are born on %d/%d\n", data->birthdays[month][day], day, month);
                 reset();
 
                 clock_gettime(CLOCK_REALTIME, &end); //  --- STOP chrono --

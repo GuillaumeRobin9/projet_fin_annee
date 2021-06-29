@@ -79,7 +79,7 @@ struct dataBase* readFile(char *nameFile){
 //        ----------get ID----------
 
         int ID = atoi(token);
-        if (count == 1){
+        if (count == 1){ // Stop the reading of the file if the file has been already readed one time.
             break;
         }
         if (ID == numberPerson){
