@@ -32,7 +32,7 @@ void createPersonHTMLFile(struct Person* child, struct Person* father, struct Pe
     sprintf(fileName, "%d", personID);
 
 
-    // ** CREATION OF THE FILE **
+    // ** CREATION OF THE PERSON FILE **
     FILE * htmlFILE;
 
 
@@ -65,7 +65,7 @@ void createPersonHTMLFile(struct Person* child, struct Person* father, struct Pe
 //
 void createHTMLOutput(struct dataBase* data, char *fileName, int numberOfPerson) {
 
-    // ** CREATION OF THE FILE **
+    // ** CREATION OF THE INDEX FILE **
     char directory[20] = "export/";
 
     printf("[INFO] -- Starting Output Process\n");
@@ -80,9 +80,9 @@ void createHTMLOutput(struct dataBase* data, char *fileName, int numberOfPerson)
     fprintf(htmlFILE, "<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css\">\n     <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css\">\n    <link rel=\"stylesheet\" href=\"../resources/style.css\">\n");
     fprintf(htmlFILE, "<title>PROJECT GROUPE 3</title>\n</head>\n<body>\n");
     fprintf(htmlFILE, "    <h2>Welcome to this genealogical tree retriever ! </h2>\n");
-    fprintf(htmlFILE,"<br><br>");
+    fprintf(htmlFILE,"    <br><br>\n");
     fprintf(htmlFILE,"    <ul>\n");
-    fprintf(htmlFILE, "        <span id=\"startText\"><i class=\"bi bi-search\"></i>    Enter a Name to Start :</span> \n    <input id=\"personName\" type=\"text\" placeholder=\"Dupont...\"><button type=\"button\" id=\"searchBtn\" onclick=\"foundPerson()\">Search</button>\n    <br><br>\n"); // feature of tree search by the name of the person
+    fprintf(htmlFILE, "        <span id=\"startText\"><i class=\"bi bi-search\"></i>    Enter a Name to Start :</span> \n        <input id=\"personName\" type=\"text\" placeholder=\"Dupont...\"><button type=\"button\" id=\"searchBtn\" onclick=\"foundPerson()\">Search</button>\n        <br><br>\n"); // feature of tree search by the name of the person
     fprintf(htmlFILE, "        <li><div><i class=\"bi bi-file-text\"></i>   Statistics about your CSV File :</div></li>\n");
     fprintf(htmlFILE, "        <li><div id=\"csvName\"><i class=\"bi bi-file-text-fill\"></i>   File Name : %s</div></li>\n", fileName); // START -writting in the HTML file the general informations about the tree
     fprintf(htmlFILE, "        <li><div id=\"totalPerson\"><i class=\"bi bi-list-ol\"></i>  Number of Person : %d </div></li>\n",numberOfPerson);
