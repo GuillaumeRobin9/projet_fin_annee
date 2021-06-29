@@ -29,8 +29,17 @@ button{
   background-color:lightblue;
 }
 
+a{
+  color: white;
+}
+
+
 #searchBtn:hover{
     transform: rotate(-3deg) scale(1.5, 1.5);
+}
+
+#regionBtn:hover{
+  transform: rotate(-3deg) scale(1.5, 1.5);
 }
 
 #randomBtn:hover{
@@ -53,6 +62,14 @@ body{
     border-color: black;
     background-color: ivory;
 }
+
+#regionName{
+  border-radius: 5px;
+  border-style: solid;
+  border-color: black;
+  background-color: ivory;
+}
+
 
 html {
     height:100%;

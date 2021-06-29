@@ -3,79 +3,81 @@
 // Authors: Antoine SOYDEMIR
 // Creation date: 25/06/2021
 // Modification date: 29/06/2021
-// Role: Javascript Functions who performs additional options
+// Role: Javascript Functions to dynamically render specific option on the page.
 //
 
 
-//** Global variable which hold all names across all html files */
-var allNames = {};
+//** Function who detects automatically all unknown person  */
+function unknownPerson(){
+    const personID = document.getElementsByClassName("name");
+    const personLastName = document.getElementsByClassName("lastName");
+    const birth = document.getElementsByClassName("birthDay");
+    const region = document.getElementsByClassName("region");
+    const links = document.querySelectorAll("a");
 
-function retrieveAllPerson(){
-    //** Total Number of Person in the Database and convert to Int */
-    let totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(50,));
-    for (let index = 1; index < totalPerson; index++) {
-        //** Request to get All Names accross all generated files  */
-        let xhr = new XMLHttpRequest();
-        xhr.open("GET", `${index.toString()}.html`);
-        xhr.onload = function () {
-            switch (xhr.status){
-            case 200:
-                const txt = xhr.responseText;
-                var stringToHTML = function (str) {
-                    var parser = new DOMParser();
-                    var doc = parser.parseFromString(str, 'text/html');
-                    return doc;
-                };
-                const htmlPage = stringToHTML(txt)
-                retrievePersonFromFile(htmlPage, index);
-                break;
-            default:
-                console.log("FAILED AT PARSING DATA");
-            }
+    for (let index = 0; index < personID.length; index++) {
+        if (personID[index].children[0].innerHTML === "-") {
+            personID[index].innerHTML = "Unknown Identity :("
+            personLastName[index].innerHTML = "Unknown Last Name :("
+            birth[index].innerHTML = "Unknown Birth Date :("
+            region[index].innerHTML = "Unknown Region :("
         }
-        xhr.send();
+        if (links[index].innerHTML === "- Tree") {
+            links[index]["href"] = "index.html";
+            links[index].innerHTML = "No Link.."
+        }    
     }
 }
 
-//** Function who place all names with index into a list */
-function retrievePersonFromFile(data, index){
-    const nameTable = data.querySelectorAll("a")[3];
-    //** Pushing each name into an array */
-    allNames[index] = nameTable.innerHTML;
+//** Function that listen each bubble and start all proccess to get region infos */
+function clicked(id){
+
+    //** Parsing Bubble Inputs */
+    let info = document.getElementById(id);
+    let infobulle = info.getElementsByClassName("infobulle");
+    const region = info.getElementsByClassName("region")[0].innerHTML
+    const location = infobulle[0].children[0];
+    const latitude = infobulle[0].children[1];
+    const longitude = infobulle[0].children[2];
+
+    //** INFO BUBBLE UPDATES */
+    getRegionInformations(region.substring(8,), location, latitude, longitude);
 }
 
 
-//** Function to found a specific person in the Tree */
-function foundPerson(){
-    //** Button Search  */
-    let btn = document.getElementById("searchBtn");
+//** Send HTTPS Request to OpenWeather API to get informations about the region */
+function getRegionInformations(region, location, latitude, longitude){
 
-    //** Total Number of Person in the Database and convert to Int */
-    let totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(50,));
-
-    //** Value of the Input that contains First Name */
-    let personToSearch = document.querySelector("input").value;
-    
-    for (let index = 1; index < totalPerson; index++) {
-        if (allNames[index] === personToSearch) {
-            window.open(`${index.toString()}.html`, "_blank");
-            btn.style.background = "rgba(0, 230, 64, 1)";
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", `https://api.openweathermap.org/data/2.5/weather?q=${region}&appid=840322c4444cb74f0403b138879badea`);
+    xhr.onload = function () {
+        switch (xhr.status){
+        case 200:
+            parseData(JSON.parse(xhr.responseText), location, latitude, longitude);
             break;
-        } else{
-            btn.style.background = "red";
+        default:
+            console.log("FAILED AT PARSING DATA");
+            parseData(JSON.parse(xhr.responseText), location, latitude, longitude);
         }
     }
+    xhr.send();
+
 }
 
-//** Function to return a random person from all files */
-function randomPerson(){
-    //** Total Number of Person in the Database and convert to Int */
-    let totalPerson = parseInt(document.getElementById("totalPerson").innerHTML.substring(50,));
-    //** Using Math() to get a random int  */
-    const random = Math.floor(Math.random() * (totalPerson - 1) + 1);
+//** Parsing OpenWeather API Response and replace it in the HTML */
+function parseData(data, location, latitude, longitude){
+    //** Updating Values */
+    if (data["cod"] === "404") {
+        console.log("ENTERED HERE");
+        location.innerHTML = `Not Found..`;
+        latitude.innerHTML = `Not Found..`;
+        longitude.innerHTML = `Not Found..`;
+    } else{
+        location.innerHTML = `Located in : ${data["sys"]["country"]}`;
+        latitude.innerHTML = `Latitude is : ${data["coord"]["lat"]}`;
+        longitude.innerHTML = `Longitude is : ${data["coord"]["lon"]}`;
+    }
 
-    //** Opening the Person page in a new window */
-    window.open(`${random}.html`, "_blank");
 }
 
-retrieveAllPerson();
+unknownPerson()

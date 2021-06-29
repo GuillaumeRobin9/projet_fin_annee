@@ -53,7 +53,7 @@ void createPersonHTMLFile(struct Person* child, struct Person* father, struct Pe
     fprintf(htmlFILE, "    <div id=\"fatherGrandMother\" onmouseover=\"clicked('fatherGrandMother')\">\n            <div class=\"name\">Name : <a href=\"%d.html\">%s</a></div>\n            <div class=\"lastName\">Last Name : %s</div>\n            <div class=\"birthDay\">Birthday : %d/%d/%d</div>\n            <div class=\"region\">Region : %s</div>\n            <div class=\"infobulle\">\n                <div id=\"displayLocation\"></div>\n                <div id=\"latitude\"></div>\n                <div id=\"longitude\"></div>\n           </div>\n    </div>\n", getID(PaternalGMother), getFirstName(PaternalGMother), getLastName(PaternalGMother), getDay(PaternalGMother), getMonth(PaternalGMother), getYear(PaternalGMother), getRegion(PaternalGMother));
     fprintf(htmlFILE, "    <div id=\"motherGrandFather\" onmouseover=\"clicked('motherGrandFather')\">\n            <div class=\"name\">Name : <a href=\"%d.html\">%s</a></div>\n            <div class=\"lastName\">Last Name : %s</div>\n            <div class=\"birthDay\">Birthday : %d/%d/%d</div>\n            <div class=\"region\">Region : %s</div>\n            <div class=\"infobulle\">\n                <div id=\"displayLocation\"></div>\n                <div id=\"latitude\"></div>\n                <div id=\"longitude\"></div>\n           </div>\n    </div>\n", getID(MaternalGFather), getFirstName(MaternalGFather), getLastName(MaternalGFather), getDay(MaternalGFather), getMonth(MaternalGFather), getYear(MaternalGFather), getRegion(MaternalGFather));
     fprintf(htmlFILE, "    <div id=\"motherGrandMother\" onmouseover=\"clicked('motherGrandMother')\">\n            <div class=\"name\">Name : <a href=\"%d.html\">%s</a></div>\n            <div class=\"lastName\">Last Name : %s</div>\n            <div class=\"birthDay\">Birthday : %d/%d/%d</div>\n            <div class=\"region\">Region : %s</div>\n            <div class=\"infobulle\">\n                <div id=\"displayLocation\"></div>\n                <div id=\"latitude\"></div>\n                <div id=\"longitude\"></div>\n           </div>\n    </div>\n", getID(MaternalGMother), getFirstName(MaternalGMother), getLastName(MaternalGMother), getDay(MaternalGMother), getMonth(MaternalGMother), getYear(MaternalGMother), getRegion(MaternalGMother));
-    fprintf(htmlFILE, "    <script src=\"../resources/scriptIndex.js\"></script>\n");
+    fprintf(htmlFILE, "    <script src=\"../resources/scriptPerson.js\"></script>\n");
     fprintf(htmlFILE, "</body>\n</html>");
     fclose(htmlFILE);
 }
@@ -82,6 +82,7 @@ void createIndexHTMLFile(struct dataBase* data, char *fileName, int numberOfPers
     fprintf(htmlFILE,"    <br><br>\n");
     fprintf(htmlFILE,"    <ul>\n");
     fprintf(htmlFILE, "        <span id=\"startText\"><i class=\"bi bi-search\"></i>    Enter a Name to Start :</span> \n        <input id=\"personName\" type=\"text\" placeholder=\"Dupont...\"><button type=\"button\" id=\"searchBtn\" onclick=\"foundPerson()\">Search</button>\n        <br><br>\n"); // feature of tree search by the name of the person
+    fprintf(htmlFILE, "        <span id=\"startText\"><i class=\"bi bi-search\"></i>    Enter a Region to Start :</span>\n        <input id=\"regionName\" type=\"text\" placeholder=\"Norfolk...\"><button type=\"button\" id=\"regionBtn\" onclick=\"foundRegion()\">Search</button>\n        <div id=\"regionValue\"></div>\n        <br><br>\n "); // feature for the region
     fprintf(htmlFILE, "        <li><div><i class=\"bi bi-file-text\"></i>   Statistics about your CSV File :</div></li>\n");
     fprintf(htmlFILE, "        <li><div id=\"csvName\"><i class=\"bi bi-file-text-fill\"></i>   File Name : %s</div></li>\n", fileName); // START -writting in the HTML file the general informations about the tree
     fprintf(htmlFILE, "        <li><div id=\"totalPerson\"><i class=\"bi bi-list-ol\"></i>  Number of Person : %d </div></li>\n",numberOfPerson);
@@ -92,7 +93,7 @@ void createIndexHTMLFile(struct dataBase* data, char *fileName, int numberOfPers
     fprintf(htmlFILE,"        <li><div><i class=\"bi bi-calendar-event\"></i>   date with the most of births : %d/%d</div></li>\n", day, month); // START -writting in the HTML file the general informations about the tree
     fprintf(htmlFILE,"        <li><div><button id=\"randomBtn\" onclick=\"randomPerson()\">Redirect to a random Person</button></div></li>\n"); // adding to the HTML the button that redirect to a random tree
     fprintf(htmlFILE,"    </ul>\n");
-    fprintf(htmlFILE, "    <div class=\"bg\"></div>\n    <div class=\"bg bg2\"></div>\n    <div class=\"bg bg3\"></div>\n    <script src=\"../resources/scriptPerson.js\"></script>\n</body>\n</html>");
+    fprintf(htmlFILE, "    <div class=\"bg\"></div>\n    <div class=\"bg bg2\"></div>\n    <div class=\"bg bg3\"></div>\n    <script src=\"../resources/scriptIndex.js\"></script>\n</body>\n</html>");
     fclose(htmlFILE);
 }
 
