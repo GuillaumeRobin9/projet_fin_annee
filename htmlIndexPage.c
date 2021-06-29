@@ -1,7 +1,23 @@
+//
+// Project: projet_fin_annee
+// Authors: Antoine SOYDEMIR, Guillaume ROBIN
+// Creation date: 26/06/2021
+// Modification date: 29/06/2021
+// Role: Create the index HTML page with the general informations about the genealogic tree, and the search by name function
+
+
+// Includes
 #include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
 
+//-------------------------------------------------------------------------
+//--- Functions Implementation --------------------------------------------
+//-------------------------------------------------------------------------
+
+//
+// -=[Function Description]=-
+// Function to to create the index HTML page with the general informations about the genealogic tree, and the search by name function
+//
 int createHTMLOutput() {
 
     // ** CREATION OF THE FILE **

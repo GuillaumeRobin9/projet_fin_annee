@@ -1,3 +1,16 @@
+//
+// Project: projet_fin_annee
+// Authors: Antoine SOYDEMIR, Guillaume ROBIN, Mickaël NERODA
+// Creation date: 25/06/2021
+// Modification date: 29/06/2021
+// Role: functions that creates the HTML pages
+//
+
+//-------------------------------------------------------------------------
+//--- Functions Implementation --------------------------------------------
+//-------------------------------------------------------------------------
+
+// Includes
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -7,7 +20,10 @@
 #include "dataBase_reader.h"
 #include "menu.h"
 
-
+//
+// -=[Function Description]=-
+// Function that creates HTML file that contains the tree of a person.
+//
 void createPersonHTMLFile(struct Person* child, struct Person* father, struct Person* mother, struct Person* PaternalGFather, struct Person* PaternalGMother, struct Person* MaternalGFather, struct Person* MaternalGMother) {
 
     int personID = getID(child);
@@ -43,6 +59,10 @@ void createPersonHTMLFile(struct Person* child, struct Person* father, struct Pe
     fclose(htmlFILE);
 }
 
+//
+// -=[Function Description]=-
+// Function to create the index HTML page with the general informations about the genealogical tree, the tree search by name function, and the feature to show a random tree.
+//
 void createHTMLOutput(struct dataBase* data, char *fileName, int numberOfPerson) {
 
     // ** CREATION OF THE FILE **
@@ -59,25 +79,30 @@ void createHTMLOutput(struct dataBase* data, char *fileName, int numberOfPerson)
     fprintf(htmlFILE, "<html lang=\"en\">\n");
     fprintf(htmlFILE, "<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css\">\n     <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css\">\n    <link rel=\"stylesheet\" href=\"../resources/style.css\">\n");
     fprintf(htmlFILE, "<title>PROJECT GROUPE 3</title>\n</head>\n<body>\n");
-    fprintf(htmlFILE, "    <h2>Welcome to this genealogic tree retriever ! </h2>\n");
+    fprintf(htmlFILE, "    <h2>Welcome to this genealogical tree retriever ! </h2>\n");
     fprintf(htmlFILE,"<br><br>");
     fprintf(htmlFILE,"    <ul>\n");
-    fprintf(htmlFILE, "        <span id=\"startText\"><i class=\"bi bi-search\"></i>    Enter a Name to Start :</span> \n    <input id=\"personName\" type=\"text\" placeholder=\"Dupont...\"><button type=\"button\" id=\"searchBtn\" onclick=\"foundPerson()\">Search</button>\n    <br><br>\n");
+    fprintf(htmlFILE, "        <span id=\"startText\"><i class=\"bi bi-search\"></i>    Enter a Name to Start :</span> \n    <input id=\"personName\" type=\"text\" placeholder=\"Dupont...\"><button type=\"button\" id=\"searchBtn\" onclick=\"foundPerson()\">Search</button>\n    <br><br>\n"); // feature of tree search by the name of the person
     fprintf(htmlFILE, "        <li><div><i class=\"bi bi-file-text\"></i>   Statistics about your CSV File :</div></li>\n");
-    fprintf(htmlFILE, "        <li><div id=\"csvName\"><i class=\"bi bi-file-text-fill\"></i>   File Name : %s</div></li>\n", fileName);
+    fprintf(htmlFILE, "        <li><div id=\"csvName\"><i class=\"bi bi-file-text-fill\"></i>   File Name : %s</div></li>\n", fileName); // START -writting in the HTML file the general informations about the tree
     fprintf(htmlFILE, "        <li><div id=\"totalPerson\"><i class=\"bi bi-list-ol\"></i>  Number of Person : %d </div></li>\n",numberOfPerson);
     fprintf(htmlFILE, "        <li><div><i class=\"bi bi-geo-alt\"></i> The most fertile region : %s </div></li>\n", getFertileRegion(data));
     fprintf(htmlFILE, "        <li><div><i class=\"bi bi-map\"></i> number of different natal regions : %d</div></li>\n", numberOfWords(getTrie(data)));
     fprintf(htmlFILE,"        <li><div><i class=\"bi bi-gift\"></i> number of different birthdays dates : %d</div></li>\n", numberBirthDates(data));
     getDateWithMostBirths(data, &day, &month);
-    fprintf(htmlFILE,"        <li><div><i class=\"bi bi-calendar-event\"></i>   date with the most of births : %d/%d</div></li>\n", day, month);
-    fprintf(htmlFILE,"        <li><div><button id=\"randomBtn\" onclick=\"randomPerson()\">Redirect to a random Person</button></div></li>\n");
+    fprintf(htmlFILE,"        <li><div><i class=\"bi bi-calendar-event\"></i>   date with the most of births : %d/%d</div></li>\n", day, month); // START -writting in the HTML file the general informations about the tree
+    fprintf(htmlFILE,"        <li><div><button id=\"randomBtn\" onclick=\"randomPerson()\">Redirect to a random Person</button></div></li>\n"); // adding to the HTML the button that redirect to a random tree
     fprintf(htmlFILE,"    </ul>\n");
     fprintf(htmlFILE, "    <div class=\"bg\"></div>\n    <div class=\"bg bg2\"></div>\n    <div class=\"bg bg3\"></div>\n    <script src=\"../resources/treeScript.js\"></script>\n</body>\n</html>");
     fclose(htmlFILE);
 }
 
 // ** Query **
+
+//
+// -=[Function Description]=-
+// Function that execute all the queries of the query menu, and create an HTML page according to the queries asked by the user.
+//
 void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
     struct timespec start, end; // clock
 
@@ -97,7 +122,7 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
 
     int IDoldest = getOldestID(data);
     printPerson(getPersonArray(data)[IDoldest]);
-    fillHTMLQuery1(IDoldest, data); // adding the query to the HTML
+    fillHTMLQuery1(IDoldest, data); // writing the result of the query in the HTML file
 
     //  STOP chrono
     clock_gettime(CLOCK_REALTIME, &end);
@@ -120,7 +145,7 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
 
     int IDyoungest = getyoungestID(data);
     printPerson(getPersonArray(data)[IDyoungest]);
-    fillHTMLQuery2(IDyoungest, data); // adding the query to the file
+    fillHTMLQuery2(IDyoungest, data); // writing the result of the query in the HTML file
 
     //  STOP chrono
     clock_gettime(CLOCK_REALTIME, &end);
@@ -155,7 +180,7 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
         printf("[INFO] --  %d persons are born in the region named %s\n", numberPeople,regionName);
         reset();
         *numberQueries = *numberQueries + 1; //update number queries
-        fillHTMLeQuery3(regionName, numberPeople); // adding the query to the file
+        fillHTMLeQuery3(regionName, numberPeople); // writing the result of the query in the HTML file
     }
 
     //  STOP chrono
@@ -174,7 +199,7 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
     green();
     printf("[INFO] -- 4 --the region with the highest number of biths is named %s with %d births\n", getFertileRegion(data), getMaxBirths(data));
     reset();
-    fillHTMLQuery4(getFertileRegion(data)); // adding the query to the file
+    fillHTMLQuery4(getFertileRegion(data)); // writing the result of the query in the HTML file
 
     //  STOP chrono
     clock_gettime(CLOCK_REALTIME, &end);
@@ -213,7 +238,7 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
             printf("\n[INFO] -- %d peoples are born on %d/%d\n", data->birthdays[month][day], day, month);
             reset();
 
-            fillHTMLQuery5(day, month, data->birthdays[month][day]); // adding the query to the HTML file
+            fillHTMLQuery5(day, month, data->birthdays[month][day]); // writing the result of the query in the HTML file
 
             clock_gettime(CLOCK_REALTIME, &end); //  --- STOP chrono --
             double time_spent5 = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;
