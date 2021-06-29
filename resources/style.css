@@ -17,35 +17,24 @@ h2 {
   text-align: center;
 }
 
-#searchBtn{
-    border-radius: 100px;
-    text-transform: uppercase;
-    display: inline-block;
-    transition: all .4s;
-    background-color: #fff;
-    color: #777;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-#randomBtn{
+button{
   border-radius: 100px;
   text-transform: uppercase;
   display: inline-block;
   transition: all .4s;
   background-color: #fff;
-  color: #777;
+  color:black;
   font-weight: bold;
   text-decoration: none;
+  background-color:lightblue;
 }
-
 
 #searchBtn:hover{
     transform: rotate(-3deg) scale(1.5, 1.5);
 }
 
 #randomBtn:hover{
-  transform: rotate(360deg) scale(1.3, 1.3);
+  transform: rotate(2deg) scale(1.3, 1.3);
   transition-duration: 0.7s;
 }
 
