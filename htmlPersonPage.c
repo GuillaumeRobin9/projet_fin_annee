@@ -57,19 +57,20 @@ void createHTMLOutput(struct dataBase* data, char *fileName, int numberOfPerson)
 
     // ** HTML FILE BUILD **
     fprintf(htmlFILE, "<html lang=\"en\">\n");
-    fprintf(htmlFILE, "<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"../resources/style.css\">\n");
+    fprintf(htmlFILE, "<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css\">\n     <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css\">\n    <link rel=\"stylesheet\" href=\"../resources/style.css\">\n");
     fprintf(htmlFILE, "<title>PROJECT GROUPE 3</title>\n</head>\n<body>\n");
     fprintf(htmlFILE, "    <h2>Welcome to this genealogic tree retriever ! </h2>\n");
+    fprintf(htmlFILE,"<br><br>");
     fprintf(htmlFILE,"    <ul>\n");
-    fprintf(htmlFILE, "        <span id=\"startText\">Enter a Name to Start :</span> \n    <input id=\"personName\" type=\"text\" placeholder=\"Dupont...\"><button type=\"button\" id=\"searchBtn\" onclick=\"foundPerson()\">Search</button>\n    <br><br>\n");
-    fprintf(htmlFILE, "        <li><div>Statistics about your CSV File :</div></li>\n");
-    fprintf(htmlFILE, "        <li><div id=\"csvName\">File Name : %s</div></li>\n", fileName);
-    fprintf(htmlFILE, "        <li><div id=\"totalPerson\">Number of Person : %d </div></li>\n",numberOfPerson);
-    fprintf(htmlFILE, "        <li><div>The most fertile region : %s </div></li>\n", getFertileRegion(data));
-    fprintf(htmlFILE, "        <li><div>number of different natal regions : %d</div></li>\n", numberOfWords(getTrie(data)));
-    fprintf(htmlFILE,"        <li><div>number of different birthdays dates : %d</div></li>\n", numberBirthDates(data));
+    fprintf(htmlFILE, "        <span id=\"startText\"><i class=\"bi bi-search\"></i>    Enter a Name to Start :</span> \n    <input id=\"personName\" type=\"text\" placeholder=\"Dupont...\"><button type=\"button\" id=\"searchBtn\" onclick=\"foundPerson()\">Search</button>\n    <br><br>\n");
+    fprintf(htmlFILE, "        <li><div><i class=\"bi bi-file-text\"></i>   Statistics about your CSV File :</div></li>\n");
+    fprintf(htmlFILE, "        <li><div id=\"csvName\"><i class=\"bi bi-file-text-fill\"></i>   File Name : %s</div></li>\n", fileName);
+    fprintf(htmlFILE, "        <li><div id=\"totalPerson\"><i class=\"bi bi-list-ol\"></i>  Number of Person : %d </div></li>\n",numberOfPerson);
+    fprintf(htmlFILE, "        <li><div><i class=\"bi bi-geo-alt\"></i> The most fertile region : %s </div></li>\n", getFertileRegion(data));
+    fprintf(htmlFILE, "        <li><div><i class=\"bi bi-map\"></i> number of different natal regions : %d</div></li>\n", numberOfWords(getTrie(data)));
+    fprintf(htmlFILE,"        <li><div><i class=\"bi bi-gift\"></i> number of different birthdays dates : %d</div></li>\n", numberBirthDates(data));
     getDateWithMostBirths(data, &day, &month);
-    fprintf(htmlFILE,"        <li><div>date with the most of births : %d/%d</div></li>\n", day, month);
+    fprintf(htmlFILE,"        <li><div><i class=\"bi bi-calendar-event\"></i>   date with the most of births : %d/%d</div></li>\n", day, month);
     fprintf(htmlFILE,"        <li><div><button id=\"randomBtn\" onclick=\"randomPerson()\">Redirect to a random Person</button></div></li>\n");
     fprintf(htmlFILE,"    </ul>\n");
     fprintf(htmlFILE, "    <div class=\"bg\"></div>\n    <div class=\"bg bg2\"></div>\n    <div class=\"bg bg3\"></div>\n    <script src=\"../resources/treeScript.js\"></script>\n</body>\n</html>");
