@@ -17,7 +17,7 @@
 #include <time.h>
 
 #include "structDataBase.h"
-#include "dataBase_reader.h"
+#include "htmlGenerator.h"
 #include "menu.h"
 
 //
@@ -63,7 +63,7 @@ void createPersonHTMLFile(struct Person* child, struct Person* father, struct Pe
 // -=[Function Description]=-
 // Function to create the index HTML page with the general informations about the genealogical tree, the tree search by name function, and the feature to show a random tree.
 //
-void createHTMLOutput(struct dataBase* data, char *fileName, int numberOfPerson) {
+void createIndexHTMLFile(struct dataBase* data, char *fileName, int numberOfPerson) {
 
     // ** CREATION OF THE INDEX FILE **
     char directory[20] = "export/";
@@ -112,7 +112,7 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
     int month;
     int day;
 
-//    ** query 1 **
+// -------- [QUERY n°1. Get first born in the tree]
     green();
     printf("[INFO] -- 1 -- Here is the first person born\n\n");
     reset();
@@ -135,9 +135,9 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
     *numberQueries = *numberQueries + 1; //update number queries
     printf("--------------------------------------------------\n");
 
-//    ** query 2 **
+// -------- [QUERY n°2. Get last born in the tree]
     green();
-    printf("[INFO] -- 1 -- Here is the first person born\n\n");
+    printf("[INFO] -- 1 -- Here is the last person born\n\n");
     reset();
 
     // START chrono
@@ -159,8 +159,8 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
     *numberQueries = *numberQueries + 1; //update number queries
     printf("--------------------------------------------------\n");
 
-//    ** query 3 **
-    printf("[CHOICE] -- 3 -- Please enter the region name : \n");
+// -------- [QUERY n°3. Get number of people born in a region]
+    printf("[choice] -- 3 -- Please enter the region name : \n");
     fgets(regionName, MAX_LEN, stdin);
     regionName[strlen(regionName) - 1] = '\0';
     bool valid;
@@ -192,7 +192,7 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
     reset();
     printf("--------------------------------------------------\n");
 
-//    ** query 4 **
+// -------- [QUERY n°4. Get the region with the highest number of births]
     // START chrono
     clock_gettime(CLOCK_REALTIME, &start);
 
@@ -211,7 +211,7 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
     *numberQueries = *numberQueries + 1; //update number queries
     printf("--------------------------------------------------\n");
 
-//    ** query 5 **
+// -------- [QUERY n°5. Get the number of people born in a given day and month]
     printf("[INFO] -- 5 \n");
     printf("[CHOICE] -- Please enter the day : ");
     scanf("%d", &day);
@@ -257,6 +257,104 @@ void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries){
             *numberQueries = *numberQueries + 1; //update number queries
         }
     }
+}
+
+// ** query Result File filling **
+
+//
+// -=[Function Description]=-
+// Function create the query result HTML file.
+//
+void createQueryResHTML() {
+    FILE *queryHtml;
+    queryHtml = fopen("export/query.html", "w"); // creationg the HTML queryRes file
+    fprintf(queryHtml, "<html lang=\"en\">\n");
+    fprintf(queryHtml,"<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css\">\n   <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css\">\n   <link rel=\"stylesheet\" href=\"../resources/styleQueryPage.css\">\n");
+    fprintf(queryHtml, "<title>PROJECT GROUPE 3</title>\n</head>\n<body>\n");
+    fprintf(queryHtml,"    <div class=\"topnav\" id=\"myTopnav\">\n");
+    fprintf(queryHtml,"        <a href=\"tree.html\"class=\"active\">Index</a>\n");
+    fprintf(queryHtml,"        <a href=\"query.html\">Query</a>\n");
+    fprintf(queryHtml,"        <a href=\"about.html\">About</a>\n");
+    fprintf(queryHtml,"    </div>\n");
+    fprintf(queryHtml, "    <h2>Welcome to the Query Result Page ! </h2>\n");
+    fprintf(queryHtml,"<div id=\"shape\">\n");
+    fprintf(queryHtml, "    <div class=\"bg\"></div>\n    <div class=\"bg bg2\"></div>\n    <div class=\"bg bg3\"></div>\n");
+    fclose(queryHtml); // closing file
+}
+
+//
+// -=[Function Description]=-
+// Function to write the result of the query  n°1. "Get first born in the tree" in the HTML file.
+//
+void fillHTMLQuery1(int ID, struct dataBase* data){
+    // ** OPENING  FILE **
+    FILE * queryHtml;
+    queryHtml = fopen("export/query.html", "a");
+
+    // **  FILE BUILD **
+    fprintf(queryHtml,"     <div class=\"titleInfo\"><i class=\"bi bi-file-person\"></i> Here is the first person born :</div>  <div class=\"info\">First Name : %s, Last Name : %s, Birthday : %d/%d/%d, Natal Region : %s</div>\n", getFirstName(getPersonArray(data)[ID]), getLastName(getPersonArray(data)[ID]), getDay(getPersonArray(data)[ID]), getMonth(getPersonArray(data)[ID]), getYear(getPersonArray(data)[ID]), getRegion(getPersonArray(data)[ID]));
+    fclose(queryHtml);
+}
+
+
+//
+// -=[Function Description]=-
+// Function to write the result of the query  n°2. "Get last born in the tree" in the HTML file.
+//
+void fillHTMLQuery2(int ID, struct dataBase* data){
+    // ** OPENING  FILE **
+    FILE * queryHtml;
+    queryHtml = fopen("export/query.html", "a");
+
+    // **  FILE BUILD **
+    fprintf(queryHtml,"     <div class=\"titleInfo\"><i class=\"bi bi-file-person-fill\"></i>Here is the last person born :</div>  <div class=\"info\">First Name : %s, Last Name : %s, Birthday : %d/%d/%d, Natal Region : %s</div>\n", getFirstName(getPersonArray(data)[ID]), getLastName(getPersonArray(data)[ID]), getDay(getPersonArray(data)[ID]), getMonth(getPersonArray(data)[ID]), getYear(getPersonArray(data)[ID]), getRegion(getPersonArray(data)[ID]));
+    fclose(queryHtml);
+}
+
+
+//
+// -=[Function Description]=-
+// Function to write the result of the query  n°3. "Get number of people born in a region" in the HTML file.
+//
+void fillHTMLeQuery3(char* regionName, int numberPersonBorn){
+    // ** OPENING  FILE **
+    FILE * queryHtml;
+    queryHtml = fopen("export/query.html", "a");
+
+    // **  FILE BUILD **
+    fprintf(queryHtml,"     <div class=\"titleInfo\">    <i class=\"bi bi-file-person-fill\"></i>    Result Number people born in the Region %s :</div>  <div class=\"info\">%d</div>\n", regionName, numberPersonBorn);
+    fclose(queryHtml);
+}
+
+
+//
+// -=[Function Description]=-
+// Function to write the result of the query  n°4. "Get the region with the highest number of births" in the HTML file.
+//
+void fillHTMLQuery4(char* regionName){
+    // ** OPENING  FILE **
+    FILE * queryHtml;
+    queryHtml = fopen("export/query.html", "a");
+
+    // **  FILE BUILD **
+    fprintf(queryHtml,"     <div class=\"titleInfo\"><i class=\"bi bi-map\"></i>    The Region with highest number of births is  :</div>  <div class=\"info\">%s</div>\n", regionName);
+    fclose(queryHtml);
+}
+
+
+
+//
+// -=[Function Description]=-
+// Function to write the result of the query  n°5. "Get the number of people born in a given day and month" in the HTML file.
+//
+void fillHTMLQuery5(int day, int month, int numberPerson){
+    // ** OPENING  FILE **
+    FILE * queryHtml;
+    queryHtml = fopen("export/query.html", "a");
+
+    // **  FILE BUILD **
+    fprintf(queryHtml,"     <div class=\"titleInfo\"><i class=\"bi bi-calendar\"></i>    Result of the number of people born on %d/%d :</div>  <div class=\"info\">%d</div>\n</body>\n</html>\n", day, month, numberPerson);
+    fclose(queryHtml);
 }
 
 

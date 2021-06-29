@@ -1,16 +1,28 @@
+//
+// Project: projet_fin_annee
+// Authors: Antoine SOYDEMIR, Guillaume ROBIN, Mickaël NERODA
+// Creation date: 24/06/2021
+// Modification date: 29/06/2021
+// Role: display the menu, access to all the function of the project
+//
+
+
+// Includes
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <time.h>
 
-#define BILLION  1000000000.0
 
-#include "file_reader.h"
+#include "csvReader.h"
 #include "structDataBase.h"
 #include "menu.h"
 
+// Global Variables
+#define BILLION  1000000000.0
 #define MAX_LEN 40
+
 
 int main() {
     struct timespec start, end; // clock
@@ -39,7 +51,8 @@ int main() {
                "\\____/\\___/_/ /_/\\___/\\__,_/_/\\____/\\__, /_/\\___/    /_/ /_/   \\___/\\___/  /_/   /_/   \\____/_/ /\\___/\\___/\\__/  \n"
                "                                   /____/                                                  /___/                 \n");
         printf("What do you want to do ?\n");
-
+// ===========================================================|| PRINCIPAL MENU ||============================================================
+        //               ** [DISPLAY PRINCIPAL MENU] **
         printf("--------------------------------------------------\n");
         printf("[MENU] -- 1. Read CSV file\n");
         printf("[MENU] -- 2. Exit\n");
@@ -50,8 +63,8 @@ int main() {
         fgetc(stdin);
         printf("[MENU] -- Selected choice : %d\n", choice);
         printf("--------------------------------------------------\n");
-        switch (choice) { // -------------------------=|| MAIN MENU ||=-------------------------
-
+        switch (choice) { // ======================================|| SECOND MENU ||==========================================
+            // -------- [CHOICE 1. Read CSV file]
             case 1:
                 while (data == NULL){
                     printf("[MENU] -- Enter the name of your CSV File : ");
@@ -62,6 +75,7 @@ int main() {
                 }
 
                 while (!exitCondition2){
+                    //               ** [DISPLAY SECOND MENU] **
                     printf("\nWhat do you want to do ?\n");
                     printf("--------------------------------------------------\n");
                     printf("1. Show family tree info\n");
@@ -77,7 +91,8 @@ int main() {
                     fgetc(stdin);
                     printf("[MENU] -- Selected choice : %d\n", choice2);
                     printf("--------------------------------------------------\n");
-                    switch (choice2) { // -------------------------=|| CREATION HTML FILES MENU ||=-------------------------
+                    switch (choice2) {
+                        // -------- [CHOICE 1. Show family tree info]
                         case 1:
                             printf("[INFO] -- 1\n");
 
@@ -93,21 +108,26 @@ int main() {
                             printf("[INFO] -- Execution Time : %f s\n", time_spent2);
                             reset();
                             break;
+                        // -------- [CHOICE 2. Export HTML family tree]
                         case 2:
                             HTMLFamilyTreeOption(data, &exportFamilyCount);
                             break;
+                        //  -------- [CHOICE 3. Export HTML info files]
                         case 3:
                             HTMLInfoTreeOption(data, &exportInfoCount,csvName);
                             break;
+                        //  -------- [CHOICE 4. Export all files]
                         case 4:
                             HTMLFamilyTreeOption(data, &exportFamilyCount);
                             HTMLInfoTreeOption(data, &exportInfoCount,csvName);
                             break;
+                        //  -------- [CHOICE 5. Query family tree]
                         case 5:
-                            // -------------------------=|| QUERY MENU ||=-------------------------
-                            queryMenu(data);
+                            // ===========================================|| QUERY MENU ||===========================================
+                            queryMenu(data); // function that execute the query menu
                             break;
-                            // -------------------------=|| END QUERY MENU ||=-------------------------
+                            // =========================================|| END QUERY MENU ||===========================================
+                        //  -------- [CHOICE 6. Go back to principal menu]
                         case 6:
                             printf("[INFO] -- 6 ");
                             printf("[INFO] -- Going back to the principal Menu & deleting the data base...\n");
@@ -127,17 +147,18 @@ int main() {
                             sleep(3);
 
                             break;
+                        // [CHOICE] INVALID
                         default:
                             red();
                             printf("[ERROR] -- Selecet a valid choice please!!\n");
                             reset();
                             sleep(3);
                             break;
-                        // -------------------------=|| END CREATION HTML FILES MENU ||=-------------------------
                     }
                 }
                 break;
-
+                // =========================================================|| END SECOND MENU ||=========================================================
+            // -------- [CHOICE 2. Exit The family tree program]
             case 2:
                 printf("[INFO] -- Exiting Program\n");
                 exitCondition = true;
@@ -152,6 +173,7 @@ int main() {
                 sleep(4);
                 system("clear");
                 break;
+            // -------- [CHOICE INVALID]
             default:
                 red();
                 printf("[ERROR] -- Selecet a valid choice please!!\n");
@@ -160,7 +182,7 @@ int main() {
                 sleep(2);
                 system("clear");
                 break;
-        // -------------------------=|| END MAIN MENU ||=-------------------------
+// ============================================================|| END PRINCIPAL MENU ||============================================================
         }
     }
 

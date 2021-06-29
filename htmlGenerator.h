@@ -3,11 +3,13 @@
 // Authors: Antoine SOYDEMIR, Guillaume ROBIN, Mickaël NERODA
 // Creation date: //2021
 // Modification date: //2021
-// Role: Functions to display, compute the mean and invert a set of numbers.
-//
+// Role: Functions to create the HTML files listed here :
+//      - HTML page with the result of the queries.
+//      - HTML index page with the general informations about the trees
+//      - HTML tree pages for each person of the data base.
 
-#ifndef CODE_DATABASE_READER_H
-#define CODE_DATABASE_READER_H
+#ifndef CODE_HTMLGENERATOR_H
+#define CODE_HTMLGENERATOR_H
 
 // Global Variables
 #define MAX_LEN 40
@@ -21,10 +23,14 @@
 //-------------------------------------------------------------------------
 
 void createPersonHTMLFile(struct Person* child, struct Person* father, struct Person* mother, struct Person* PaternalGFather, struct Person* PaternalGMother, struct Person* MaternalGFather, struct Person* MaternalGMother);
-void createHTMLOutput(struct dataBase* data, char *fileName,int TotalPerson);
+void createIndexHTMLFile(struct dataBase* data, char *fileName,int TotalPerson);
 
 //  ** query Result File creation **
 void createQueryResHTML();
+
+
+// ** Export query results **
+void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries);
 
 // ** query Result File filling **
 void fillHTMLQuery1(int ID, struct dataBase* data);
@@ -33,8 +39,4 @@ void fillHTMLeQuery3(char* regionName, int numberPersonBorn);
 void fillHTMLQuery4(char* regionName);
 void fillHTMLQuery5(int day, int month, int numberPerson);
 
-// ** Export query results **
-void createFillQueryHTMLFile(struct dataBase* data, int* numberQueries);
-
-
-#endif //CODE_DATABASE_READER_H
+#endif //CODE_HTMLGENERATOR_H

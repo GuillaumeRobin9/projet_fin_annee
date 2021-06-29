@@ -1,6 +1,13 @@
 //
-// Created by micka on 27/06/2021.
+// Project: projet_fin_annee
+// Authors: Antoine SOYDEMIR, Guillaume ROBIN, Mickaël NERODA
+// Creation date: 27/06/2021
+// Modification date: 29/06/2021
+// Role: Functions to display the query menu, and to execute options that create HTML files.
 //
+
+
+// Includes
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -8,26 +15,51 @@
 #include <time.h>
 
 #include "structDataBase.h"
-#include "dataBase_reader.h"
+#include "htmlGenerator.h"
 #include "menu.h"
 
 
+//-------------------------------------------------------------------------
+//--- Functions Implementation --------------------------------------------
+//-------------------------------------------------------------------------
+
+// ** color font functions **
+
+//
+// -=[Function Description]=-
+// Function to write in red in the console.
+//
 void red () {
     printf("\033[1;31m");
 }
 
+//
+// -=[Function Description]=-
+// Function to write in greeb in the console.
+//
 void green () {
     printf("\033[0;32m");
 }
 
+//
+// -=[Function Description]=-
+// Function to reset the default color of the console.
+//
 void reset () {
     printf("\033[0m");
 }
 
+
+// ** query menu **
+
+//
+// -=[Function Description]=-
+// Function that execute the query menu.
+//
 void queryMenu(struct dataBase* data){
     struct timespec start, end; // clock
 
-    int queryChoice;
+    int queryChoice; // variables initialisation
     bool exitConditionQuery = false;
     char regionName[MAX_LEN];
     int month;
@@ -37,7 +69,7 @@ void queryMenu(struct dataBase* data){
 
     while (!exitConditionQuery) {
 
-
+//               ** [DISPLAY QUERY MENU] **
         printf("[INFO] -- 5 ");
         printf("\n\nQuery the family tree!\n\n");
         printf("What do you want to do?\n");
@@ -60,6 +92,7 @@ void queryMenu(struct dataBase* data){
         printf("--------------------------------------------------\n");
 
         switch (queryChoice) {
+            // -------- [CHOICE 1. Get first born in the tree]
             case 1:
                 green();
                 printf("[INFO] -- 1 -- Here is the first person born\n\n");
@@ -80,6 +113,7 @@ void queryMenu(struct dataBase* data){
                 numberQueries++; //update number queries
                 printf("--------------------------------------------------\n");
                 break;
+            // -------- [CHOICE 2. Get last born in the tree]
             case 2:
                 green();
                 printf("[INFO] -- 2 -- Here is the last person born\n\n");
@@ -100,8 +134,9 @@ void queryMenu(struct dataBase* data){
                 numberQueries++; //update number queries
                 printf("--------------------------------------------------\n");
                 break;
+            // -------- [CHOICE 3. Get number of people born in a region]
             case 3:
-                printf("[CHOICE] -- 3 -- Please enter the region name : \n");
+                printf("[CHOICE] -- 3 -- Please enter the region name : ");
                 fgets(regionName, MAX_LEN, stdin);
                 regionName[strlen(regionName) - 1] = '\0';
                 bool valid;
@@ -115,7 +150,7 @@ void queryMenu(struct dataBase* data){
 
                 if (valid == false) {
                     red();
-                    printf("[ERROR] -- the region entered does not exist\n");
+                    printf("\n[ERROR] -- the region entered does not exist\n");
                     reset();
                     break;
                 } else {
@@ -129,6 +164,7 @@ void queryMenu(struct dataBase* data){
                 reset();
                 printf("--------------------------------------------------\n");
                 break;
+            // -------- [CHOICE 4. Get the region with the highest number of births]
             case 4:
                 printf("[INFO] -- 4\n");
                 clock_gettime(CLOCK_REALTIME, &start);  // -- START chrono --
@@ -143,6 +179,7 @@ void queryMenu(struct dataBase* data){
                 numberQueries++; //update number queries
                 printf("--------------------------------------------------\n");
                 break;
+            // -------- [CHOICE 5. Get the number of people born in a given day and month]
             case 5:
                 printf("[INFO] -- 5 \n");
                 printf("[CHOICE] -- Please enter the day : ");
@@ -168,7 +205,7 @@ void queryMenu(struct dataBase* data){
                 clock_gettime(CLOCK_REALTIME, &start);  // -- START chrono --
 
                 green();
-                printf("\n[INFO] -- %d peoples are born on %d/%d\n", data->birthdays[month][day], day, month);
+                printf("\n[INFO] -- %d peoples are born on %d/%d\n", data->birthdays[month - 1][day - 1], day, month);
                 reset();
 
                 clock_gettime(CLOCK_REALTIME, &end); //  --- STOP chrono --
@@ -181,19 +218,23 @@ void queryMenu(struct dataBase* data){
                 numberQueries++; //update number queries
                 printf("--------------------------------------------------\n");
                 break;
+            // -------- [CHOICE 6. optionnal querys]
             case 6:
                 printf("[MENU] -- 6 -- The options are not available yet :(\n");
                 printf("--------------------------------------------------\n");
                 break;
-            case 7: // EXPORT QUERY RESULTS IN TO A HTML FILE
+            // -------- [CHOICE 7. export query results to HTML file]
+            case 7:
                 printf("[MENU] -- 7 -- Execution of all the Queries\n");
                 createFillQueryHTMLFile(data, &numberQueries);
                 printf("--------------------------------------------------\n");
                 break;
+            // -------- [CHOICE 8. back to previous menu]
             case 8:
                 printf("[MENU] -- 8 -- Exiting Query Menu\n");
                 exitConditionQuery = true;
                 break;
+            // -------- [CHOICE INVALID]
             default:
                 red();
                 printf("[ERROR] -- Selecet a valid choice please!!\n");
@@ -205,34 +246,14 @@ void queryMenu(struct dataBase* data){
     }
 }
 
-void exportHTMLFamilyTree(struct dataBase* data){
-    struct Person* child;
-    struct Person* father;
-    struct Person* mother;
-    struct Person* PaternalGFather;
-    struct Person* PaternalGMother;
-    struct Person* MaternalGFather;
-    struct Person* MaternalGMother;
 
-    for (int i = 1; i < getNumberPerson(data); i++){
 
-        child = getPersonArray(data)[i];
+// ** option choice Functions **
 
-        //    getting the IDs of the child's Ancestors
-        father = getPersonArray(data)[getFatherID(child)];
-        mother = getPersonArray(data)[getMotherID(child)];
-
-        //    father's parents
-        PaternalGFather = getPersonArray(data)[getFatherID(father)];
-        PaternalGMother = getPersonArray(data)[getMotherID(father)];
-
-        //    mother's parents
-        MaternalGFather = getPersonArray(data)[getFatherID(mother)];
-        MaternalGMother = getPersonArray(data)[getMotherID(mother)];
-        createPersonHTMLFile(child, father, mother, PaternalGFather, PaternalGMother, MaternalGFather, MaternalGMother);
-    }
-}
-
+//
+// -=[Function Description]=-
+// Function to execute the option 2 Export HTML info files of the second MENU.
+//
 void HTMLFamilyTreeOption(struct dataBase* data, int* exportFamilyCount){
     struct timespec start, end; // clock
 
@@ -259,6 +280,10 @@ void HTMLFamilyTreeOption(struct dataBase* data, int* exportFamilyCount){
 
 }
 
+//
+// -=[Function Description]=-
+// Function to execute the option 2 Export HTML family tree of the second MENU.
+//
 void HTMLInfoTreeOption(struct dataBase* data, int* exportInfoCount,char* fileName){
     struct timespec start, end; // clock
 
@@ -283,4 +308,40 @@ void HTMLInfoTreeOption(struct dataBase* data, int* exportInfoCount,char* fileNa
 
 }
 
+// ** other execution functions **
+
+//
+// -=[Function Description]=-
+// Function to get the ID of the ancestors of a person, and create the HTML file of all the persons of the data base.
+//
+void exportHTMLFamilyTree(struct dataBase* data){
+    struct Person* child; // declaration of the ancestors IDs
+    struct Person* father;
+    struct Person* mother;
+    struct Person* PaternalGFather;
+    struct Person* PaternalGMother;
+    struct Person* MaternalGFather;
+    struct Person* MaternalGMother;
+
+    for (int i = 1; i < getNumberPerson(data); i++){ // going threw the data base person array
+
+        // getting the ID of the child of the tree
+        child = getPersonArray(data)[i];
+
+        //    getting the IDs of the child's Ancestors
+        father = getPersonArray(data)[getFatherID(child)];
+        mother = getPersonArray(data)[getMotherID(child)];
+
+        //    getting the IDs of the father's parents
+        PaternalGFather = getPersonArray(data)[getFatherID(father)];
+        PaternalGMother = getPersonArray(data)[getMotherID(father)];
+
+        //    getting the IDs of the mother's parents
+        MaternalGFather = getPersonArray(data)[getFatherID(mother)];
+        MaternalGMother = getPersonArray(data)[getMotherID(mother)];
+
+        //    creation of the person's HTML page tree
+        createPersonHTMLFile(child, father, mother, PaternalGFather, PaternalGMother, MaternalGFather, MaternalGMother);
+    }
+}
 
