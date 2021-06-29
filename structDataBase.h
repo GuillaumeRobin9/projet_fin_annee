@@ -1,10 +1,22 @@
+//
+// Project: projet_fin_annee
+// Authors: Antoine SOYDEMIR, Guillaume ROBIN, Mickaël NERODA
+// Creation date: 25/06/2021
+// Modification date: 29/06/2021
+// Role: declare struct Person, and access/creation/suppression functions
+//
 
 #ifndef CODE_STRUCTDATABASE_H
 #define CODE_STRUCTDATABASE_H
 
+// Includes
 #include "structNodeTrie.h"
 #include "structPerson.h"
 
+
+//-------------------------------------------------------------------------
+//--- Structure Definition ------------------------------------------------
+//-------------------------------------------------------------------------
 struct dataBase {
     struct Person** personArray;
     int validIndex;
@@ -22,7 +34,11 @@ struct dataBase {
     char* fertileRegion;
 };
 
-//** Create Function **
+//-------------------------------------------------------------------------
+//--- Functions Definitions -----------------------------------------------
+//-------------------------------------------------------------------------
+
+//** Creation Function **
 struct dataBase* createDataBase(int numberPerson);
 
 
@@ -52,8 +68,6 @@ void insertWord(struct NodeTrie* trie, char* word, struct dataBase* data);
 void updateOldest(int IDActualOldest, int* actualOldestBirth, int IDNewPerson, int* newPersonBirth, struct dataBase* data);
 void updateYoungest(int IDActualYoungest, int* actualYoungestBirth, int IDNewPerson, int* newPersonBirth, struct dataBase* data);
 
-//** Print Database **
-void printDataBase(struct dataBase* data);
 
 
 //** Suppression Function **

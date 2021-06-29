@@ -1,17 +1,29 @@
+//
+// Project: projet_fin_annee
+// Authors:  Mickaël NERODA
+// Creation date: //2021
+// Modification date: //2021
+// Role: declare struct Node Trie, and access/creation/suppression functions
+//
 
 #ifndef CODE_STRUCTNODETRIE_H
 #define CODE_STRUCTNODETRIE_H
 
+// Includes
 #include <stdbool.h>
-
 #include "structDataBase.h"
 
+// Global Variables
 #define MAX_LETTERS 27
 #define POS_A 97
 #define POS_A_CAPITAL 65
 #define POS_SPACE 32
 #define LAST_POS_ARR 26
 
+
+//-------------------------------------------------------------------------
+//--- Structure Definition ------------------------------------------------
+//-------------------------------------------------------------------------
 struct NodeTrie{
     bool isWord;
     int numberBirths;
@@ -19,11 +31,15 @@ struct NodeTrie{
 };
 
 
+//-------------------------------------------------------------------------
+//--- Functions Definitions -----------------------------------------------
+//-------------------------------------------------------------------------
+
 //** Creation Function **
 struct NodeTrie* createEmptyNodeTrie();
 
 //** Suppression Function **
-void deleteNodeTrie(struct NodeTrie* trie); // a tester
+void deleteNodeTrie(struct NodeTrie* trie);
 
 //** Access Functions **
 struct NodeTrie** getLetters(struct NodeTrie* trie);

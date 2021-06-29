@@ -1,8 +1,18 @@
+//
+// Project: projet_fin_annee
+// Authors: Antoine SOYDEMIR, Guillaume ROBIN, Mickaël NERODA
+// Creation date: 25/06/2021
+// Modification date: 29/06/2021
+// Role: declare struct Person, and access/creation/suppression functions
+//
 
 #ifndef CODE_STRUCTPERSON_H
 #define CODE_STRUCTPERSON_H
 
 
+//-------------------------------------------------------------------------
+//--- Structure Definition ------------------------------------------------
+//-------------------------------------------------------------------------
 struct Person {
     int ID;
     int IDfather;
@@ -16,12 +26,16 @@ struct Person {
     char* region;
 };
 
+//-------------------------------------------------------------------------
+//--- Functions Definitions -----------------------------------------------
+//-------------------------------------------------------------------------
+
 //** Creation Function **
 struct Person* createPerson(int ID, int IDf, int IDm, char* lastN, char* firstN, int day, int month, int year, char* region);
 struct Person* createEmptyPerson();
 
 
-//** Declarations of Access Functions **
+//** Access Functions **
 
 void printPerson(struct Person* p);
 int getID(struct Person* p);

@@ -1,3 +1,13 @@
+//
+// Project: projet_fin_annee
+// Authors: Mickaël NERODA
+// Creation date: 25/06/2021
+// Modification date: 29/06/2021
+// Role: access/creation/suppression functions
+//
+
+
+// Includes
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -5,19 +15,34 @@
 
 #include "structNodeTrie.h"
 
+//-------------------------------------------------------------------------
+//--- Functions Implementation --------------------------------------------
+//-------------------------------------------------------------------------
+
+//** Creation Function **
+//
+// -=[Function Description]=-
+// Function to create an Empty node trie.
+//
 struct NodeTrie* createEmptyNodeTrie(){
     struct NodeTrie* newTrie = malloc(sizeof(struct NodeTrie));
 
     if (newTrie != NULL) {
         newTrie->numberBirths = 0;
         newTrie->isWord = false;
-        for (int i = 0; i < MAX_LETTERS; i++) {
+        for (int i = 0; i < MAX_LETTERS; i++) { // put the letter array to NULL
             newTrie->letters[i] = NULL;
         }
     }
     return newTrie;
 }
 
+//** Suppression Function **
+
+//
+// -=[Function Description]=-
+// Function to delete a node trie.
+//
 void deleteNodeTrie(struct NodeTrie* trie){
 
     for (int i = 0; i < MAX_LETTERS; i++){
@@ -28,60 +53,37 @@ void deleteNodeTrie(struct NodeTrie* trie){
     free(trie);
 }
 
+//** Access Functions **
+
+//
+// -=[Function Description]=-
+// Function to get the letter array of node trie.
+//
 struct NodeTrie** getLetters(struct NodeTrie* trie){
     return trie->letters;
 }
+
+//
+// -=[Function Description]=-
+// Function that say if the node is the end of a word.
+//
 bool getIsWord(struct NodeTrie* trie){
     return trie->isWord;
 }
 
+
+//
+// -=[Function Description]=-
+// Function to value of numberBirth of a node.
+//
 int getNumberBirths(struct NodeTrie* trie){
     return trie->numberBirths;
 }
 
-void setIsWord(struct NodeTrie* trie, bool newBool){
-    trie->isWord = newBool;
-}
-
-void incrementNumberBirths(struct NodeTrie* trie){
-    trie->numberBirths = trie->numberBirths + 1;
-}
-
-
-
-bool belongs(struct NodeTrie* trie, char* word){
-    int n = strlen(word);
-
-    for (int i = 0; i < n; i++){
-
-        if (word[i] == POS_SPACE){ // when the char is a space
-            if (getLetters(trie)[LAST_POS_ARR] == NULL){ // the space does not exist
-                return false;
-            }
-            trie = getLetters(trie)[LAST_POS_ARR];
-        }
-
-        if (word[i] <= 90 && word[i] >= 65){ // when the  char is uppercase
-            if (getLetters(trie)[capitalChartoPos(word[i])] == NULL){
-                return false;
-            }
-            trie = getLetters(trie)[capitalChartoPos(word[i])];
-        }
-
-        if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
-            if (getLetters(trie)[charToPos(word[i])] == NULL) {
-                return false;
-            }
-            trie = getLetters(trie)[charToPos(word[i])];
-        }
-
-    }
-    if (getIsWord(trie)){
-        return true;
-    }
-    return false;
-}
-
+//
+// -=[Function Description]=-
+// Function thet say if the trie is empty.
+//
 bool isEmptyTrie(struct NodeTrie* trie){
     for (int i = 0; i < MAX_LETTERS; i++){
         if (getLetters(trie)[i] != NULL){
@@ -91,7 +93,54 @@ bool isEmptyTrie(struct NodeTrie* trie){
     return true;
 }
 
-int numberOfWords(struct NodeTrie* trie){ // Option 1 numberOfWords
+
+// ** Insertion/Search Functions **
+
+//
+// -=[Function Description]=-
+// Function that says if th word entered exist in the NodeTrie.
+//
+bool belongs(struct NodeTrie* trie, char* word){
+    int n = strlen(word);
+
+    for (int i = 0; i < n; i++){ // getting threw all the characters of the word entered
+
+        if (word[i] == POS_SPACE){ // when the char is a space
+            if (getLetters(trie)[LAST_POS_ARR] == NULL){ // the space does not exist
+                return false;
+            }
+            trie = getLetters(trie)[LAST_POS_ARR]; // going to the next node
+        }
+
+        if (word[i] <= 90 && word[i] >= 65){ // when the  char is uppercase
+            if (getLetters(trie)[capitalChartoPos(word[i])] == NULL){
+                return false;
+            }
+            trie = getLetters(trie)[capitalChartoPos(word[i])]; // going to the next node
+        }
+
+        if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
+            if (getLetters(trie)[charToPos(word[i])] == NULL) {
+                return false;
+            }
+            trie = getLetters(trie)[charToPos(word[i])]; // going to the next node
+        }
+
+    }
+    if (getIsWord(trie)){
+        return true;
+    }
+    return false;
+}
+
+
+
+
+//
+// -=[Function Description]=-
+// Function that give the number of region name in the trie.
+//
+int numberOfWords(struct NodeTrie* trie){
     int n = 0;
 
     for (int i = 0; i < MAX_LETTERS; i++){
@@ -108,11 +157,15 @@ int numberOfWords(struct NodeTrie* trie){ // Option 1 numberOfWords
 }
 
 
+//
+// -=[Function Description]=-
+// Function that give the number of Births in the gived region.
+//
 int findBirthsOfRegion(struct NodeTrie* trie, char* word, bool* valid){
 
     int n = strlen(word);
 
-    for (int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++){ // getting threw all the characters of the word entered
 
         if (word[i] == POS_SPACE){ // when the char is a space
 
@@ -120,7 +173,7 @@ int findBirthsOfRegion(struct NodeTrie* trie, char* word, bool* valid){
                 *valid = false;
                 return 0;
             }
-            trie = getLetters(trie)[LAST_POS_ARR];
+            trie = getLetters(trie)[LAST_POS_ARR]; // going to the next node
         }
 
         if (word[i] <= 90 && word[i] >= 65){ // when the  char is uppercase
@@ -128,7 +181,7 @@ int findBirthsOfRegion(struct NodeTrie* trie, char* word, bool* valid){
                 *valid = false;
                 return 0;
             }
-            trie = getLetters(trie)[capitalChartoPos(word[i])];
+            trie = getLetters(trie)[capitalChartoPos(word[i])]; // going to the next node
         }
 
         if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
@@ -136,11 +189,11 @@ int findBirthsOfRegion(struct NodeTrie* trie, char* word, bool* valid){
                 *valid = false;
                 return 0;
             }
-            trie = getLetters(trie)[charToPos(word[i])];
+            trie = getLetters(trie)[charToPos(word[i])]; // going to the next node
         }
 
     }
-    if (getIsWord(trie)){
+    if (getIsWord(trie)){ // if the last node reached is the end of a word, we return the number of birthday of the actual node
         *valid = true;
         printf("[INFO] -- Region finded\n");
         return getNumberBirths(trie);
@@ -150,6 +203,11 @@ int findBirthsOfRegion(struct NodeTrie* trie, char* word, bool* valid){
     return 0;
 }
 
+
+//
+// -=[Function Description]=-
+// Function that show all the regions of the node trie.
+//
 void displayRegions(struct NodeTrie* trie, int index, char* word){
 
     if (getIsWord(trie)){
@@ -181,21 +239,62 @@ void displayRegions(struct NodeTrie* trie, int index, char* word){
 }
 
 //** Convertions **
+
+//
+// -=[Function Description]=-
+// Function to convert a ascii cde of a uppercase letter in a char.
+//
 char capitalPosToChar(int pos){
     return pos + POS_A_CAPITAL;
 }
 
+
+//
+// -=[Function Description]=-
+// Function to convert a ascii code of a lowercase letter in a char.
+//
 char posToChar(int pos){
     return pos + POS_A;
 }
 
+
+//
+// -=[Function Description]=-
+// Function convert a uppercase char in a index of the letter array
+//
 int capitalChartoPos(char c){
     return c - POS_A_CAPITAL;
 }
 
+
+//
+// -=[Function Description]=-
+// Function convert a lowercase char in a index of the letter array
+//
 int charToPos(char c){
     return c - POS_A;
 }
+
+// **update functions **
+
+//
+// -=[Function Description]=-
+// Function to set a node as a end of the word
+//
+void setIsWord(struct NodeTrie* trie, bool newBool){
+    trie->isWord = newBool;
+}
+
+
+//
+// -=[Function Description]=-
+// Function to increment the numberBirth value.
+//
+void incrementNumberBirths(struct NodeTrie* trie){
+    trie->numberBirths = trie->numberBirths + 1;
+}
+
+
 
 
 
