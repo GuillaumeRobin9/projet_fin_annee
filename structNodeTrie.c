@@ -96,45 +96,6 @@ bool isEmptyTrie(struct NodeTrie* trie){
 
 // ** Insertion/Search Functions **
 
-//
-// -=[Function Description]=-
-// Function that says if th word entered exist in the NodeTrie.
-//
-bool belongs(struct NodeTrie* trie, char* word){
-    int n = strlen(word);
-
-    for (int i = 0; i < n; i++){ // getting threw all the characters of the word entered
-
-        if (word[i] == POS_SPACE){ // when the char is a space
-            if (getLetters(trie)[LAST_POS_ARR] == NULL){ // the space does not exist
-                return false;
-            }
-            trie = getLetters(trie)[LAST_POS_ARR]; // going to the next node
-        }
-
-        if (word[i] <= 90 && word[i] >= 65){ // when the  char is uppercase
-            if (getLetters(trie)[capitalChartoPos(word[i])] == NULL){
-                return false;
-            }
-            trie = getLetters(trie)[capitalChartoPos(word[i])]; // going to the next node
-        }
-
-        if (word[i] <= 122 && word[i] >= 97) { // when the char is in lowercase
-            if (getLetters(trie)[charToPos(word[i])] == NULL) {
-                return false;
-            }
-            trie = getLetters(trie)[charToPos(word[i])]; // going to the next node
-        }
-
-    }
-    if (getIsWord(trie)){
-        return true;
-    }
-    return false;
-}
-
-
-
 
 //
 // -=[Function Description]=-
@@ -195,7 +156,7 @@ int findBirthsOfRegion(struct NodeTrie* trie, char* word, bool* valid){
     }
     if (getIsWord(trie)){ // if the last node reached is the end of a word, we return the number of birthday of the actual node
         *valid = true;
-        printf("[INFO] -- Region finded\n");
+        printf("[INFO] -- Region find\n");
         return getNumberBirths(trie);
     }
 

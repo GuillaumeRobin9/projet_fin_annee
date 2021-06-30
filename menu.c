@@ -70,6 +70,7 @@ void queryMenu(struct dataBase* data){
     while (!exitConditionQuery) {
 
 //               ** [DISPLAY QUERY MENU] **
+        //displayBirthTable(data);
         printf("[INFO] -- 5 ");
         printf("\n\nQuery the family tree!\n\n");
         printf("What do you want to do?\n");
@@ -79,7 +80,7 @@ void queryMenu(struct dataBase* data){
         printf("3. Get number of people born in a region\n");
         printf("4. Get the region with the highest number of births\n");
         printf("5. Get the number of people born in a given day and month\n");
-        printf("6. optionnal querys\n");
+        printf("6. optional query\n");
         printf("7. export query results to HTML file\n");
         printf("8. back to previous menu\n");
         printf("--------------------------------------------------\n");
@@ -170,7 +171,7 @@ void queryMenu(struct dataBase* data){
                 clock_gettime(CLOCK_REALTIME, &start);  // -- START chrono --
 
                 green();
-                printf("[INFO] the region with the highest number of biths is named %s with %d births\n", getFertileRegion(data), getMaxBirths(data));
+                printf("[INFO] the region with the highest number of births is named %s with %d births\n", getFertileRegion(data), getMaxBirths(data));
 
                 clock_gettime(CLOCK_REALTIME, &end); //  --- STOP chrono --
                 double time_spent4 = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;
@@ -205,7 +206,7 @@ void queryMenu(struct dataBase* data){
                 clock_gettime(CLOCK_REALTIME, &start);  // -- START chrono --
 
                 green();
-                printf("\n[INFO] -- %d peoples are born on %d/%d\n", data->birthdays[month][day], day, month);
+                printf("\n[INFO] -- on %d/%d, %d peoples are born\n", day, month, getValBirthTable(data, day, month));
                 reset();
 
                 clock_gettime(CLOCK_REALTIME, &end); //  --- STOP chrono --
@@ -220,7 +221,7 @@ void queryMenu(struct dataBase* data){
                 break;
             // -------- [CHOICE 6. optionnal querys]
             case 6:
-                printf("[MENU] -- 6 -- The options are not available yet :(\n");
+                printf("[MENU] -- 6 -- The option is not available yet :(\n");
                 printf("--------------------------------------------------\n");
                 break;
             // -------- [CHOICE 7. export query results to HTML file]
@@ -237,7 +238,7 @@ void queryMenu(struct dataBase* data){
             // -------- [CHOICE INVALID]
             default:
                 red();
-                printf("[ERROR] -- Selecet a valid choice please!!\n");
+                printf("[ERROR] -- Select a valid choice please!!\n");
                 reset();
                 printf("--------------------------------------------------\n");
                 sleep(3);

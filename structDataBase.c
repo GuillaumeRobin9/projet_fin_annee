@@ -175,8 +175,8 @@ void getDateWithMostBirths(struct dataBase* data, int* day, int* month){
     for (int i = 0; i < 12; i++){ // going threw the birthday matrix
         for (int j = 0; j < 31; j++){
             if (data->birthdays[i][j] > max){
-                *day = j; // give the value of day with most births
-                *month = i;
+                *day = j + 1; // give the value of day with most births
+                *month = i + 1;
                 max = data->birthdays[i][j]; // update max
             }
         }
@@ -197,10 +197,31 @@ void showGeneralInfoDataBase(struct dataBase* data){
     reset();
     printf("number person in the tree : %d\n", getNumberPerson(data));
     printf("number of different natal regions : %d\n", numberOfWords(getTrie(data)));
-    printf("number of different birthdays dates : %d\n", numberBirthDates(data));
+    printf("number of different birthday dates : %d\n", numberBirthDates(data));
     getDateWithMostBirths(data, &day, &month);
     printf("date with the most of births : %d/%d\n", day, month);
     printf("\n\n");
+}
+
+
+//
+// -=[Function Description]=-
+// Function that print the birthday table.
+//
+void displayBirthTable(struct dataBase* data) {
+    for (int i=0; i<12; i++){
+        for (int j=0; j<31;j++){
+            printf("BD(%d,%d)=%d\n",i + 1,j + 1,data->birthdays[i][j]);
+        }
+    }
+}
+
+//
+// -=[Function Description]=-
+// Function that gives the number people born on a day and date given.
+//
+int getValBirthTable(struct dataBase* data, int day, int month){
+    return data->birthdays[month - 1][day - 1];
 }
 
 
@@ -261,12 +282,11 @@ void insertWord(struct NodeTrie* trie, char* word, struct dataBase* data){
 
 //
 // -=[Function Description]=-
-// Function to compute the mean of a set of numbers.
+// Function to increment a position in the birthday matrix.
 //
 void insertBirth(int day, int month, struct dataBase* data){
     data->birthdays[month - 1][day - 1] = data->birthdays[month - 1][day - 1] + 1;
 }
-
 
 //
 // -=[Function Description]=-
@@ -278,7 +298,6 @@ void insertPerson(struct Person* p, struct dataBase* data) {
 
 //    **insertion birthday of the person in dataBase**
     insertBirth(getDay(p), getMonth(p), data);
-
 
 //      **update oldest/youngest births**
     int newPersonBirth[3]; // array with the new person dates

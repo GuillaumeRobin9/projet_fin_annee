@@ -197,7 +197,7 @@ void createQueryHTMLFile(struct dataBase* data, int* numberQueries){
     clock_gettime(CLOCK_REALTIME, &start);
 
     green();
-    printf("[INFO] -- 4 --the region with the highest number of biths is named %s with %d births\n", getFertileRegion(data), getMaxBirths(data));
+    printf("[INFO] -- 4 --the region with the highest number of births is named %s with %d births\n", getFertileRegion(data), getMaxBirths(data));
     reset();
     fillHTMLQuery4(getFertileRegion(data)); // writing the result of the query in the HTML file
 
@@ -235,10 +235,10 @@ void createQueryHTMLFile(struct dataBase* data, int* numberQueries){
         else {
             clock_gettime(CLOCK_REALTIME, &start);  // -- START chrono --
             green();
-            printf("\n[INFO] -- %d peoples are born on %d/%d\n", data->birthdays[month][day], day, month);
+            printf("\n[INFO] -- on %d/%d, %d peoples are born\n", day, month, getValBirthTable(data, day, month));
             reset();
 
-            fillHTMLQuery5(day, month, data->birthdays[month][day]); // writing the result of the query in the HTML file
+            fillHTMLQuery5(day, month, data->birthdays[month - 1][day - 1]); // writing the result of the query in the HTML file
 
             clock_gettime(CLOCK_REALTIME, &end); //  --- STOP chrono --
             double time_spent5 = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;

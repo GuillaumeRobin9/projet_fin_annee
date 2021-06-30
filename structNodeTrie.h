@@ -48,7 +48,6 @@ bool isEmptyTrie(struct NodeTrie* trie);
 int getNumberBirths(struct NodeTrie* trie);
 
 // ** Insertion/Search Functions **
-bool belongs(struct NodeTrie* trie, char* word);
 int numberOfWords(struct NodeTrie* trie);
 int findBirthsOfRegion(struct NodeTrie* trie, char* word, bool* valid);
 void displayRegions(struct NodeTrie* trie, int index, char* word);

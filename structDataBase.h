@@ -59,6 +59,10 @@ int numberBirthDates(struct dataBase* data);
 void getDateWithMostBirths(struct dataBase* data, int* day, int* month);
 void showGeneralInfoDataBase(struct dataBase* data);
 
+// MARKER
+void displayBirthTable(struct dataBase* data);
+int getValBirthTable(struct dataBase* data, int day, int month);
+
 //** Insertion Function **
 void insertPerson(struct Person* p, struct dataBase* data);
 void insertBirth(int day, int month, struct dataBase* data);

@@ -41,7 +41,7 @@ struct dataBase* readFile(char *nameFile){
 
     if(file == NULL){
         red();
-        printf("[ERROR] -- Error in opening file\n");
+        printf("[ERROR] -- Error in opening the file\n");
         reset();
         printf("--------------------------------------------------\n");
         return NULL;
@@ -154,7 +154,7 @@ struct dataBase* readFile(char *nameFile){
     double time_spent = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;
 
     green();
-    printf("[INFO] -- File \"%s\" Successfully Readed in %f s !\n", nameFile, time_spent);
+    printf("[INFO] -- File \"%s\" Successfully Read in %f s !\n", nameFile, time_spent);
     reset();
 
 
